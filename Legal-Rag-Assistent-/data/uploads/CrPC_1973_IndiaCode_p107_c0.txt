@@ -1,0 +1,42 @@
+108
+respect of which, it was committed, as are reasonably sufficient to give the accused notice of the matter
+with which he is charged.
+(2) When the accused is charged with criminal breach of trust or dishonest misappropriation of money
+or other movable property, it shall be sufficient to specify the gross sum or, as the case may be, describe
+the movable property in respect of which the offence is alleged to have been committed, and the dates
+between which the offence is alleged to have been committed, without specifying particular items or exact
+dates, and the charge so framed shall be deemed to be a charge of one offence within the meaning of
+section 219:
+Provided that the time included between the first and last of such dates shall not exceed one year.
+213. When manner of committing offence must be stated.—When the nature of the case is such
+that the particulars mentioned in sections 211 and 212 do not give the accused sufficient notice of the
+matter with which he is charged, the charge shall also contain such particulars of the manner in which the
+alleged offence was committed as will be sufficient for that purpose.
+Illustrations
+(a) A is accused of the theft of a certain article at a certain time and place. The charge need not set out the manner in
+which the theft was effected.
+(b) A is accused of cheating B at a given time and place. The charge must set out the manner in which A cheated B.
+(c) A is accused of giving false evidence at a given time and place. The charge must set out that portion of the
+evidence given by A which is alleged to be false.
+(d) A is accused of obstructing B, a public servant, in the discharge of his public functions at a given time and place.
+The charge must set out the manner in which A obstructed B in the discharge of his functions.
+(e) A is accused of the murder of B at a given time and place. The charge need not state the manner in which A
+murdered B.
+(f) A is accused of disobeying a direction of the law with intent to save B from punishment. The charge must set out the
+disobedience charged and the law infringed.
+214. Words in charge taken in sense of law under which offence is punishable.—In every charge
+words used in describing an offence shall be deemed to have been used in the sense attached to them
+respectively by the law under which such offence is punishable.
+215. Effect of errors.— No error in stating either the offence or the particulars required to be stated
+in the charge, and no omission to state the offence or those particulars, shall be regarded at any stage of
+the case as material, unless the accused was in fact misled by such error or omission, and it has
+occasioned a failure of justice.
+Illustrations
+(a) A is charged under section 242 of the Indian Penal Code (45 of 1860), with “having been in possession of
+counterfeit coin, having known at the time when he became possessed thereof that such coin was counterfeit,” the word
+“fraudulently” being omitted in the charge. Unless it appears that A was in fact misled by this omission, the error shall not
+be regarded as material.
+(b) A is charged with cheating B, and the manner in which he cheated B is not set out in the charge or is set out
+incorrectly. A defends himself, calls witnesses and gives his own account of the transaction. The Court may infer from this
+that the omission to set out the manner of the cheating is not material.
+(c) A is charged with cheating B, and the manner in which he cheated B is not set out in the charge. There were many

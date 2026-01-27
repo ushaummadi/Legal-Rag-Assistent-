@@ -1,0 +1,43 @@
+36
+pleader,] such notice to produce it as is prescribed by law; and if no notice is prescribed by law, then such
+notice as the Court considers reasonable under the circumstances of the case:
+Provided that such notice shall not be required in order to render secondary evidence admissible in
+any of the following cases, or in any other case in which the Court thinks fit to dispense with it: ––
+(1) when the document to be proved is itself a notice;
+(2) when, from the nature of the case, the adverse party must know that he will be required to
+produce it;
+(3) when it appears or is proved that the adverse party has obtained possession of the original by
+fraud or force;
+(4) when the adverse party or his agent has the original in Court;
+(5) when the adverse party or his agent has admitted the loss of the document;
+(6) when the person in possession of the document is out of reach of, or not subject to, the process
+of the Court.
+67. Proof of signature and handwriting of person alleged to have signed or written document
+produced. –– If a document is alleged to be signed or to have been written wholly or in part by any
+person, the signature or the handwriting of so much of the document as is alleged to be in that person’s
+handwriting must be proved to be in his handwriting.
+1[67A. Proof as to 2[electronic signature].––Except in the case of a secure 2[electronic signature], if the
+2[electronic signature] of any subscriber is alleged to have been affixed to an electronic record the fact that
+such 2[electronic signature] is the 2[electronic signature] of the subscriber must be proved.]
+68. Proof of execution of document required by law to be attested.––If a document is required by
+law to be attested, it shall not be used as evidence until one attesting witness at least has been called for
+the purpose of proving its execution, if there be an attesting witness alive, and subject to the process of
+the Court and capable of giving evidence:
+3[Provided that it shall not be necessary to call an attesting witness in proof of the execution of any
+document, not being a will, which has been registered in accordance with the provisions of the Indian
+Registration Act, 1908 (16 of 1908), unless its execution by the person by whom it purports to have been
+executed is specifically denied.]
+69. Proof where no attesting witness found.––If no such attesting witness can be found, or if the
+document purports to have been executed in the United Kingdom, it must be proved that the attestation of
+one attesting witness at least is in his handwriting, and that the signature of the person executing the
+document is in the hand writing of that person.
+70. Admission of execution by party to attested document.––The admission of a party to an
+attested document of its execution by himself shall be sufficient proof of its execution as against him,
+though it be a document required by law to be attested.
+71. Proof when attesting witness denies the execution.––If the attesting witness denies or does not
+recollect the execution of the document, its execution may be proved by other evidence.
+72. Proof of document not required by law to be attested.––An attested document not required by
+law to be attested may be proved as if it was unattested.
+1. Ins. by Act 21 of 2000, s. 92 and the Second Schedule (w.e.f. 17-10-2000).
+2. Subs. by Act 10 of 2009, s. 52, for “digital signature” (w.e.f. 27-10-2009).
+3. Ins. by Act 31 of 1926, s. 2.

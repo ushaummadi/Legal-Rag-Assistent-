@@ -1,0 +1,48 @@
+300
+10. Jurisdiction in respect of arbitration matters. –– Where the subject-matter of an arbitration
+is a commercial dispute of a Specified Value and––
+(1) If such arbitration is an international commercial arbitration, all applications or appeals
+arising out of such arbitration under the provisions of the Arbitration and Conciliation Act, 1996
+(26 of 1996), that have been filed in a High Court, shall be heard and disposed of by the
+Commercial Division where such Commercial Division has been constituted in such High Court.
+(2) If such arbitration is other than an international commercial arbitration, all applications or
+appeals arising out of such arbitration under the provisions of the Arbitration and Conciliation Act,
+1996 that have been filed on the original side of the High Court, shall be heard and disposed of by
+the Commercial Division where such Commercial Division has been constituted in such High
+Court.
+(3) If such arbitration is other than an international commercial arbitration, all applications or
+appeals arising out of such arbitration under the provisions of the Arbitration and Conciliation Act,
+1996 (26 of 1996), that would ordinarily lie before any principal civil court of original jurisdiction
+in a district (not being a High Court) shall be filed in, and heard and disposed of by the
+Commercial Court exercising territorial jurisdiction over such arbitration where such Commercial
+Court has been constituted.
+11. Bar of Jurisdiction of Commercial Courts and Commercial Divisions. ––Notwithstanding
+anything contained in this Act, a Commercial Court or a Commercial Division shall not entertain or
+decide any suit, application or proceedings relating to any commercial dispute in respect of which the
+jurisdiction of the civil court is either expressly or impliedly barred under any other law for the time
+being in force.
+CHAPTER III
+SPECIFIED VALUE
+12. Determination of Specified.––(1) The Specified Value of the subject-matter of the
+commercial dispute in a suit, appeal or application shall be determined in the following manner:––
+(a) where the relief sought in a suit or application is for recovery of money, the money sought
+to be recovered in the suit or application inclusive of interest, if any, computed up to the date of
+filing of the suit or application, as the case may be, shall be taken into account for determining
+such Specified Value;
+(b) where the relief sought in a suit, appeal or application relates to movable property or to a
+right therein, the market value of the movable property as on the date of filing of the suit, appeal or
+application, as the case may be, shall be taken into account for determining such Specified Value;
+(c) where the relief sought in a suit, appeal or application relates to immovable property or to a
+right therein, the market value of the immovable property, as on the date of filing of the suit,
+appeal or application, as the case may be, shall be taken into account for determining Specified
+Value;
+(d) where the relief sought in a suit, appeal or application relates to any other intangible right,
+the market value of the said rights as estimated by the plaintiff shall be taken into account for
+determining Specified Value; and
+(e) where the counterclaim is raised in any suit, appeal or application, the value of the subject-
+matter of the commercial dispute in such counterclaim as on the date of the counterclaim shall be
+taken into account.
+(2) The aggregate value of the claim and counterclaim, if any as set out in the statement of claim
+and the counterclaim, if any, in an arbitration of a commercial dispute shall be the basis for
+determining whether such arbitration is subject to the jurisdiction of a Commercial Division,
+Commercial Appellate Division or Commercial Court, as the case may be.

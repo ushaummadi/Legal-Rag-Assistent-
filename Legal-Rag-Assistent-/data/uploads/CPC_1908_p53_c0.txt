@@ -1,0 +1,44 @@
+54
+RULES
+8. Procedure where defendant only appears.
+9. Decree against plaintiff by default bars fresh suit.
+10. Procedure in case of non-attendance of one or more of several plaintiffs.
+11. Procedure in case of non-attendance of one or more of several defendants.
+12. Consequence of non-attendance, without sufficient cause shown, of party ordered to appear in person.
+Setting aside decrees ex parte
+13. Setting aside decree ex parte against defendant.
+14. No decree to be set aside without notice to opposite party.
+ORDER X
+Examination of Parties by the Court
+1. Ascertainment whether allegations in pleadings are admitted or denied.
+1A. Direction of the court to opt for any one mode of alternative dispute resolution.
+1B. Appearance before the conciliatory forum or authority.
+1C. Appearance before the court consequent to the failure of efforts of conciliation.
+2. Oral examination of party, or companion of party.
+3. Substance of examination to be written.
+4. Consequence of refusal or inability of pleader to answer.
+ORDER XI
+Discovery and Inspection
+1. Discovery by interrogatories.
+2. Particular interrogatories to be submitted.
+3. Costs of interrogatories.
+4. Form of interrogatories.
+5. Corporations.
+6. Objections to interrogatories by answer.
+7. Setting aside and striking out interrogatories.
+8. Affidavit in answer, filing.
+9. Form of affidavit in answer.
+10. No exception to be taken.
+11. Order to answer or answer further.
+12. Application for discovery of documents.
+13. Affidavit of documents.
+14. Production of documents.
+15. Inspection of documents referred to in pleading or affidavits.
+16. Notice to produce.
+17. Time for inspection when notice given.
+18. Order for inspection.
+19. Verified copies.
+20. Premature discovery.
+21. Non-compliance with order for discovery.
+22. Using answers to interrogatories at trial.
+23. Order to apply to minors.

@@ -1,0 +1,42 @@
+303
+SCHEDULE
+(See section 16)
+1. Amendment of section 26.––In section 26 of the Code of Civil Procedure, 1908 (hereafter
+referred to as the Code), in sub-section (2), the following proviso shall be inserted, namely:––
+“Provided that such an affidavit shall be in the form and manner as prescribed under Order VI
+of Rule 15A”.
+2. For section 35 of the Code, the following section shall be substituted, namely:––
+‘35. Substitution of new section for section 35. –– (1) In relation to any commercial dispute,
+the Court, notwithstanding anything contained in any other law for the time being in force or Rule,
+has the discretion to determine:
+(a) whether costs are payable by one party to another;
+(b) the quantum of those costs; and
+(c) when they are to be paid.
+Explanation.—For the purpose of clause (a), the expression “costs” shall mean reasonable
+costs relating to—
+(i) the fees and expenses of the witnesses incurred;
+(ii) legal fees and expenses incurred;
+(iii) any other expenses incurred in connection with the proceedings.
+(2) If the Court decides to make an order for payment of costs, the general rule is that the
+unsuccessful party shall be ordered to pay the costs of the successful party:
+Provided that the Court may make an order deviating from the general rule for reasons to be
+recorded in writing.
+Illustration
+The Plaintiff, in his suit, seeks a money decree for breach of contract, and damages. The Court
+holds that the Plaintiff is entitled to the money decree. However, it returns a finding that the claim for
+damages is frivolous and vexatious.
+In such circumstances the Court may impose costs on the Plaintiff, despite the Plaintiff being the
+successful party, for having raised frivolous claims for damages.
+(3) In making an order for the payment of costs, the Court shall have regard to the following
+circumstances, including—
+(a) the conduct of the parties;
+(b) whether a party has succeeded on part of its case, even
+(c) Whether the party had made a frivolous counterclaim leading to delay in the disposal of the
+case;
+(d) Whether any reasonable offer to settle is made by a party and unreasonably refused by the
+other party; and
+(e) whether the party had made a frivolous claim and instituted a vexatious proceeding wasting
+the time of the Court.
+(4) The orders which the Court may under this provision include an order that a party must
+pay —
+(a) a proportion of another party’s costs;

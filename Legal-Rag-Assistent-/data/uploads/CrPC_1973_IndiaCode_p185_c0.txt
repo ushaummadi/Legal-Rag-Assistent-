@@ -1,0 +1,41 @@
+186
+bail may at any time apply to a Magistrate to discharge the bond, either wholly or so far as relates to the applicants.
+(2) On such application being made, the Magistrate shall issue his warrant of arrest directing that the person so
+released be brought before him.
+(3) On the appearance of such person pursuant to the warrant, or on his voluntary surrender, the Magistrate shall
+direct the bond to be discharged either wholly or so far as relates to the applicants, and shall call upon such person to
+find other sufficient sureties, and, if he fails to do so, may commit him to jail.
+STATE AMENDMENT
+West Bengal
+In section 444 of the Principal Act,—
+(1) in sub-section (1) after the words “at any time”, the words, “on showing sufficient cause,” shall be
+inserted;
+(2) after sub-section (1), the following sub-section shall be inserted:—
+“(1A) On such application being made, the Magistrate may either hold an inquiry himself, or cause
+an inquiry to be made by a Magistrate subordinate to him, on the correctness of the reason shown, in
+the application to discharge the bond as stated in sub-section (1)”;
+(3) for sub-section (2), the following sub-section shall be substituted:—
+“(2) If the Magistrate is satisfied, on enquiry made under sub-section (1A), that all or any of the
+sureties applying for discharge may be discharged, he shall issue warrant of arrest directing that the
+person so released be brought before him.”
+[Vide West Bengal Act 24 of 2003, s. 3.]
+445. Deposit instead of recognizance.—When any person is required by any Court or officer to execute a bond
+with or without sureties, such Court or officer may, except in the case of a bond for good behaviour, permit him to
+deposit a sum of money or Government promissory notes to such amount as the Court or officer may fix in lieu of
+executing such bond.
+STATE AMENDMENT
+West Bengal
+In section 445 of the principal Act,—
+(a) the words “with or without sureties” shall be omitted; and
+(b) for the word “permit”, the word “direct” shall be substituted.
+[Vide West Bengal Act 24 of 2003, s. 4.]
+446. Procedure when bond has been forfeited.—(1) Where a bond under this Code is for appearance, or for
+production of property, before a Court and it is proved to the satisfaction of that Court, or of any Court to which the
+case has subsequently been transferred, that the bond has been forfeited,
+or where, in respect of any other bond under this Code, it is proved to the satisfaction of the Court by which the
+bond was taken, or of any Court to which the case has subsequently been transferred, or of the Court of any
+Magistrate of the first class, that the bond has been forfeited,
+the Court shall record the grounds of such proof, and may call upon any person bound by such bond to pay the
+penalty thereof or to show cause why it should not be paid.
+Explanation.—A condition in a bond for appearance, or for production of property, before a Court shall be
+construed as including a condition for appearance, or as the case may be, for production of property, before any

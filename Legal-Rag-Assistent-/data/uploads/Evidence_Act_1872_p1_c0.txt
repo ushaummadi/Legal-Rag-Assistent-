@@ -1,0 +1,38 @@
+2
+SECTIONS
+14. Facts showing existence of state of mind, or of body, or bodily feeling.
+15. Facts bearing on question whether act was accidental or intentional.
+16. Existence of course of business when relevant.
+ADMISSIONS
+17. Admission defined.
+18. Admission––
+by party to proceeding or his agent;
+by suitor in representative character;
+by party interested in subject-matter;
+by person from whom interest derived.
+19. Admissions by persons whose position must be proved as against party to suit.
+20. Admissions by persons expressly referred to by party to suit.
+21. Proof of admissions against persons making them, and by or on their behalf.
+22. When oral admissions as to contents of documents are relevant.
+22A. When oral admission as to contents of electronic records are relevant.
+23. Admissions in civil cases when relevant.
+24. Confession caused by inducement, threat or promise, when irrelevant in criminal proceeding.
+25. Confession to police-officer not to be proved.
+26. Confession by accused while in custody of Police not to be proved against him.
+27. How much of information received from accused may be proved.
+28. Confession made after removal of impression caused by inducement, threat or promise, relevant.
+29. Confession otherwise relevant not to become irrelevant because of promise of secrecy, etc.
+30. Consideration of proved confession affecting person making it and others jointly under trial for
+same offence.
+31. Admissions not conclusive proof, but may estop.
+STATEMENTS BY PERSONS WHO CANNOT BE CALLED AS WITNESSES
+32. Cases in which statement of relevant fact by person who is dead or cannot be found, etc., is
+relevant.
+When it relates to cause of death;
+or is made in course of business;
+or against interest of maker;
+or gives opinion as to public right or custom, or matters of general interest;
+or relates to existence of relationship;
+or is made in will or deed relating to family affairs;
+or in document relating to transaction mentioned in section 13, clause (a);
+or is made by several persons and expresses feelings relevant to matter in question.

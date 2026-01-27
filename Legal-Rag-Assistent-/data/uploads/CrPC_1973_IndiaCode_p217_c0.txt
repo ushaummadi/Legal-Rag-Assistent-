@@ -1,0 +1,158 @@
+218
+1
+2
+3
+4
+5
+6
+426
+Mischief
+Imprisonment for 3
+months or fine, or both.
+Ditto
+Ditto
+Ditto.
+427
+Mischief, and thereby causing damage to the
+amount of 50 rupees or upwards.
+Imprisonment for 2 years,
+or fine, or both.
+Ditto
+Ditto
+Ditto.
+428
+Mischief by killing, poisoning, maiming or
+rendering useless any animal of the value of 10
+rupees or upwards.
+Ditto
+Cognizable
+Ditto
+Ditto.
+429
+Mischief by killing, poisoning, maiming or
+rendering useless any elephant, camel, horse,
+etc., whatever may be its value, or any other
+animal of the value of 50 rupees or upwards.
+Imprisonment for 5 years,
+or fine, or both.
+Ditto
+Ditto
+Magistrate of
+the first class.
+430
+Mischief by causing diminution of supply of
+water for agricultural purposes, etc.
+Ditto
+Ditto
+Ditto
+Ditto.
+431
+Mischief by injury to public road, bridge,
+navigable river, or navigable channel, and
+rendering it impassable or less safe for
+travelling or conveying property.
+Ditto
+Ditto
+Ditto
+Ditto.
+432
+Mischief by causing inundation or obstruction
+to public drainage attended with damage.
+Ditto
+Ditto
+Ditto
+Ditto.
+433
+Mischief by destroying or moving or rendering
+less useful a lighthouse or seamark, or by
+exhibiting false lights.
+Imprisonment for 7 years,
+or fine, or both.
+Ditto
+Ditto
+Ditto.
+434
+Mischief by destroying or moving, etc., a
+landmark fixed by public authority.
+Imprisonment for 1 year,
+or fine, or both.
+Non-cognizable
+Ditto
+Any
+Magistrate.
+435
+Mischief by fire or explosive substance with
+intent to cause damage to an amount of 100
+rupees or upwards, or, in case of agricultural
+produce, 10 rupees or upwards.
+Imprisonment for 7 years
+and fine.
+Cognizable
+Ditto
+Magistrate of
+the first class.
+436
+Mischief by fire or explosive substance with
+intent to destroy a house, etc.
+Imprisonment for life, or
+imprisonment for 10 years
+and fine.
+Ditto
+Non-bailable
+Court of
+Session.
+437
+Mischief with intent to destroy or make unsafe
+a decked vessel or a vessel of 20 tonnes
+burden.
+Imprisonment for 10 years
+and fine.
+Ditto
+Ditto
+Ditto.
+438
+The mischief described in the last section
+when committed by fire or any explosive
+substance.
+Imprisonment for life, or
+imprisonment for 10 years
+and fine.
+Ditto
+Ditto
+Ditto.
+439
+Running vessel ashore with intent to commit
+theft, etc.
+Imprisonment for 10 years
+and fine.
+Ditto
+Ditto
+Ditto.
+440
+Mischief committed after preparation made for
+causing death, or hurt, etc.
+Imprisonment for 5 years
+and fine.
+Ditto
+Bailable
+Magistrate of
+the first class.
+447
+Criminal trespass
+Imprisonment
+for
+3
+months, or fine of 500
+rupees, or both.
+Ditto
+Ditto
+Any
+Magistrate.
+448
+House-trespass
+Imprisonment for 1 year,
+or fine of 1,000 rupees, or
+both.
+Ditto
+Ditto
+Ditto.

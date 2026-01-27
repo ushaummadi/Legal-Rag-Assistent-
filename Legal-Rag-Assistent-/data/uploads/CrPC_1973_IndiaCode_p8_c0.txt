@@ -1,0 +1,39 @@
+9
+SECTIONS
+213. When manner of committing offence must be stated.
+214. Words in charge taken in sense of law under which offence is punishable.
+215. Effect of errors.
+216. Court may alter charge.
+217. Recall of witnesses when charge altered.
+B.–Joinder of charges
+218. Separate charges for distinct offences.
+219. Three offences of same kind within year may be charged together.
+220. Trial for more than one offence.
+221. Where it is doubtful what offence has been committed.
+222. When offence proved included in offence charged.
+223. What persons may be charged jointly.
+224. Withdrawal of remaining charges on conviction on one of several charges.
+CHAPTER XVIII
+TRIAL BEFORE A COURT OF SESSION
+225. Trial to be conducted by Public Prosecutor.
+226. Opening case for prosecution.
+227. Discharge.
+228. Framing of charge.
+229. Conviction on plea of guilty.
+230. Date for prosecution evidence.
+231. Evidence for prosecution.
+232. Acquittal.
+233. Entering upon defence.
+234. Arguments.
+235. Judgment of acquittal or conviction.
+236. Previous conviction.
+237. Procedure in cases instituted under section 199(2).
+CHAPTER XIX
+TRIAL OF WARRANT-CASES BY MAGISTRATES
+A.–Cases instituted on a police report
+238. Compliance with section 207.
+239. When accused shall be discharged.
+240. Framing of charge.
+241. Conviction on plea of guilty.
+242. Evidence for prosecution.
+243. Evidence for defence.

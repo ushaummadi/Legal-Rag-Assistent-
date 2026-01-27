@@ -1,0 +1,180 @@
+204
+1
+2
+3
+4
+5
+6
+204
+Secreting or destroying any document to
+prevent its production as evidence.
+Imprisonment for 2 years,
+or fine, or both.
+Non-cognizable
+Bailable
+Magistrate of the first
+class.
+205
+False personation for the purpose of any act
+or
+proceeding
+in
+a
+suit
+or
+criminal
+prosecution, or for becoming bail or security.
+Imprisonment for 3 years,
+or fine, or both.
+Ditto
+Ditto
+Ditto
+206
+Fraudulent removal or concealment, etc., of
+property to prevent its seizure as a forfeiture
+or in satisfaction of a fine under sentence, or in
+execution of a decree.
+Imprisonment for 2 years,
+or fine, or both.
+Ditto
+Ditto
+Any Magistrate.
+207
+Claiming property without right, or practicing
+deception touching any right to it, to prevent its
+being taken as a forfeiture, or in satisfaction of a
+fine under sentence, or in execution of a decree.
+Ditto
+Ditto
+Ditto
+Ditto.
+208
+Fraudulently suffering a decree to pass for a
+sum not due, or suffering decree to be
+executed after it has been satisfied.
+Ditto
+Ditto
+Ditto
+Magistrate of the first
+class.
+209
+False claim in a Court of Justice.
+Imprisonment for 2 years
+and fine.
+Ditto
+Ditto
+Ditto.
+210
+Fraudulently obtaining a decree for a sum not
+due, or causing a decree to be executed after it
+has been satisfied.
+Imprisonment for 2 years,
+or fine, or both.
+Ditto
+Ditto
+Ditto.
+211
+False charge of offence made with intent to
+injure.
+Ditto
+Ditto
+Ditto
+Ditto.
+If offence charged be punishable with
+imprisonment for 7 years or upwards.
+Imprisonment for 7 years
+and fine.
+Ditto
+Ditto
+Ditto
+If offence charged be capital or punishable
+with imprisonment for life.
+Ditto
+Ditto
+Ditto
+Court of Session.
+212
+Harbouring an offender, if the offence be
+capital.
+Imprisonment for 5 years
+and fine.
+Cognizable
+Ditto
+Magistrate of the first
+class.
+If punishable with imprisonment for life or
+with imprisonment for 10 years.
+Imprisonment for 3 years
+and fine.
+Ditto
+Ditto
+Ditto.
+If punishable with imprisonment for 1 year
+and not for 10 years.
+Imprisonment for a quarter
+of the longest term, and of
+the descriptions, provided
+for the offence, or fine, or
+both.
+Ditto
+Ditto
+Ditto.
+213
+Taking gift, etc., to screen an offender from
+punishment if the offence be capital.
+Imprisonment for 7 years
+and fine.
+Ditto
+Ditto
+Ditto.
+If punishable with imprisonment for life or
+with imprisonment for 10 years.
+Imprisonment for 3 years
+and fine.
+Ditto
+Ditto
+Ditto.
+If punishable with imprisonment for less than
+10 years.
+Imprisonment for a quarter
+of the longest term
+provided for the offence, or
+fine, or both.
+Ditto
+Ditto
+Ditto.
+214
+Offering gift or restoration of property in
+consideration of screening offender if the
+offence be capital.
+Imprisonment for 7 years
+and fine.
+Non-cognizable
+Ditto
+Ditto.
+If punishable with imprisonment for life or
+with imprisonment for 10 years.
+Imprisonment for 3 years
+and fine.
+Ditto
+Ditto
+Ditto.
+If punishable with imprisonment for less than
+10 years.
+Imprisonment for a quarter
+of the longest term,
+provided for the offence, or
+fine, or both.
+Ditto
+Ditto
+Ditto.
+215
+Taking gift to help to recover movable
+property of which a person has been deprived
+by an offence without causing apprehension of
+offender.
+Imprisonment for 2 years,
+or fine, or both.
+Cognizable
+Ditto
+Ditto.

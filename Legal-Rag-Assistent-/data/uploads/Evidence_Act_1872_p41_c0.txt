@@ -1,0 +1,41 @@
+42
+(c) A, a connection of B, produces deeds relating to lands in B’s possession, which were deposited
+with him by B for safe custody. The custody is proper.
+1[90A. Presumption as to electronic records five years old. –– Where any electronic record,
+purporting or proved to be five years old, is produced from any custody which the Court in the particular
+case considers proper, the Court may presume that the 2[electronic signature] which purports to be the
+2[electronic signature] of any particular person was so affixed by him or any person authorised by him in
+this behalf.
+Explanation. –– Electronic records are said to be in proper custody if they are in the place in which,
+and under the care of the person with whom, they naturally be; but no custody is improper if it is proved
+to have had a legitimate origin, or the circumstances of the particular case are such as to render such an
+origin probable.
+This Explanation applies also to section 81A.]
+CHAPTER VI. –– OF THE EXCLUSION OF ORAL BY DOCUMENTARY EVIDENCE
+91. Evidence of terms of contracts, grants and other dispositions of property reduced to form of
+document. –– When the terms of a contract, or of a grant, or of any other disposition of property, have
+been reduced to the form of a document, and in all cases in which any matter is required by law to be
+reduced to the form of a document, no evidence shall be given in proof of the terms of such contract,
+grant or other disposition of property, or of such matter, except the document itself, or secondary
+evidence of its contents in cases in which secondary evidence is admissible under the provisions
+hereinbefore contained.
+Exception 1.––When a public officer is required by law to be appointed in writing, and when it is
+shown that any particular person has acted as such officer, the writing by which he is appointed need not
+be proved.
+Exception 2.–– Wills 3[admitted to probate in 4[India]] may be proved by the probate.
+Explanation 1.––This section applies equally to cases in which the contracts, grants or dispositions of
+property referred to are contained in one document, and to cases in which they are contained in more
+documents than one.
+Explanation 2.–– Where there are more originals than one, one original only need be proved.
+Explanation 3. –– The statement, in any document whatever, of a fact other than the facts referred to
+in this section, shall not preclude the admission of oral evidence as to the same fact.
+Illustrations
+(a) If a contract be contained in several letters, all the letters in which it is contained must be proved.
+(b) If a contract is contained in a bill of exchange, the bill of exchange must be proved.
+(c) If a bill of exchange is drawn in a set of three, one only need be proved.
+(d) A contracts, in writing, with B, for the delivery of indigo upon certain terms. The contract mentions the fact
+that B had paid A the price of other indigo contracted for verbally on another occasion.
+1. Ins. by Act 21 of 2000, s. 92 and the Second Schedule (w.e.f. 17-10-2000).
+2. Subs. by Act 10 of 2009, s. 52, for “Digital Signature” (w.e.f. 27.10.2009).
+3. Subs. by Act 18 of 1872, s. 7, for “under the Indian Succession Act”.
+4. Subs. by Act 3 of 1951, s. 3 and the Schedule, for “the States”.

@@ -1,0 +1,40 @@
+19
+ADMISSIONS
+17. Admission defined.––An admission is a statement, 1[oral or documentary or contained in
+electronic form], which suggests any inference as to any fact in issue or relevant fact, and which is made
+by any of the persons, and under the circumstances, hereinafter mentioned.
+18. Admission by party to proceeding or his agent.––Statements made by a party to the
+proceeding, or by an agent to any such party, whom the Court regards, under the circumstances of the
+case, as expressly or impliedly authorised by him to make them, are admissions.
+by suitor in representative character.––Statements made by parties to suits suing or sued in a
+representative character, are not admissions, unless they were made while the party making them held that
+character.
+Statements made by
+––
+(1) by party interested in subject-matter.––persons who have any proprietary or pecuniary interest
+in the subject-matter of the proceeding, and who make the statement in their character of persons so
+interested, or
+(2) by person from whom interest derived.––persons from whom the parties to the suit have
+derived their interest in the subject-matter of the suit,
+are admissions, if they are made during the continuance of the interest of the persons making the
+statements.
+19. Admissions by persons whose position must be proved as against party to suit. ––Statements
+made by persons whose position or liability, it is necessary to prove as against any party to the suit, are
+admissions, if such statements would be relevant as against such persons in relation to such position or
+liability in a suit brought by or against them, and if they are made whilst the person making them
+occupies such position or is subject to such liability.
+Illustration
+A undertakes to collect rents for B.
+B sues A for not collecting rent due from C to B.
+A denies that rent was due from C to B.
+A statement by C that he owed B rent is an admission, and is a relevant fact as against A, if A denies that C did
+owe rent to B.
+20. Admissions by persons expressly referred to by party to suit. ––Statements made by persons
+to whom a party to the suit has expressly referred for information in reference to a matter in dispute are
+admissions.
+Illustration
+The question is, whether a horse sold by A to B is sound.
+A says to B –– “Go and ask C, C knows all about it.” C’s statement is an admission.
+21. Proof of admissions against persons making them, and by or on their behalf.––Admissions
+are relevant and may be proved as against the person who makes them, or his representative in interest;
+1. Subs. by Act 21 of 2000, s. 92 and the Second Schedule, for “oral or documentary,” (w.e.f. 17-10-2000).

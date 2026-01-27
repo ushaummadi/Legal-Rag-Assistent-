@@ -1,0 +1,46 @@
+309
+(a) correctness of contents of a document;
+(b) existence of a document;
+(c) execution of a document;
+(d) issuance or receipt of a document;
+(e) custody of a document.
+Explanation.––A statement of admission or denial of the existence of a document made in
+accordance with sub-rule (2)(b) shall include the admission or denial of the contents of a
+document.
+(3) Each party shall set out reasons for denying a document under any of the above grounds and
+bare and unsupported denials shall not be deemed to be denials of a document and proof of such
+documents may then be dispensed with at the discretion of the Court.
+(4) Any party may however submit bare denials for third party documents of which the party
+denying does not have any personal knowledge of, and to which the party denying is not a party to
+in any manner whatsoever. Inspection. Admission and denial of documents.
+(5) An Affidavit in support of the statement of admissions and denials shall be filed confirming
+the correctness of the contents of the statement.
+(6) In the event that the Court holds that any party has unduly refused to admit a document
+under any of the above criteria,– costs (including exemplary costs) for deciding on admissibility of
+a document may be imposed by the Court on such party.
+(7) The Court may pass orders with respect to admitted documents including for waiver of
+further proof thereon or rejection of any documents.
+5. Production of documents. –– (1) Any party to a proceeding may seek or the Court may
+order, at any time during the pendency of any suit, production by any party or person, of such
+documents in the possession or power of such party or person, relating to any matter in question in
+such suit.
+(2) Notice to produce such document shall be issued in the Form provided in Form No. 7 in
+Appendix C to the Code of Civil Procedure, 1908 (5 of 1908).
+(3) Any party or person to whom such notice to produce is issued shall be given not less than
+seven days and not more than fifteen days to produce such document or to answer to their inability
+to produce such document.
+(4) The Court may draw an adverse inference against a party refusing to produce such
+document after issuance of a notice to produce and where sufficient reasons for such non–
+production are not given and order costs.
+6. Electronic records. –– (1) In case of disclosures and inspection of Electronic Records (as
+defined in the Information Technology Act, 2000 (21 of 2000), furnishing of printouts shall be
+sufficient compliance of the above provisions.
+(2) At the discretion of the parties or where required (when parties wish to rely on audio or
+video content), copies of electronic records may be furnished in electronic form either in addition
+to or in lieu of printouts.
+(3) Where Electronic Records form part of documents disclosed, the declaration on oath to be
+filed by a party shall specify––
+(a) the parties to such Electronic Record;
+(b) the manner in which such electronic record was produced and by whom;
+(c) the dates and time of preparation or storage or issuance or receipt of each such electronic
+record;

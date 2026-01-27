@@ -1,0 +1,43 @@
+11
+ought, under the circumstances of the particular case, to act upon the supposition that it does not exist.
+“Not proved”. –– A fact is said not to be proved when it is neither proved nor disproved.
+1[“India”. –– “India” means the territory of India excluding the State of Jammu and Kashmir.]
+2[the expressions “Certifying Authority”, “3[electronic signature]”,
+4[(Electronic Signature
+Certificate], “electronic form”, “electronic records”, “information”, “secure electronic record”, “secure
+digital signature” and “subscriber” shall have the meanings respectively assigned to them in the
+Information Technology Act, 2000 (21 of 2000).]
+4. “May presume”.––Whenever it is provided by this Act that the Court may presume a fact, it may
+either regard such fact as proved, unless and until it is disproved, or may call for proof of it.
+“Shall presume”.––Whenever it is directed by this Act that the Court shall presume a fact, it shall
+regard such fact as proved, unless and until it is disproved.
+“Conclusive proof”.––When one fact is declared by this Act to be conclusive proof of another, the
+Court shall, on proof of the one fact, regard the other as proved, and shall not allow evidence to be given
+for the purpose of disproving it.
+CHAPTER II. –– OF THE RELEVANCY OF FACTS
+5. Evidence may be given of facts in issue and relevant facts. ––Evidence may be given in any suit
+or proceeding of the existence of non-existence of every fact in issue and of such other facts as are
+hereinafter declared to be relevant, and of no others.
+Explanation.––This section shall not enable any person to give evidence of a fact which he is
+disentitled to prove by any provision of the law for the time being in force relating to Civil Procedure5.
+Illustrations
+(a) A is tried for the murder of B by beating him with a club with the intention of causing his death.
+At A’s trial the following facts are in issue:––
+A’s beating B with the club;
+A’s causing B’s death by such beating;
+A’s intention to cause B’s death.
+(b) A suitor does not bring with him, and have in readiness for production at the first hearing of the
+case, a bond on which he relies. This section does not enable him to produce the bond or prove its
+contents at a subsequent stage of the proceedings, otherwise than in accordance with the conditions
+prescribed by the Code of Civil Procedure5.
+6. Relevancy of facts forming part of same transaction.––Facts which, though not in issue, are so
+connected with a fact in issue as to form part of the same transaction, are relevant, whether they occurred
+at the same time and place or at different times and places.
+Illustrations
+(a) A is accused of the murder of B by beating him. Whatever was said or done by A or B or the by-standers
+at the beating, or so shortly before or after it as to form part of the transaction, is a relevant fact.
+1. Subs. by Act 3 of 1951, s. 3 and the Schedule, for the definitions of “State” and “States” which were ins. by the A.O. 1950.
+2. Ins. by Act 21 of 2000, s. 92 and the Second Schedule, (w.e.f. 17-10-2000).
+3. Subs. by Act 10 of 2009, s. 52, for “digital signature” (w.e.f. 27-10-2009).
+4. Subs. by s. 52, ibid., for “Digital Signature Certificate” (w.e.f. 27-10-2009).
+5. See now the Code of Civil Procedure, 1908 (Act 5 of 1908).

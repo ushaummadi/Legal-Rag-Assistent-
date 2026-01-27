@@ -1,0 +1,39 @@
+33
+Illustration
+A person is shown to have been in possession of a number of placards, all printed at one time from
+one original. Any one of the placards is primary evidence of the contents of any other, but no one of them
+is primary evidence of the contents of the original.
+63. Secondary evidence. –– Secondary evidence means and includes ––
+(1) certified copies given under the provisions hereinafter contained;
+(2) copies made from the original by mechanical processes which in themselves insure the
+accuracy of the copy, and copies compared with such copies;
+(3) copies made from or compared with the original;
+(4) counterparts of documents as against the parties who did not execute them;
+(5) oral accounts of the contents of a document given by some person who has himself seen it.
+Illustrations
+(a) A photograph of an original is secondary evidence of its contents, though the two have not been
+compared, if it is proved that the thing photographed was the original.
+(b) A copy compared with a copy of a letter made by a copying machine is secondary evidence of the
+contents of the letter, if it is shown that the copy made by the copying machine was made from the
+original.
+(c) A copy transcribed from a copy, but afterwards compared with the original, is secondary
+evidence; but the copy not so compared is not secondary evidence of the original, although the copy from
+which it was transcribed was compared with the original.
+(d) Neither an oral account of a copy compared with the original, nor an oral account of a photograph
+or machine-copy of the original, is secondary evidence of the original.
+64. Proof of documents by primary evidence.––Documents must be proved by primary evidence
+except in the cases hereinafter mentioned.
+65. Cases in which secondary evidence relating to documents may be given.––Secondary
+evidence may be given of the existence, condition, or contents of a document in the following cases: ––
+(a) when the original is shown or appears to be in the possession or power ––
+of the person against whom the document is sought to be proved, or
+of any person out of reach of, or not subject to, the process of the Court, or
+of any person legally bound to produce it,
+and when, after the notice mentioned in section 66, such person does not produce it;
+(b) when the existence, condition or contents of the original have been proved to be admitted in
+writing by the person against whom it is proved or by his representative in interest;
+(c) when the original has been destroyed or lost, or when the party offering evidence of its
+contents cannot, for any other reason not arising from his own default or neglect, produce it in
+reasonable time;
+(d) when the original is of such a nature as not to be easily movable;
+(e) when the original is a public document within the meaning of section 74;

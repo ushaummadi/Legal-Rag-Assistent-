@@ -1,0 +1,47 @@
+121
+18. Execution in case of cross-decrees.—(1) Where applications are made to a Court for the
+execution of cross-decrees in separate suits for the payment of two sums of money passed between the
+same parties and capable of execution at the same time by such Court, then—
+(a) if the two sums are, equal, satisfaction shall be entered upon both decrees; and
+(b) if the two sums are unequal, execution may be taken out only by the holder of the decree for
+the larger sum and for so much only as remains after deducting the smaller sum, and satisfaction for
+the smaller sum shall be entered on the decree for the larger sum as well as satisfaction on the decree
+for the smaller sum.
+(2) This rule shall be deemed to apply where either party is an assignee of one of the decrees and as
+well in respect of judgment-debts due by the original assignor as in respect of judgment-debts due by the
+assignee himself.
+(3) This rule shall not be deemed to apply unless—
+(a) the decree-holder in one of the suits in which the decrees have been made is the judgment-
+debtor in the other and each party files the same character in both suits; and
+(b) the sums due under the decrees are definite.
+(4) The holder of a decree passed against several persons jointly and severally may treat it as a cross-
+decree in relation to a decree passed against him singly in favour of one or more of such persons.
+Illustrations
+(a) A holds a decree against B for Rs. 1,000. B holds a decree against A for the payment of Rs. 1,000 in case A
+fails to deliver certain goods at a future day. B cannot treat his decree as a cross-decree under this rule.
+(b) A and B, co-plaintiffs, obtain a decree for Rs. 1,000 against C, and C obtains a decree for Rs. 1,000 against
+B. C. cannot treat his decree as a cross-decree under this rule.
+(c) A obtains a decree against B for Rs. 1,000. C, who is a trustee for B, obtains a decree on behalf of B against
+A for Rs. 1,000. B cannot treat C's decree as a cross-decree under this rule.
+(d) A, B, C, D and E are jointly and severally laible for Rs. 1,000 under a decree obtained by F. A obtains a
+decree for Rs. 1,000 against F singly and applies for execution to the Court in which the joint-decree is being
+executed. F may treat his joint-decree as cross-decree under this rule.
+19. Execution in case of cross-claims under same decree.—Where application is made to a Court
+for the execution of a decree under which two parties are entitled to recover sums of money from each
+other, then,—
+(a) if the two sums are equal, satisfaction for both shall be entered upon the decree; and,
+(b) if the two sums are unequal, execution may be taken out only by the party entitled to the
+larger sum and for so much only as remains after deducting the smaller sum, and satisfaction for the
+smaller sum shall be entered upon the decree.
+20. Cross-decrees and cross-claims in mortgage-suits.—The provisions contained in rules 18 and
+19 shall apply to decrees for sale in enforcement of a mortgage or charge.
+21. Simultaneous execution.—The Court may, in its discretion, refuse execution at the same time
+against the person and property of the judgment-debtor.
+22. Notice to show cause against execution in certain cases.—(1) Where an application for
+execution is made—
+(a) more than 1[two years] after the date of the decree, or
+(b) against the legal representative of a party to the decree 2[or where an application is made for
+execution of a decree filed under the provisions of section 44A], 3[or]
+1. Subs. by Act 104 of 1976, s. 72, for “one year” (w.e.f. 1-2-1977).
+2. Ins. by Act 8 of 1937, s. 3.
+3. Ins. by Act 104 of 1976, s. 72 (w.e.f. 1-2-1977).

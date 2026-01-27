@@ -1,0 +1,39 @@
+3
+SECTIONS
+33. Relevancy of certain evidence for proving, in subsequent proceeding, the truth of facts therein
+stated.
+STATEMENTS MADE UNDER SPECIAL CIRCUMSTANCES
+34. Entries in books of account when relevant.
+35. Relevancy of entry in public record made in performance of duty.
+36. Relevancy of statements in maps, charts and plans.
+37. Relevancy of statement as to fact of public nature contained in certain Acts or notifications.
+38. Relevancy of statements as to any law contained in law-books.
+HOW MUCH OF A STATEMENT IS TO BE PROVED
+39. What evidence to be given when statement forms part of a conversation, document, electronic
+record, book or series of letters or papers.
+JUDGMENTS OF COURTS OF JUSTICE WHEN RELEVANT
+40. Previous judgments relevant to bar a second suit or trial.
+41. Relevancy of certain judgments in probate, etc., jurisdiction.
+42. Relevancy and effect of judgments, orders or decrees, other than those mentioned in section 41.
+43. Judgments, etc., other than those mentioned in sections 40, 41 and 42, when relevant.
+44. Fraud or collusion in obtaining judgment, or incompetency of Court, may be proved.
+OPINIONS OF THIRD PERSONS WHEN RELEVANT
+45. Opinions of experts.
+45A. Opinion of Examiner of Electronic Evidence.
+46. Facts bearing upon opinions of experts.
+47. Opinion as to handwriting, when relevant.
+47A. Opinion as to digital signature, when relevant.
+48. Opinion as to existence of right or custom, when relevant.
+49. Opinion as to usages, tenets, etc., when relevant.
+50. Opinion on relationship, when relevant.
+51. Grounds of opinion, when relevant.
+CHARACTER WHEN RELEVANT
+52. In civil cases character to prove conduct imputed, irrelevant.
+53. In criminal cases previous good character relevant.
+53A. Evidence of character or previous sexual experience not relevant in certain cases.
+54. Previous bad character not relevant, except in reply.
+55. Character as affecting damages.
+PART II
+ON PROOF
+CHAPTER III.—FACTS WHICH NEED NOT BE PROVED
+56. Fact judicially noticeable need not be proved.

@@ -1,0 +1,43 @@
+191
+confession or other statement of an accused person recorded, or purporting to be recorded under section 164 or
+section 281, is tendered, or has been received, in evidence finds that any of the provisions of either of such sections
+have not been complied with by the Magistrate recording the statement, it may, notwithstanding anything contained
+in section 91 of the Indian Evidence Act, 1872 (1 of 1872), take evidence in regard to such non-compliance, and
+may, if satisfied that such non-compliance has not injured the accused in his defence on the merits and that he duly
+made the statement recorded, admit such statement.
+(2) The provisions of this section apply to Courts of appeal, reference and revision.
+464. Effect of omission to frame, or absence of, or error in, charge.—(1) No finding, sentence or order by a
+Court of competent jurisdiction shall be deemed invalid merely on the ground that no charge was framed or on the
+ground of any error, omission or irregularity in the charge including any misjoinder of charges, unless, in the
+opinion of the Court of appeal, confirmation or revision, a failure of justice has in fact been occasioned thereby.
+(2) If the Court of appeal, confirmation or revision, is of opinion that a failure of justice has in fact been
+occasioned, it may,—
+(a) in the case of an omission to frame a charge, order that a charge be framed, and that the trial be
+recommended from the point immediately after the framing of the charge;
+(b) in the case of an error, omission or irregularity in the charge, direct a new trial to be had upon a charge
+framed in whatever manner it thinks fit:
+Provided that if the Court is of opinion that the facts of the case are such that no valid charge could be preferred
+against the accused in respect of the facts proved, it shall quash the conviction.
+465. Finding or sentence when reversible by reason of error, omission or irregularity.—(1) Subject to the
+provisions hereinbefore contained, no finding, sentence or order passed by a Court of competent jurisdiction shall be
+reversed or altered by a Court of appeal, confirmation of revision on account of any error, omission or irregularity in
+the complaint, summons, warrant, proclamation, order, judgment or other proceedings before or during trial or
+in any inquiry or other proceedings under this Code, or any error, or irregularity in any sanction for the
+prosecution, unless in the opinion of that Court, a failure of justice has in fact been occasioned thereby.
+(2) In determining whether any error, omission or irregularity in any proceeding under this Code, or any error,
+or irregularity in any sanction for the prosecution has occasioned a failure of justice, the Court shall have regard to
+the fact whether the objection could and should have been raised at an earlier stage in the proceedings.
+466. Defect or error not to make attachment unlawful.—No attachment made under this Code shall be
+deemed unlawful, nor shall any person making the same be deemed a trespasser, on account of any defect or want of
+form in the summons, conviction, writ of attachment or other proceedings relating thereto.
+CHAPTER XXXVI1
+LIMITATION FOR TAKING COGNIZANCE OF CERTAIN OFFENCES
+467. Definitions.—For the purposes of this Chapter, unless the context otherwise requires, “period of
+limitation” means the period specified in section 468 for taking cognizance of an offence.
+468. Bar to taking cognizance after lapse of the period of limitation.—(1) Except as otherwise provided
+elsewhere in this Code, no Court shall take cognizance of an offence of the category specified in sub-section (2),
+after the expiry of the period of limitation.
+(2) The period of limitation shall be—
+(a) six months, if the offence is punishable with fine only;
+1. Provisions of this Chapter shall not apply to certain economic offences, see the Economic Offences (Inapplicability of
+Limitation) Act, 1974 (12 of 1974), s. 2 and Sch.

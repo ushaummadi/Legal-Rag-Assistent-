@@ -1,0 +1,235 @@
+211
+1
+2
+3
+4
+5
+6
+309
+Attempt to commit suicide.
+Simple imprisonment for 1
+year, or fine, or both.
+Cognizable
+Bailable
+Any
+Magistrate.
+311
+Being a thug.
+Imprisonment for life and
+fine.
+Ditto
+Non-bailable
+Court of
+Session.
+312
+Causing miscarriage.
+Imprisonment for 3 years,
+or fine, or both.
+Non-cognizable
+Bailable
+Magistrate of
+the first class.
+If the woman be quick with child.
+Imprisonment for 7 years
+and fine.
+Ditto
+Ditto
+Ditto.
+313
+Causing
+miscarriage
+without
+women’s
+consent.
+Imprisonment for life, or
+imprisonment for 10 years
+and fine.
+Cognizable
+Non-bailable
+Court of
+Session.
+314
+Death caused by an act done with intent to
+cause miscarriage.
+Imprisonment for 10 years
+and fine.
+Ditto
+Ditto
+Ditto.
+If act done without women’s consent.
+Imprisonment for life, or as
+above.
+Ditto
+Ditto
+Ditto.
+315
+Act done with intent to prevent a child being
+born alive, or to cause it to die after its birth.
+Imprisonment for 10 years,
+or fine, or both.
+Ditto
+Ditto
+Ditto.
+316
+Causing death of a quick unborn child by an
+act amounting to culpable homicide.
+Imprisonment for 10 years
+and fine.
+Ditto
+Ditto
+Ditto.
+317
+Exposure of a child under 12 years of age by
+parent or person having care of it with
+intention of wholly abandoning it.
+Imprisonment for 7 years,
+or fine, or both.
+Ditto
+Bailable
+Magistrate of
+the first class.
+318
+Concealment of birth by secret disposal of
+dead body.
+Imprisonment for 2 years,
+or fine, or both.
+Ditto
+Ditto
+Ditto.
+323
+Voluntarily causing hurt.
+Imprisonment for 1 year or
+fine of 1,000 rupees, or both.
+Non-cognizable
+Ditto
+Any
+Magistrate.
+324
+Voluntarily
+causing
+hurt
+by
+dangerous
+weapons or means.
+Imprisonment for 3 years,
+or fine, or both.
+Cognizable
+Ditto
+Ditto.
+325
+Voluntarily causing grievous hurt.
+Imprisonment for 7 years
+and fine.
+Ditto
+Ditto
+Ditto.
+326
+Voluntarily
+causing
+grievous
+hurt
+by
+dangerous weapons or means.
+Imprisonment for life, or
+imprisonment for 10 years
+and fine.
+Ditto
+Non-bailable
+Magistrate of
+the first class.
+1[326A
+Voluntarily causing grievous hurt by use of
+acid, etc.
+Imprisonment for not less
+than 10 years but which
+may
+extend
+to
+imprisonment for life and
+fine to be paid to the
+victim.
+Cognizable
+Non-bailable
+Court of
+Session
+326B
+Voluntarily throwing or attempting to throw
+acid.
+Imprisonment for 5 years
+but which may extend to 7
+years and with fine.
+Cognizable
+Non-bailable
+Court of
+Session.]
+327
+Voluntarily causing hurt to extort property or a
+valuable security, or to constrain to do
+anything which is illegal or which may
+facilitate the commission of an offence.
+Imprisonment for 10 years
+and fine.
+Ditto
+Ditto
+Ditto.
+328
+Administering stupefying drug with intent to
+cause hurt, etc.
+Ditto
+Ditto
+Ditto
+Court of
+Session.
+329
+Voluntarily causing grievous hurt to extort
+property or a valuable security, or to constrain
+to do anything which is illegal, or which may
+facilitate the commission of an offence.
+Imprisonment for life, or
+imprisonment for 10 years
+and fine.
+Ditto
+Ditto
+Ditto.
+330
+Voluntarily causing hurt to extort confession
+or information, or to compel restoration of
+property, etc.
+Imprisonment for 7 years
+and fine.
+Ditto
+Bailable
+Magistrate of
+the first class.
+331
+Voluntarily causing grievous hurt to extort
+confession or information, or to compel
+restoration of property, etc.
+Imprisonment for 10 years
+and fine.
+Ditto
+Non-bailable
+Court of
+Session.
+332
+Voluntarily causing hurt to deter public
+servant from his duty.
+Imprisonment for 3 years
+or fine or both.
+Ditto
+2[Ditto]
+Magistrate of
+the first class.
+333
+Voluntarily causing grievous hurt to deter
+public servant from his duty.
+Imprisonment for 10 years
+and fine.
+Ditto
+3[Ditto]
+Court
+of
+Session.
+1. Ins. by Act 13 of 2013, s. 24 (w.e.f. 3-2-2013).
+2. Subs. by Act 25 of 2005, s. 42(f)(v), occurring in column 5, relating to s. 332, for “Bailable” (w.e.f. 23-6-2006).
+3. Subs. by s. 42(f)(vi), ibid., occurring in column 5, relating to s. 333, for “Non-bailable”, (w.e.f. 23-6-2006).

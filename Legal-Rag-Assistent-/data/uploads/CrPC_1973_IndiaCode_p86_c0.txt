@@ -1,0 +1,48 @@
+87
+Sessions Judge may, if he is satisfied, on an application made to him or otherwise, that further investigation into the
+offence ought to be made, vacate the order made under sub-section (5) and direct further investigation to be made
+into the offence subject to such directions with regard to bail and other matters as he may specify.
+STATE AMENDMENTS
+Gujarat
+In the proviso to sub-Section (2) of section 167 of the Code of Criminal Procedure, 1973, in its application to the
+State of Gujarat, —
+(i) for paragraph (a), the following paragraph shall be substituted, namely: —
+(a) the Magistrate may authorise detention of the accused person, otherwise than in the custody of the police,
+beyond the period of fifteen days, if he is satisfied that adequate grounds exist for doing so, but no Magistrate
+shall authorise the detention of the accused person in custody under this section for a total period exceeding—
+(i) one hundred and twenty days, where the investigation relates to an offence punishable with death,
+imprisonment for life or imprisonment for a term of not less than ten years,
+(ii) sixty days, where the investigation relates to any offence;
+and, on the expiry of the said period of one hundred and twenty days, or sixty days, as the ease may be, the accused
+person shall be released on bail if he is prepared to and does furnish bail; and every person released on bail under this
+section shall be deemed to be so released under the provisions of Chapter XXXIII for the purposes of that Chapter;
+(ii) in paragraph (b), for the words “no Magistrate shall” the words “no Magistrate shall, except for reason to
+be recorded in writing” shall be substituted;
+(iii) the Explanation shall be numbered as Explanation II, and before Explanation II as so numbered, the
+following Explanation shall be inserted, namely: —
+Explanation I. —For the avoidance of doubts, it is hereby declared that, notwithstanding the expiry of the period
+specified in paragraph (a), the accused person shall be detained in custody so long as he does not furnish bail.
+Amendment to apply to pending investigation.—The provisions of section 167 of the Code of Criminal
+Procedure, 1973, as amended by this Act, shall apply to every investigation pending immediately before the
+commencement of this Act, if the period of detention of the accused person, otherwise than in the custody of the
+police, authorised under that section, had not, at such commencement, exceeded sixty days.]
+[Vide Gujarat Act 21 of 1976, s. 2 & 3]
+Gujarat
+In Section 167, in sub-section (2) : —
+(1) in the proviso, for paragraph (b), the following paragraph shall be substituted, namely: —
+“(b) no Magistrate shall authorise further detention in any custody under this section unless—
+(i) where the accused is in the custody of police, he is produced in person before the Magistrate, and
+(ii) where the accused is otherwise than in the custody of the police, he is produced before the Magistrate
+either in person or through the medium of electronic video linkage, in accordance with the direction of the
+Magistrate.”;
+(2) in Explanation II, after the words “ whether an accused person was produced before the Magistrate”, the
+words “in person or, as the case may be, through the medium of electronic video linkage” shall be inserted.
+[Vide Gujarat Act 31 of 2003, s. 2.]
+Chhattisgarh
+(1) In clause (b) of Sub-Section (2) of Section 167 of the principal Act, for the word “any” the word “police”
+shall be substituted.
+(2) After clause (b) of sub-section (2) of Section 167 of the Principal Act, the following new sub-clause (bb)
+shall be added, namely:—
+“(bb) No magistrate shall authorise detention of the accused person other than in the custody of the police under
+this section unless the accused is produced before him either in person of through the medium of electronic video
+linkage and represented by his pleader in the Court.”

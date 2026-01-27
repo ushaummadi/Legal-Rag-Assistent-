@@ -1,0 +1,43 @@
+96
+186. High Court to decide, in case of doubt, district where inquiry or trial shall take place.—Where two or
+more Courts have taken cognizance of the same offence and a question arises as to which of them ought to inquire
+into or try that offence, the question shall be decided—
+(a) if the Courts are subordinate to the same High Court, by that High Court;
+(b) if the Courts are not subordinate to the same High Court, by the High Court within the local limits of
+whose appellate criminal jurisdiction the proceedings were first commenced,
+and thereupon all other proceedings in respect of that offence shall be discontinued.
+187. Power to issue summons or warrant for offence committed beyond local jurisdiction.—(1) When a
+Magistrate of the first class sees reason to believe that any person within his local jurisdiction has committed outside
+such jurisdiction (whether within or outside India) an offence which cannot, under the provisions of sections 177 to
+185 (both inclusive), or any other law for the time being in force, be inquired into or tried within such jurisdiction
+but is under some law for the time being in force triable in India, such Magistrate may inquire into the offence as if
+it had been committed within such local jurisdiction and compel such person in the manner hereinbefore provided to
+appear before him, and send such person to the Magistrate having jurisdiction to inquire into or try such offence, or,
+if such offence is not punishable with death or imprisonment for life and such person is ready and willing to give
+bail to the satisfaction of the Magistrate acting under this section, take a bond with or without sureties for his
+appearance before the Magistrate having such jurisdiction.
+(2) When there are more Magistrates than one having such jurisdiction and the Magistrate acting under this
+section cannot satisfy himself as to the Magistrate to or before whom such person should be sent or bound to appear,
+the case shall be reported for the orders of the High Court.
+188. Offence committed outside India.—When an offence is committed outside India—
+(a) by a citizen of India, whether on the high seas or elsewhere; or
+(b) by a person, not being such citizen, on any ship or aircraft registered in India,
+he may be dealt with in respect of such offence as if it had been committed at any place within India at which he
+may be found:
+Provided that, notwithstanding anything in any of the preceding sections of this Chapter, no such offence shall
+be inquired into or tried in India except with the previous sanction of the Central Government.
+189. Receipt of evidence relating to offences committed outside India.—When any offence alleged to have
+been committed in a territory outside India is being inquired into or tried under the provisions of section 188, the
+Central Government may, if it thinks fit, direct that copies of depositions made or exhibits produced before a
+Judicial officer in or for that territory or before a diplomatic or consular representative of India in or for that territory
+shall be received as evidence by the Court holding such inquiry or trial in any case in which such Court might issue
+a commission for taking evidence as to the matters to which such depositions or exhibits relate.
+CHAPTER XIV
+CONDITIONS REQUISITE FOR INITIATION OF PROCEEDINGS
+190. Cognizance of offences by Magistrates.—(1) Subject to the provisions of this Chapter, any Magistrate of
+the first class, and any Magistrate of the second class specially empowered in this behalf under sub-section (2), may
+take cognizance of any offence—
+(a) upon receiving a complaint of facts which constitute such offence;
+(b) upon a police report of such facts;
+(c) upon information received from any person other than a police officer, or upon his own knowledge, that
+such offence has been committed.

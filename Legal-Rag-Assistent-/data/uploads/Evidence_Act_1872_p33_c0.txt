@@ -1,0 +1,42 @@
+34
+(f) when the original is a document of which a certified copy is permitted by this Act, or by any
+other law in force in 1[India] to be given in evidence;
+(g) when the originals consist of numerous accounts or other documents which cannot
+conveniently be examined in Court, and the fact to be proved is the general result of the whole
+collection.
+In cases (a), (c) and (d), any secondary evidence of the contents of the document is admissible.
+In case (b), the written admission is admissible.
+In case (e) or (f), a certified copy of the document, but no other kind of secondary evidence, is
+admissible.
+In case (g), evidence may be given as to the general result of the documents by any person who
+has examined them, and who is skilled in the examination of such documents.
+2[65A. Special provisions as to evidence relating to electronic record. ––The contents of electronic
+records may be proved in accordance with the provisions of section 65B.
+65B. Admissibility of electronic records. –– (1) Notwithstanding anything contained in this Act,
+any information contained in an electronic record which is printed on a paper, stored, recorded or copied
+in optical or magnetic media produced by a computer (hereinafter referred to as the computer output)
+shall be deemed to be also a document, if the conditions mentioned in this section are satisfied in relation
+to the information and computer in question and shall be admissible in any proceedings, without further
+proof or production of the original, as evidence or any contents of the original or of any fact stated therein
+of which direct evidence would be admissible.
+(2) The conditions referred to in sub-section (1) in respect of a computer output shall be the
+following, namely: ––
+(a) the computer output containing the information was produced by the computer during the
+period over which the computer was used regularly to store or process information for the
+purposes of any activities regularly carried on over that period by the person having lawful
+control over the use of the computer;
+(b) during the said period, information of the kind contained in the electronic record or of the
+kind from which the information so contained is derived was regularly fed into the computer in
+the ordinary course of the said activities;
+(c) throughout the material part of the said period, the computer was operating properly or, if
+not, then in respect of any period in which it was not operating properly or was out of operation
+during that part of the period, was not such as to affect the electronic record or the accuracy of its
+contents; and
+(d) the information contained in the electronic record reproduces or is derived from such
+information fed into the computer in the ordinary course of the said activities.
+(3) Where over any period, the function of storing or processing information for the purposes of
+any activities regularly carried on over that period as mentioned in clause (a) of sub-section (2) was
+regularly performed by computers, whether––
+(a) by a combination of computers operating over that period; or
+1. Subs. by Act 3 of 1951, s. 3 and the Schedule, for “the States”.
+2. Ins. by Act 21 of 2000, s. 92 and the Second Schedule (w.e.f. 17-10-2000).

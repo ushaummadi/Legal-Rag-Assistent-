@@ -1,0 +1,74 @@
+142
+1
+2
+3
+Criminal trespass.
+447
+The person in possession of the property trespassed upon.
+House-trespass.
+448
+Ditto.
+House-trespass to commit an
+451
+The person in possession of the
+offence (other than theft) punishable
+house trespassed upon.
+with imprisonment.
+Using a false trade or property
+482
+The person to whom loss or injury is
+mark.
+caused by such use.
+Counterfeiting a trade or property
+483
+Ditto.
+mark used by another.
+Knowingly selling, or exposing or
+486
+Ditto.
+possessing for sale or for
+manufacturing purpose, goods
+marked with a counterfeit property
+mark.
+Criminal breach of contract of
+491
+The person with whom the offender
+service.
+has contracted.
+Adultery.
+497
+The husband of the woman.
+Enticing or taking away or detaining
+498
+The husband of the woman and the
+with criminal intent a married
+woman
+woman.
+Defamation, except such cases as
+500
+The person defamed.
+are specified against section 500 of
+the Indian Penal Code (45 of 1860)
+in column 1 of the Table under
+sub-section (2).
+Printing or engraving matter,
+501
+Ditto.
+knowing it to be defamatory.
+Sale of printed or engraved
+502
+Ditto.
+substance containing defamatory
+matter, knowing it to contain such
+matter.
+Insult intended to provoke a breach
+504
+The person insulted.
+of the peace.
+Criminal intimidation.
+506
+The person intimidated.
+Inducing person to believe himself
+508
+The person induced.]
+an object of divine displeasure.

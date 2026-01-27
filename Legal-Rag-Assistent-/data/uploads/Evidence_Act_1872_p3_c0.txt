@@ -1,0 +1,38 @@
+4
+SECTIONS
+57. Facts of which Court must take judicial notice.
+58. Facts admitted need not be proved.
+CHAPTER IV.—OF ORAL EVIDENCE
+59. Proof of facts by oral evidence.
+60. Oral evidence must be direct.
+CHAPTER V.— OF DOCUMENTARY EVIDENCE
+61. Proof of contents of documents.
+62. Primary evidence.
+63. Secondary evidence.
+64. Proof of documents by primary evidence.
+65. Cases in which secondary evidence relating to documents may be given.
+65A. Special provisions as to evidence relating to electronic record.
+65B. Admissibility of electronic records.
+66. Rules as to notice to produce.
+67. Proof of signature and handwriting of person alleged to have signed or written document
+produced.
+67A. Proof as to electronic signature.
+68. Proof of execution of document required by law to be attested.
+69. Proof where no attesting witness found.
+70. Admission of execution by party to attested document.
+71. Proof when attesting witness denies the execution.
+72. Proof of document not required by law to be attested.
+73. Comparison of signature, writing or seal with others admitted or proved.
+73A. Proof as to verification of digital signature.
+PUBLIC DOCUMENTS
+74. Public documents.
+75. Private documents.
+76. Certified copies of public documents.
+77. Proof of documents by production of certified copies.
+78. Proof of other official documents.
+PRESUMPTIONS AS TO DOCUMENTS
+79. Presumption as to genuineness of certified copies.
+80. Presumption as to documents produced as record of evidence.
+81. Presumption as to Gazettes, newspapers, private Acts of Parliament and other documents.
+81A. Presumption as to Gazettes in electronic forms.
+82. Presumption as to document admissible in England without proof of seal or signature.

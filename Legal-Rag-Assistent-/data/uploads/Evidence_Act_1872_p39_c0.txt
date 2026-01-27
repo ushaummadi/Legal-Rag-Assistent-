@@ -1,0 +1,46 @@
+40
+85. Presumption as to powers-of-attorney. –– The Court shall presume that every document
+purporting to be a power-of-attorney, and to have been executed before, and authenticated by, a Notary
+Public, or any Court, Judge, Magistrate, 1[Indian] Consul or Vice-Consul, or representative 2*** of the
+3[Central Government], was so executed and authenticated.
+4[85A. Presumption as to electronic agreements. –– The Court shall presume that every electronic
+record purporting to be an agreement containing the 5[electronic signature] of the parties was so
+concluded by affixing the 5[electronic signature] of the parties.
+85B. Presumption as to electronic records and 5[electronic signatures]. –– (1) In any proceedings
+involving a secure electronic record, the Court shall presume unless contrary is proved, that the secure
+electronic record has not been altered since the specific point of time to which the secure status relates.
+(2) In any proceedings, involving secure digital signature, the Court shall presume unless the contrary
+is proved that—
+(a) the secure 5[electronic signature] is affixed by subscriber with the intention of signing or
+approving the electronic record;
+(b) except in the case of a secure electronic record or a secure 5[electronic signature], nothing in
+this section shall cerate any presumption, relating to authenticity and integrity of the electronic record
+or any 5[electronic signature].
+85C. Presumption as to 6[Electronic Signature Certificates]. –– The Court shall presume, unless
+contrary is proved, that the information listed in a 6[Electronic Signature Certificate] is correct, except for
+information specified as subscriber information which has not been verified, if the certificate was
+accepted by the subscriber.]
+86. Presumption as to certified copies of foreign judicial records. The Court may presume that
+any document purporting to be a certified copy of any judicial record of 7[8* * * any country not forming
+part of India or] of Her Majesty’s Dominions is genuine and accurate, if the document purports to be
+certified in any manner which is certified by any representative of 9* * * the 3[Central Government] 10[in
+or for] 11[such country] to be the manner commonly in use in 12[that country] for the certification of
+copies of judicial records.
+13[An officer who, with respect to 14*** any territory or place not forming part of 15[India or] Her
+Majesty’s Dominions, is a Political Agent there for, as defined in section 3, 16[clause (43)], of the General
+1. Subs. by the A.O. 1950, for “British”.
+2. The Words “of Her Majesty, or” Rep. ibid.
+3. Subs. by the A.O. 1937, for “Government of India”.
+4. Ins. by Act 21 of 2000, s. 92, and the Second Schedule (w.e.f. 17-10-2000).
+5. Subs. by Act 10 of 2009, s. 52(e), for “digital signature” (w.e.f. 27-10-2009).
+6. Subs. by ibid., s. 52(f), for “Digital Signature Certificate” (w.e.f. 27.10.2009).
+7. Subs. by the A.O. 1950, for “any country not forming part”.
+8. The words “a Part B State or of” omitted by Act 3 of 1951, s. 3 and the Schedule.
+9. The words “Her Majesty or of” omitted by A.O. 1950.
+10. Subs. by Act 3 of 1891, s. 8, for “resident in”.
+11. Subs. by Act 3 of 1951, s. 3 and the Schedule, for “such Part B State or Country”.
+12. Subs. by s. 3 and the Schedule, ibid., for “that State or Country”.
+13. Subs. by Act 5 of 1899, s. 4, for the para added by Act 3 of 1891, s. 3.
+14. The words “a Part B State or” ins. by the A.O. 1950, omitted by Act 3 of 1951, s. 3 and the Schedule.
+15. Ins. by the A.O. 1950.
+16. Subs., ibid., for “clause (40)”.

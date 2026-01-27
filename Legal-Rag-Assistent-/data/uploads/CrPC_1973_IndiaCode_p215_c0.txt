@@ -1,0 +1,201 @@
+216
+1
+2
+3
+4
+5
+6
+384
+Extortion
+Imprisonment
+for
+3
+years, or fine, or both.
+Ditto
+Ditto
+Any
+Magistrate.
+385
+Putting or attempting to put in fear of
+injury, in order to commit extortion.
+Imprisonment
+for
+2
+years, or fine, or both.
+Ditto
+Bailable
+Ditto.
+386
+Extortion by putting a person in fear of
+death or grievous hurt.
+Imprisonment for 10
+years and fine.
+Ditto
+Non-bailable
+Magistrate of
+the first
+class.
+387
+Putting or attempting to put a person in
+fear of death or grievous hurt in order to
+commit extortion.
+Imprisonment
+for
+7
+years and fine.
+Ditto
+Ditto
+Ditto.
+388
+Extortion by threat of accusation of an
+offence
+punishable
+with
+death,
+imprisonment for life, or imprisonment
+for 10 years.
+Imprisonment for 10
+years and fine.
+Ditto
+Bailable
+Ditto.
+If the offence threatened be an unnatural
+offence.
+Imprisonment for life
+Ditto
+Ditto
+Ditto.
+389
+Putting a person in fear of accusation of
+an
+offence
+punishable
+with
+death,
+imprisonment for life, or imprisonment
+for 10 years in order to commit extortion.
+Imprisonment for 10
+years and fine.
+Ditto
+Ditto
+Ditto.
+If the offence be an unnatural offence.
+Imprisonment for life.
+Ditto
+Ditto
+Ditto.
+392
+Robbery
+Rigorous imprisonment
+for 10 years and fine.
+Ditto
+Non-bailable
+Ditto.
+If committed on the highway between
+sunset and sunrise.
+Rigorous imprisonment
+for 14 years and fine.
+Ditto
+Ditto
+Ditto.
+393
+Attempt to commit robbery.
+Rigorous imprisonment
+for 7 years and fine.
+Ditto
+Ditto
+Ditto.
+394
+Person
+voluntarily
+causing
+hurt
+in
+committing or attempting to commit
+robbery, or any other person jointly
+concerned in such robbery.
+Imprisonment for life,
+or rigorous
+imprisonment for 10
+years and fine.
+Ditto
+Ditto
+Ditto.
+395
+Dacoity
+Ditto
+Ditto
+Ditto
+Court of
+Session.
+396
+Murder in dacoity
+Death,
+imprisonment
+for life, or rigorous
+imprisonment for 10
+years and fine.
+Ditto
+Ditto
+Ditto.
+397
+Robbery or dacoity, with attempt to cause
+death or grievous hurt.
+Rigorous imprisonment
+for not less than 7
+years.
+Ditto
+Ditto
+Ditto.
+398
+Attempt to commit robbery or dacoity
+when armed with deadly weapon.
+Ditto
+Ditto
+Ditto
+Ditto.
+399
+Making preparation to commit dacoity.
+Rigorous imprisonment
+for 10 years and fine.
+Cognizable
+Non-bailable
+Court of
+Session.
+400
+Belonging
+to
+a
+gang
+of
+persons
+associated for the purpose of habitually
+committing dacoity.
+Imprisonment for life,
+or rigorous
+imprisonment for 10
+years and fine.
+Ditto
+Ditto
+Ditto.
+401
+Belonging to a wandering gang of
+persons associated for the purpose of
+habitually committing thefts.
+Rigorous imprisonment
+for 7 years and fine.
+Ditto
+Ditto
+Magistrate of
+the first
+class.
+402
+Being one of five or more persons
+assembled for the purpose of committing
+dacoity.
+Ditto
+Ditto
+Ditto
+Court
+of
+Session.

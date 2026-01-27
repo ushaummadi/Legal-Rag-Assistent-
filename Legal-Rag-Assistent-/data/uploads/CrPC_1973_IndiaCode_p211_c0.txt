@@ -1,0 +1,264 @@
+212
+1
+2
+3
+4
+5
+6
+334
+Voluntarily causing hurt on grave and sudden
+provocation, not intending to hurt any other than the
+person who gave the provocation.
+Imprisonment for 1 month, or
+fine of 500 rupees, or both.
+Non-cognizable
+Bailable
+Any
+Magistrate.
+335
+Causing grievous hurt on grave and sudden
+provocation, not intending to hurt any other than the
+person who gave the provocation.
+Imprisonment for 4 years, or
+fine of 2,000 rupees, or both.
+Cognizable
+Ditto
+Magistrate of the
+first class.
+336
+Doing any act which endangers human life or the
+personal safety of others.
+Imprisonment for 3 months, or
+fine of 250 rupees, or both.
+Ditto
+Ditto
+Any
+Magistrate.
+337
+Causing hurt by an act which endangers human life,
+etc.
+Imprisonment for 6 months, or
+fine of 500 rupees, or both.
+Ditto
+Ditto
+Ditto.
+338
+Causing grievous hurt by an act which endangers
+human life, etc.
+Imprisonment for 2 years, or
+fine of 1,000 rupees, or both.
+Ditto
+Ditto
+Ditto.
+341
+Wrongfully restraining any person.
+Simple imprisonment for 1
+month, or fine of 500 rupees,
+or both.
+Ditto
+Ditto
+Ditto.
+342
+Wrongfully confining any person.
+Imprisonment for 1 year, or
+fine of 1,000 rupees, or both.
+Ditto
+Ditto
+Ditto.
+343
+Wrongfully confining for three or more days.
+Imprisonment for 2 years, or
+fine, or both.
+Ditto
+Ditto
+Ditto.
+344
+Wrongfully confining for 10 or more days.
+Imprisonment for 3 years and
+fine.
+Ditto
+Ditto
+Ditto.
+345
+Keeping any person in wrongful confinement,
+knowing that a writ has been issued for his liberation.
+Imprisonment for 2 years, in
+addition
+to
+imprisonment
+under any other section.
+Ditto
+Ditto
+Magistrate of the
+first class.
+346
+Wrongful confinement in secret.
+Ditto
+Ditto
+Ditto
+Ditto.
+347
+Wrongful confinement for the purpose of extorting
+property, or constraining to an illegal act, etc.
+Imprisonment for 3 years and
+fine.
+Ditto
+Ditto
+Any
+Magistrate.
+348
+Wrongful confinement for the purpose of extorting
+confession
+or
+information,
+or
+of
+compelling
+restoration of property, etc.
+Ditto
+Ditto
+Ditto
+Ditto.
+352
+Assault or use of criminal force otherwise than on
+grave provocation.
+Imprisonment for 3 months, or
+fine of 500 rupees, or both.
+Non-cognizable
+Ditto
+Ditto.
+353
+Assault or use of criminal force to deter a public
+servant from discharge of his duty.
+Imprisonment for 2 years, or
+fine, or both.
+Cognizable
+1[Non-bailable]
+Ditto.
+2[354
+Assault or use of criminal force to woman with intent
+to outrage her modesty.
+Imprisonment of 1 year which
+may extend to 5 years, and
+with fine.
+Cognizable
+Non-bailable
+Any
+Magistrate
+354A
+Sexual harassment of the nature of unwelcome
+physical contact and advances or a demand or request
+for sexual favours, showing pornography.
+Imprisonment
+which
+may
+extend to 3 years or with fine
+or with both.
+Cognizable
+Bailable
+Any
+Magistrate
+Sexual harassment of the nature of making sexually
+coloured remark.
+Imprisonment
+which
+may
+extend to 1 year or with fine or
+with both.
+Cognizable
+Bailable
+Any
+Magistrate.
+354B
+Assault or use of criminal force to woman with intent
+to disrobe.
+Imprisonment of not less than
+3 years but which may extend
+to 7 years and with fine.
+Cognizable
+Non-bailable
+Any
+Magistrate.
+354C
+Voyeurism.
+Imprisonment of not less than
+1 year but which may extend to
+3 years and with fine for first
+conviction.
+Cognizable
+Bailable
+Any
+Magistrate.
+Imprisonment of not less than
+3 years but which may extend
+7 years and with fine for
+second
+or
+subsequent
+conviction.
+Cognizable
+Non-bailable
+Any
+Magistrate
+354D
+Stalking.
+Imprisonment up to 3 years
+and
+with
+fine
+for
+first
+conviction.
+Cognizable
+Bailable
+Any
+Magistrate.
+Imprisonment up to 5 years
+and with fine for second or
+subsequent conviction.
+Cognizable
+Non-bailable
+Any
+Magistrate.]
+355
+Assault or criminal force with intent to dishonor a
+person, otherwise than on grave and sudden
+provocation.
+Ditto
+Non-cognizable
+Ditto
+Ditto.
+356
+Assault or criminal force in attempt to commit theft
+of property worn or carried by a person.
+Ditto
+Cognizable
+Ditto
+Ditto.
+357
+Assault or use of criminal force in attempt
+wrongfully to confine a person.
+Imprisonment for 1 year, or
+fine of 1,000 rupees, or both.
+Ditto
+Ditto
+Ditto.
+358
+Assault or use of criminal force on grave and sudden
+provocation.
+Simple imprisonment for one
+month, or fine of 200 rupees,
+or both.
+Non-cognizable
+Ditto
+Ditto.
+363
+Kidnapping
+Imprisonment for 7 years and
+fine.
+Cognizable
+Ditto
+Magistrate of the
+first class.
+1. Subs. by Act 25 of 2005, s. 42 (f) (vii), occurring in column 5, relating to s. 353, for “Ditto” (w.e.f. 23-6-2006).
+2. Subs. by Act 13 of 2013, s. 24, for entry relating to s. 354 (w.e.f. 3-2-2013).

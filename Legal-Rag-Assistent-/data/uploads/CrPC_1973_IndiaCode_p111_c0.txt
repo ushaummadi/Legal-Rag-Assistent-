@@ -1,0 +1,37 @@
+112
+that of receiving stolen goods. He may be convicted of criminal breach of trust or of receiving stolen goods (as the case may be),
+though he was not charged with such offence.
+(c) A states on oath before the Magistrate that he saw B hit C with a club. Before the Sessions Court A states on oath that B
+never hit C. A may be charged in the alternative and convicted of intentionally giving false evidence, although it cannot be proved
+which of these contradictory statements was false.
+222. When offence proved included in offence charged.—(1) When a person is charged with an
+offence consisting of several particulars, a combination of some only of which constitutes a complete
+minor offence, and such combination is proved, but the remaining particulars are not proved, he may be
+convicted of the minor offence, though he was not charged with it.
+(2) When a person is charged with an offence and facts are proved which reduce it to a minor offence,
+he may be convicted of the minor offence, although he is not charged with it.
+(3) When a person is charged with an offence, he may be convicted of an attempt to commit such
+offence although the attempt is not separately charged.
+(4) Nothing in this section shall be deemed to authorise a conviction of any minor offence where the
+conditions requisite for the initiation of proceedings in respect of that minor offence have not been
+satisfied.
+Illustrations
+(a) A is charged, under section 407 of the Indian Penal Code (45 of 1860), with criminal breach of trust in respect of
+property entrusted to him as a carrier. It appears, that he did commit criminal breach of trust under section 406 of that Code
+in respect of the property, but that it was not entrusted to him as a carrier. He may be convicted of criminal breach of trust
+under the said section 406.
+(b) A is charged, under section 325 of the Indian Penal Code (45 of 1860), with causing grievous hurt. He proves that
+he acted on grave and sudden provocation. He may be convicted under section 335 of that Code.
+223. What persons may be charged jointly.—The following persons may be charged and tried
+together, namely:—
+(a) persons accused of the same offence committed in the course of the same transaction;
+(b) persons accused of an offence and persons accused of abetment of, or attempt to commit, such
+offence;
+(c) persons accused of more than one offence of the same kind, within the meaning of section 219
+committed by them jointly within the period of twelve months;
+(d) persons accused of different offences committed in the course of the same transaction;
+(e) persons accused of an offence which includes theft, extortion, cheating, or criminal
+misappropriation, and persons accused of receiving or retaining, or assisting in the disposal or
+concealment of, property possession of which is alleged to have been transferred by any such offence
+committed by the first-named persons, or of abetment of or attempting to commit any such last-
+named offence;

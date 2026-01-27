@@ -1,0 +1,46 @@
+310
+(d) the source of such electronic record and date and time when the electronic record was
+printed;
+(e) in case of email ids, details of ownership, custody and access to such email ids;
+(f) in case of documents stored on a computer or computer resource (including on external
+servers or cloud), details of ownership, custody and access to such data on the computer or
+computer resource;
+(g) deponent’s knowledge of contents and correctness of contents;
+(h) whether the computer or computer resource used for preparing or receiving or storing
+such document or data was functioning properly or in case of malfunction that such
+malfunction did not affect the contents of the document stored;
+(i) that the printout or copy furnished was taken from the original computer or computer
+resource.
+(4) The parties relying on printouts or copy in electronic form, of any electronic records, shall
+not be required to give inspection of electronic records, provided a declaration is made by such
+party that each such copy, which has been produced, has been made from the original electronic
+record.
+(5) The Court may give directions for admissibility of Electronic Records at any stage of the
+proceedings.
+(6) Any party may seek directions from the Court and the Court may of its motion issue
+directions for submission of further proof of any electronic record including metadata or logs
+before admission of such electronic record.
+7. Certain provisions of the Code of Civil Procedure, 1908 not to apply. —For avoidance of
+doubt, it is hereby clarified that Order XIII Rule 1, Order VII Rule 14 and Order VIII Rule 1A of
+the Code of Civil Procedure, 1908 (5 of 1908) shall not apply to suits or applications before the
+Commercial Divisions of High Court or Commercial Courts.”.
+5. Insertion of new Order XIII-A.— After Order XIII of the Code, the following Order shall be
+inserted, namely:—
+‘ORDER XIII-A
+SUMMARY JUDGMENT
+1. Scope of and classes of suits to which this Order applies. —(1) This Order sets out the
+procedure by which Courts may decide a claim pertaining to any Commercial Dispute without
+recording oral evidence.
+(2) For the purposes of this Order, the word “claim” shall include—
+(a) part of a claim;
+(b) any particular question on which the claim (whether in whole or in part) depends; or
+(c) a counterclaim, as the case may be.
+(3) Notwithstanding anything to the contrary, an application for summary judgment under this
+Order shall not be made in a suit in respect of any Commercial Dispute that is originally filed as a
+summary suit under Order XXXVII.
+2. Stage for application for summary judgment. — An applicant may apply for summary
+judgment at any time after summons has been served on the defendant:
+Provided that, no application for summary judgment may be made by such applicant after the
+Court has framed the issues in respect of the suit.
+3. Grounds for summary judgments. — The Court may give a summary judgment against a
+plaintiff or defendant on a claim if it considers that––

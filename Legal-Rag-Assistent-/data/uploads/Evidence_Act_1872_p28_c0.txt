@@ -1,0 +1,39 @@
+29
+Illustration
+The question is, whether a given letter is in the hand-writing of A, a merchant in London.
+B is a merchant in Calcutta, who has written letters addressed to A and received letters purporting to
+be written by him. C, is B’s clerk whose duty it was to examine and file B’s correspondence. D is B’s
+broker, to whom B habitually submitted the letters purporting to be written by A for the purpose of
+advising with him thereon.
+The opinions of B, C and D on the question whether the letter is in the handwriting of A are relevant,
+though neither B, C nor D ever saw A write.
+1[47A. Opinion as to digital signature, when relevant.––When the Court has to form an opinion as
+to the 2[electronic signature of any person, the opinion of the Certifying Authority which has issued the
+3[electronic Signature Certificate] is a relevant fact.]
+48. Opinion as to existence of right or custom, when relevant.––When the Court has to form an
+opinion as to the existence of any general custom or right, the opinions, as to the existence of such custom
+or right, of persons who would be likely to know of its existence if it existed, are relevant.
+Explanation.––The expression “general custom or right” includes customs or rights common to any
+considerable class of persons.
+Illustration
+The right of the villagers of a particular village to use the water of a particular well is a general right
+within the meaning of this section.
+49. Opinion as to usages, tenets, etc., when relevant. –– When the Court has to form an opinion as
+to––
+the usages and tenets of any body of men or family,
+the constitution and government of any religious or charitable foundation, or
+the meaning of words or terms used in particular districts or by particular classes of people,
+the opinions of persons having special means of knowledge thereon are, relevant facts.
+50. Opinion on relationship, when relevant. ––When the Court has to form an opinion as to the
+relationship of one person to another, the opinion, expressed by conduct, as to the existence of such
+relationship, of any person who, as a member of the family or otherwise, has special means of knowledge
+on the subject, is a relevant fact:
+Provided that such opinion shall not be sufficient to prove a marriage in proceedings under the Indian
+Divorce Act, 1869 (4 of 1869), or in prosecutions under section 494, 495, 497 or 498 of the Indian Penal
+Code (45 of 1860).
+Illustrations
+(a) The question is, whether A and B, were married.
+The fact that they were usually received and treated by their friends as husband and wife, is relevant.
+1. Ins. by Act 21 of 2000, s. 92 and the Second Schedule (w.e.f. 17-10-2000).
+2. Subs. by Act 10 of 2009, s. 52, for “digital signature” (w.e.f. 27-10-2009).
+3. Subs. by s 52, ibid., for “Digital Signature Certificate” (w.e.f. 27-10-2009).
