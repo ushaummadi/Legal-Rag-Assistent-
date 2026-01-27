@@ -1,0 +1,12 @@
+# Python
+__pycache__/
+.env
+venv/
+
+# Vector databases (DO NOT COMMIT)
+data/chroma_db/
+data/chroma.db/
+*.sqlite3
+
+# Large data / PDFs
+data/legal_acts/

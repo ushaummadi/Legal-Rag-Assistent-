@@ -1,0 +1,18 @@
+credentials:
+  usernames:
+    admin:
+      email: admin@legalrag.com
+      name: Admin
+      password: $2b$12$BjL.V3oHRj6gcKp.UH6MNOmq/Xnm8BrzHL9KveC4SuCEm8/qGwAjm
+      logged_in: false
+      failed_login_attempts: 0
+    usha:
+      name: usha
+      email: ushaummadi44@gmail.com
+      password: $2b$12$Y8xRwG78RUYzctCavaepkOmVsUb3G9U3buhy7/R.ong6.Q0CT6DW6
+cookie:
+  name: legalrag_auth
+  key: pk_live_51ABC123some_super_secure_random_key_xyz789
+  expiry_days: 30
+preauthorized:
+  emails: []
