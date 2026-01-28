@@ -23,7 +23,7 @@ from src.generation.rag_pipeline import answer_question
 
 # --------------------------------------------------------------------Here's your **COMPLETE FIXED `stream_app.py`** with all bugs resolved:
 
-```python
+
 """
 LegalRAG: Indian Evidence Act RAG Assistant
 Full-Stack Streamlit + Chroma + HuggingFace (2026) - PRODUCTION READY
