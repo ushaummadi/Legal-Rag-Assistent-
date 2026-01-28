@@ -2,6 +2,9 @@ import os
 from langchain_groq import ChatGroq
 from config.settings import settings
 
+# ✅ HF embeddings
+from langchain_huggingface import HuggingFaceEmbeddings
+
 try:
     import streamlit as st
 except Exception:
@@ -10,17 +13,15 @@ except Exception:
 
 class GroqProvider:
     def embeddings(self):
-        raise NotImplementedError("Use HF embeddings via HybridProvider (see below).")
+        # Use sentence-transformers locally (works on Streamlit Cloud)
+        model_name = getattr(settings, "hf_embedding_model", "sentence-transformers/all-MiniLM-L6-v2")
+        return HuggingFaceEmbeddings(model_name=model_name)
 
     def llm(self):
-        # Priority: env var -> Streamlit secrets -> settings (.env)
         key = os.getenv("GROQ_API_KEY")
 
         if not key and st is not None:
-            # Works if your Cloud secrets is: GROQ_API_KEY = "..."
             key = st.secrets.get("GROQ_API_KEY", "")
-
-            # Optional: if you used [grok] table
             if not key and "grok" in st.secrets:
                 key = st.secrets["grok"].get("GROQ_API_KEY", "")
 
@@ -28,7 +29,7 @@ class GroqProvider:
             key = getattr(settings, "groq_api_key", "")
 
         if not key:
-            raise ValueError("GROQ_API_KEY missing. Add it in Streamlit Cloud → Settings → Secrets.")
+            raise ValueError("GROQ_API_KEY missing. Add it in Streamlit Cloud → Secrets.")
 
         return ChatGroq(
             groq_api_key=key,
