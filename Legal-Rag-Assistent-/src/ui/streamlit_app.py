@@ -1,15 +1,19 @@
 import sys
 from pathlib import Path
 
-# FIX: Python path FIRST (before other imports)
-ROOT_DIR = Path(__file__).resolve().parents[2]  # Legal-Rag-Assistent-/
+# FIX: Python path FIRST
+ROOT_DIR = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT_DIR))
-"""
-LegalRAG: Indian Evidence Act RAG Assistant
-Full-Stack Streamlit + Chroma + HuggingFace (2026)
-"""
 
 import streamlit as st
+
+# ✅ MUST BE TOP-LEVEL (NOT inside any function)
+st.set_page_config(
+    page_title="LegalGPT - Evidence Act RAG",
+    page_icon="⚖️",
+    layout="wide",
+    initial_sidebar_state="expanded",
+)
 import json
 import uuid
 from pathlib import Path
@@ -60,13 +64,6 @@ def save_config(config):
 
 # --- MAIN APP ---
 def run_streamlit_app():
-    st.set_page_config(
-        page_title="LegalGPT - Evidence Act RAG",
-        page_icon="⚖️",
-        layout="wide",
-        initial_sidebar_state="expanded",
-    )
-
     if not CONFIG_PATH.exists():
         st.error("❌ config.yaml not found!")
         st.stop()
