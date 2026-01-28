@@ -1,45 +1,34 @@
 from typing import List
 from loguru import logger
-from langchain_core.documents import Document
+from langchain_core.documents import Document 
 import uuid
+
 import chromadb
 from chromadb.config import Settings as ChromaSettings
-from config.settings import settings
-from pathlib import Path
-import os
 
+from config.settings import settings
+from src.providers.factory import ProviderFactory
+import os
 os.environ["OTEL_PYTHON_DISABLED"] = "true"  # Kills telemetry noise
 
 
 class VectorStoreManager:
-    def __init__(self, persist_dir: str | Path | None = None):
-        """
-        Initialize ChromaDB with a specific persist directory.
-        
-        Args:
-            persist_dir: Path to Chroma DB folder. If None, uses settings.chroma_persist_directory.
-        """
-        from src.providers.factory import ProviderFactory  # ✅ lazy import
-        
+    def __init__(self):
         self._provider = ProviderFactory.get_provider()
-        
-        # ✅ FIX: Accept persist_dir parameter (for Streamlit Cloud)
-        if persist_dir is not None:
-            chroma_path = str(Path(persist_dir).resolve())
-        else:
-            chroma_path = settings.chroma_persist_directory
-        
-        logger.info(f"Initializing Chroma at: {chroma_path}")
-        
+
+        # ✅ Persistent Chroma client
         self._client = chromadb.PersistentClient(
-            path=chroma_path,
+            path=settings.chroma_persist_directory,
             settings=ChromaSettings(anonymized_telemetry=False),
         )
+
+        # ✅ Single persistent collection
         self._collection = self._client.get_or_create_collection(
             name=settings.chroma_collection_name
         )
+
         self._embeddings = None
-        logger.info(f"Chroma PersistentClient + collection '{settings.chroma_collection_name}' initialized")
+        logger.info("Chroma PersistentClient + collection initialized")
 
     # ✅ REQUIRED for retriever / RAG
     @property
