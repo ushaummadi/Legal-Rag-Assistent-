@@ -1,36 +1,43 @@
 """
 LegalRAG: Indian Evidence Act RAG Assistant
-Full-Stack Streamlit + Chroma + HuggingFace (2026) - FIXED LOGIN + RAG
+Full-Stack Streamlit + Chroma + HuggingFace (2026)
 """
 import sys
-from pathlib import Path
-import streamlit as st
 import json
 import uuid
+from pathlib import Path
+
+import streamlit as st
 import yaml
 from yaml.loader import SafeLoader
+
+import streamlit_authenticator as stauth
 from streamlit_authenticator.utilities.hasher import Hasher
-import streamlit_authenticator as stauth  # ✅ For cookie persistence
 
-# ✅ FIXED PATHS (absolute for Cloud)
-BASE_DIR = Path(__file__).resolve().parent
-DATA_DIR = BASE_DIR / "data"
-UPLOADS_DIR = DATA_DIR / "uploads"
-CHROMA_DIR = DATA_DIR / "chroma_db"
-CONFIG_PATH = BASE_DIR / "config.yaml"
-HISTORY_FILE = BASE_DIR / "chat_history.json"
-
-# Add to path
-if str(BASE_DIR) not in sys.path:
-    sys.path.insert(0, str(BASE_DIR))
-
-# FIXED IMPORTS
-from config.settings import settings
+# ✅ App imports
 from src.ingestion.document_processor import load_documents, split_documents
 from src.ingestion.vector_store import VectorStoreManager
 from src.generation.rag_pipeline import answer_question
 
-# --- HELPER FUNCTIONS (unchanged) ---
+# --------------------------------------------------------------------
+# PATHS (Absolute for Cloud stability)
+# --------------------------------------------------------------------
+BASE_DIR = Path(__file__).resolve().parent
+DATA_DIR = BASE_DIR / "data"
+UPLOADS_DIR = DATA_DIR / "uploads"
+CHROMA_DIR = DATA_DIR / "chroma_db"
+
+CONFIG_PATH = BASE_DIR / "config.yaml"
+HISTORY_FILE = BASE_DIR / "chat_history.json"
+
+# Ensure imports work when app runs from repo root
+if str(BASE_DIR) not in sys.path:
+    sys.path.insert(0, str(BASE_DIR))
+
+
+# --------------------------------------------------------------------
+# Helpers
+# --------------------------------------------------------------------
 def load_all_history():
     if HISTORY_FILE.exists():
         try:
@@ -40,11 +47,13 @@ def load_all_history():
             return {}
     return {}
 
+
 def save_all_history(all_history):
     HISTORY_FILE.write_text(
         json.dumps(all_history, ensure_ascii=False, indent=2),
         encoding="utf-8",
     )
+
 
 def get_chat_title(messages):
     for msg in messages:
@@ -52,11 +61,43 @@ def get_chat_title(messages):
             return msg["content"][:28] + "..." if len(msg["content"]) > 28 else msg["content"]
     return "New Chat"
 
-def save_config(config):
-    with open(CONFIG_PATH, "w", encoding="utf-8") as f:
-        yaml.dump(config, f, default_flow_style=False, allow_unicode=True, sort_keys=False)
 
-# --- MAIN APP ---
+def save_config(config):
+    CONFIG_PATH.write_text(
+        yaml.dump(config, default_flow_style=False, allow_unicode=True, sort_keys=False),
+        encoding="utf-8",
+    )
+
+
+def ensure_dirs():
+    UPLOADS_DIR.mkdir(parents=True, exist_ok=True)
+    CHROMA_DIR.mkdir(parents=True, exist_ok=True)
+
+
+# --------------------------------------------------------------------
+# Auth (cookie-based persistence)
+# --------------------------------------------------------------------
+def build_authenticator(config: dict) -> stauth.Authenticate:
+    """
+    streamlit-authenticator uses a cookie so users stay logged in across refresh/new session. [web:84]
+    """
+    config.setdefault("credentials", {}).setdefault("usernames", {})
+    config.setdefault("cookie", {})
+    config["cookie"].setdefault("name", "legalgpt_auth")
+    config["cookie"].setdefault("key", "CHANGE_THIS_TO_A_RANDOM_SECRET_KEY")
+    config["cookie"].setdefault("expiry_days", 30)
+
+    return stauth.Authenticate(
+        config["credentials"],
+        config["cookie"]["name"],
+        config["cookie"]["key"],
+        config["cookie"]["expiry_days"],
+    )
+
+
+# --------------------------------------------------------------------
+# Main app
+# --------------------------------------------------------------------
 def run_streamlit_app():
     st.set_page_config(
         page_title="LegalGPT - Evidence Act RAG",
@@ -65,58 +106,154 @@ def run_streamlit_app():
         initial_sidebar_state="expanded",
     )
 
+    ensure_dirs()
+
     if not CONFIG_PATH.exists():
         st.error("❌ config.yaml not found!")
         st.stop()
 
-    # ✅ FIXED: Load config + create authenticator
     with open(CONFIG_PATH, encoding="utf-8") as f:
-        config = yaml.load(f, Loader=SafeLoader)
-    
-    config.setdefault("credentials", {}).setdefault("usernames", {})
-    config.setdefault("cookie", {
-        "name": "legalgpt_auth",
-        "key": "some_random_string_super_secret_key_change_me",
-        "expiry_days": 30
-    })
+        config = yaml.load(f, Loader=SafeLoader) or {}
 
-    # ✅ FIXED AUTHENTICATOR WITH COOKIES (persists on refresh!)
-    authenticator = stauth.Authenticate(
-        config['credentials'],
-        config['cookie']['name'],
-        config['cookie']['key'], 
-        config['cookie']['expiry_days']
+    # --- YOUR CSS (unchanged) ---
+    st.markdown(
+        """
+        <style>
+        /* TOTAL UNIFORM #171717 */
+        html, body, #root, .stApp,
+        header[data-testid="stHeader"],
+        footer[data-testid="stFooter"],
+        section[data-testid="stAppViewContainer"],
+        section[data-testid="stChatInputContainer"],
+        .stApp > div > div > div[class*="main"],
+        .block-container,
+        [data-testid="stSidebar"] {
+            background-color: #171717 !important;
+        }
+
+        /* Auth tabs styling */
+        [data-testid="stSidebar"] .stTabs [data-baseweb="tab-list"] { background-color: #212121 !important; }
+        [data-testid="stSidebar"] .stTabs [data-baseweb="tab"] { background-color: transparent !important; color: #ececf1 !important; }
+
+        /* Chat input */
+        .stChatInput > div > div { background-color: transparent !important; }
+
+        /* Chat areas */
+        .stChatMessage, [data-testid="stChatMessage"] { background-color: transparent !important; }
+
+        /* All elements match */
+        [data-testid="metric-container"], [data-testid="stHorizontalBlock"],
+        section[data-testid="stSidebar"] div.element-container { background-color: #171717 !important; }
+
+        /* Inputs, buttons, expanders */
+        .stTextInput > div > div > div { background-color: #212121 !important; }
+        .stButton > button { background-color: #212121 !important; color: #ececf1 !important; }
+
+        * { border-color: #303030 !important; }
+
+        section[data-testid="stSidebar"] .block-container{ padding-top: 0.6rem; }
+        [data-testid="stSidebar"] div.stButton{ margin-bottom: 0.12rem !important; }
+        [data-testid="stSidebar"] [data-testid="column"]{ padding-left: 0.05rem !important; padding-right: 0.05rem !important; }
+
+        [data-testid="stSidebar"] button[kind="tertiary"]{
+          background: transparent !important;
+          border: none !important;
+          box-shadow: none !important;
+          color: #ececf1 !important;
+          border-radius: 10px !important;
+        }
+        [data-testid="stSidebar"] button[kind="tertiary"]:hover{
+          background: #2a2a2a !important;
+          color: #fff !important;
+        }
+
+        [data-testid="stSidebar"] button[kind="secondary"]{
+          background: #353545 !important;
+          border: none !important;
+          box-shadow: none !important;
+          color: #ffffff !important;
+          border-radius: 10px !important;
+        }
+
+        [data-testid="stSidebar"] div[data-testid="stHorizontalBlock"] > div:first-child button[kind="secondary"]{
+          border-top-right-radius: 0px !important;
+          border-bottom-right-radius: 0px !important;
+        }
+        [data-testid="stSidebar"] div[data-testid="stHorizontalBlock"] > div:last-child button[kind="secondary"]{
+          border-top-left-radius: 0px !important;
+          border-bottom-left-radius: 0px !important;
+          width: 38px !important;
+          min-width: 38px !important;
+          padding: 0px !important;
+          font-weight: 900 !important;
+        }
+        </style>
+        """,
+        unsafe_allow_html=True,
     )
 
-    # ✅ CRITICAL: Call login() - handles cookie restore automatically
-    name, authentication_status, username = authenticator.login('main', 'Login')
+    # ----------------------------------------------------------------
+    # AUTH UI (Login + Signup), but login persistence is handled by cookie
+    # ----------------------------------------------------------------
+    authenticator = build_authenticator(config)
 
-    if authentication_status == False:
-        st.error('❌ Username/password is incorrect')
+    st.session_state.setdefault("authentication_status", None)
+    st.session_state.setdefault("username", None)
+    st.session_state.setdefault("name", None)
+
+    # Sidebar account section (login + signup)
+    with st.sidebar:
+        st.markdown("---")
+        with st.expander("👤 Account", expanded=True):
+            tab_login, tab_signup = st.tabs(["Login", "Sign up"])
+
+            with tab_login:
+                name, authentication_status, username = authenticator.login("Login", "main")
+                # authenticator.login reads cookie; if cookie valid -> auto logged-in. [web:84]
+
+                if authentication_status is False:
+                    st.error("❌ Wrong credentials")
+                elif authentication_status is None:
+                    st.info("Enter username + password")
+
+                if authentication_status is True:
+                    st.session_state["authentication_status"] = True
+                    st.session_state["username"] = username
+                    st.session_state["name"] = name
+                    authenticator.logout("🚪 Log out", "main")
+
+            with tab_signup:
+                with st.form("signup_form", clear_on_submit=True):
+                    new_fullname = st.text_input("Full Name")
+                    new_email = st.text_input("Email")
+                    new_user = st.text_input("Username")
+                    new_pass = st.text_input("Password", type="password")
+                    new_pass2 = st.text_input("Confirm Password", type="password")
+                    signup_ok = st.form_submit_button("Create Account")
+
+                if signup_ok:
+                    config.setdefault("credentials", {}).setdefault("usernames", {})
+                    if not all([new_fullname, new_email, new_user, new_pass, new_pass2]):
+                        st.error("All fields required!")
+                    elif new_pass != new_pass2:
+                        st.error("Passwords don't match!")
+                    elif new_user in config["credentials"]["usernames"]:
+                        st.error("Username exists!")
+                    else:
+                        config["credentials"]["usernames"][new_user] = {
+                            "name": new_fullname,
+                            "email": new_email,
+                            "password": Hasher.hash(new_pass),
+                        }
+                        save_config(config)
+                        st.success("✅ Account created! Now login.")
+
+    if st.session_state.get("authentication_status") is not True:
         st.stop()
-        
-    elif authentication_status == None:
-        st.warning('👈 Please enter your username and password on the left sidebar')
-        st.stop()
 
-    # ✅ SUCCESS - Set session state from authenticator
-    st.session_state["authentication_status"] = True
-    st.session_state["name"] = name
-    st.session_state["username"] = username
-
-    # Logout button (in sidebar later)
-    authenticator.logout('Logout', 'main')
-
-    # Your existing CSS (PASTE YOUR FULL CSS HERE - same as before)
-    st.markdown("""
-        <style>
-        /* YOUR EXISTING CSS - paste the full #171717 styling + sidebar buttons here */
-        html, body, #root, .stApp { background-color: #171717 !important; }
-        /* ... rest of your CSS ... */
-        </style>
-    """, unsafe_allow_html=True)
-
-    # Session init (unchanged)
+    # ----------------------------------------------------------------
+    # Session init
+    # ----------------------------------------------------------------
     if "session_id" not in st.session_state:
         st.session_state["session_id"] = str(uuid.uuid4())
         st.session_state["messages"] = []
@@ -130,82 +267,167 @@ def run_streamlit_app():
     qp = st.query_params
     show_settings = (qp.get("menu") == "settings")
 
-    # ✅ FIXED SIDEBAR WITH DEBUG + PATHS
+    # ----------------------------------------------------------------
+    # SIDEBAR (Post-auth)
+    # ----------------------------------------------------------------
     with st.sidebar:
-        st.markdown("### 🔍 Debug RAG")
-        
-        # Create dirs
-        UPLOADS_DIR.mkdir(parents=True, exist_ok=True)
-        CHROMA_DIR.mkdir(parents=True, exist_ok=True)
-        
-        st.metric("📂 Uploads", len(list(UPLOADS_DIR.glob("*"))))
-        st.metric("🗄️ Chroma", len(list(CHROMA_DIR.glob("*"))))
-        
-        # ✅ TEST VECTOR COUNT
-        if st.button("🧪 Test Vectors", key="test_vec"):
+        # ✅ Debug RAG Status
+        st.markdown("### 🔎 Debug RAG Status")
+        upload_count = len(list(UPLOADS_DIR.glob("*")))
+        chroma_files_count = len(list(CHROMA_DIR.glob("*")))
+        st.metric("📂 Upload files", upload_count)
+        st.metric("🗄️ Chroma files", chroma_files_count)
+        st.caption(f"Paths: {UPLOADS_DIR} | {CHROMA_DIR}")
+
+        if st.button("🧪 Test Vector Count", key="test_vectors", use_container_width=True, type="secondary"):
             try:
                 vsm = VectorStoreManager(persist_dir=str(CHROMA_DIR))
-                count = vsm.count()
-                st.success(f"✅ {count:,} vectors ready!")
+                st.success(f"✅ Vectors: {vsm.count():,}")
             except Exception as e:
-                st.error(f"❌ {str(e)[:80]}")
+                st.error(f"❌ VectorStore error: {str(e)[:140]}")
 
-        # Your chat history buttons (unchanged)
+        # New chat
         if st.button("➕ New chat", use_container_width=True, type="secondary"):
-            # ... existing logic
-            pass
+            current_sid = st.session_state.get("session_id")
+            current_msgs = st.session_state.get("messages", [])
+            if current_sid and current_msgs:
+                all_history[current_sid] = current_msgs
+                save_all_history(all_history)
 
-        # Profile footer (your existing)
+            new_sid = str(uuid.uuid4())
+            st.session_state["session_id"] = new_sid
+            st.session_state["messages"] = []
+            all_history.setdefault(new_sid, [])
+            save_all_history(all_history)
+            st.rerun()
+
+        st.caption("Your chats")
+
+        # Chat history list
+        for sid in list(all_history.keys())[::-1]:
+            msgs = all_history[sid]
+            if not msgs:
+                continue
+
+            title = get_chat_title(msgs)
+            is_selected = (sid == st.session_state["session_id"])
+
+            c1, c2 = st.columns([1, 0.14], gap="xxsmall", vertical_alignment="center")
+
+            with c1:
+                t = "secondary" if is_selected else "tertiary"
+                if st.button(title, key=f"load_{sid}", use_container_width=True, type=t):
+                    current_sid = st.session_state.get("session_id")
+                    current_msgs = st.session_state.get("messages", [])
+                    if current_sid is not None:
+                        all_history[current_sid] = current_msgs
+                        save_all_history(all_history)
+
+                    st.session_state["session_id"] = sid
+                    st.session_state["messages"] = msgs.copy()
+                    st.rerun()
+
+            with c2:
+                if is_selected:
+                    if st.button("✖", key=f"del_{sid}", type="secondary"):
+                        if sid in all_history:
+                            del all_history[sid]
+
+                        if sid == st.session_state["session_id"]:
+                            new_sid = str(uuid.uuid4())
+                            st.session_state["session_id"] = new_sid
+                            st.session_state["messages"] = []
+                            all_history[new_sid] = []
+
+                        save_all_history(all_history)
+                        st.rerun()
+                else:
+                    st.write("")
+
+        st.markdown("<div style='flex-grow: 1; height: 48vh;'></div>", unsafe_allow_html=True)
+
+        # Profile footer (same style)
+        name = st.session_state.get("name") or "User"
         initials = (name[:2].upper() if name else "LG")
-        st.markdown(f"""
+        st.markdown(
+            f"""
         <div style='position: sticky; bottom: 0; width: 100%; background: #171717; border-top: 1px solid #303030; padding: 10px 12px;'>
           <div style='display: flex; align-items: center; gap: 10px;'>
-            <div style='width: 36px; height: 36px; border-radius: 8px; background: #7b4ec9; color: #fff; font-weight: 700; font-size: 14px; display: flex; align-items: center; justify-content: center;'>{initials}</div>
+            <div style='width: 36px; height: 36px; border-radius: 8px; background: #7b4ec9; color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px;'>{initials}</div>
             <div>
               <div style='color: #fff; font-size: 14px; font-weight: 600;'>{name}</div>
               <div style='color: #b4b4b4; font-size: 12px;'>Free Plan</div>
             </div>
           </div>
         </div>
-        """, unsafe_allow_html=True)
+        """,
+            unsafe_allow_html=True,
+        )
 
+    # ----------------------------------------------------------------
     # MAIN CONTENT
+    # ----------------------------------------------------------------
     st.title("⚖️ LegalGPT")
     st.caption("Indian Evidence Act • Production RAG System")
 
-    # FIXED SETTINGS
+    # Settings page
     if show_settings:
-        st.subheader("⚙️ Rebuild Index")
-        if st.button("🔄 Rebuild Index", use_container_width=True, type="primary"):
-            with st.spinner("Indexing..."):
-                # ✅ FIXED PATHS
-                docs = load_documents(str(UPLOADS_DIR))
-                chunks = split_documents(docs)
-                vsm = VectorStoreManager(persist_dir=str(CHROMA_DIR))
-                vsm.add_documents(chunks)
-                st.success(f"✅ {vsm.count():,} vectors indexed!")
+        st.markdown("---")
+        st.subheader("⚙️ Settings")
 
-    # CHAT (FIXED)
+        col_close, _ = st.columns([0.1, 1])
+        with col_close:
+            if st.button("✖", key="close_settings"):
+                st.query_params.clear()
+                st.rerun()
+
+        # ✅ FIXED: Rebuild Index uses explicit UPLOADS_DIR + CHROMA_DIR
+        if st.button("🔄 Rebuild Index", use_container_width=True, type="primary"):
+            with st.spinner("🔄 Re-indexing..."):
+                docs = load_documents(str(UPLOADS_DIR))   # ✅ pass uploads path
+                if not docs:
+                    st.error(f"❌ No documents found in {UPLOADS_DIR}")
+                else:
+                    chunks = split_documents(docs)
+                    vsm = VectorStoreManager(persist_dir=str(CHROMA_DIR))  # ✅ persist path
+                    vsm.add_documents(chunks)
+                    st.success(f"✅ Indexed {len(chunks)} chunks. Total vectors: {vsm.count():,}")
+
+        if st.button("🗑️ Clear History", use_container_width=True):
+            save_all_history({})
+            st.session_state["messages"] = []
+            st.session_state["session_id"] = str(uuid.uuid4())
+            all_history = {st.session_state["session_id"]: []}
+            save_all_history(all_history)
+            st.rerun()
+
+        st.markdown("---")
+
+    # Chat UI
     for msg in st.session_state["messages"]:
         with st.chat_message(msg["role"]):
             st.markdown(msg["content"])
 
-    if query := st.chat_input("Ask about Evidence Act..."):
+    if query := st.chat_input("Ask about Evidence Act, CrPC, IPC..."):
         st.session_state["messages"].append({"role": "user", "content": query})
         with st.chat_message("user"):
             st.markdown(query)
 
         with st.chat_message("assistant"):
-            with st.spinner("Searching..."):
-                # ✅ FIXED: Pass chroma_dir
+            placeholder = st.empty()
+            with st.spinner("🔍 Analyzing legal documents..."):
+                # ✅ FIXED: pass chroma_dir so query uses same db as rebuild
                 result = answer_question(query, chroma_dir=str(CHROMA_DIR))
                 answer = result.get("answer", "")
-            st.markdown(answer)
+            placeholder.markdown(answer + "\n\n📚 *Powered by LegalRAG Pipeline*")
 
         st.session_state["messages"].append({"role": "assistant", "content": answer})
+
+        all_history = load_all_history()
         all_history[st.session_state["session_id"]] = st.session_state["messages"]
         save_all_history(all_history)
         st.rerun()
+
 
 if __name__ == "__main__":
     run_streamlit_app()
