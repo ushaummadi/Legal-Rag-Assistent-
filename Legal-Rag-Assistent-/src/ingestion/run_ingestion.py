@@ -37,6 +37,5 @@ def main():
     vs.add_documents(docs)
     logger.info(f"✅ Done. Collection count ≈ {vs.count()}")
 
-
 if __name__ == "__main__":
     main()
