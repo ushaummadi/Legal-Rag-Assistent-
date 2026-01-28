@@ -1,21 +1,18 @@
 """
 LegalRAG: Indian Evidence Act RAG Assistant
-Full-Stack Streamlit + Chroma + HuggingFace (2026) - FIXED VERSION
+Full-Stack Streamlit + Chroma + HuggingFace (2026) - FIXED LOGIN + RAG
 """
 import sys
-import os
+from pathlib import Path
+import streamlit as st
 import json
 import uuid
-from pathlib import Path
-
-import streamlit as st
 import yaml
 from yaml.loader import SafeLoader
 from streamlit_authenticator.utilities.hasher import Hasher
+import streamlit_authenticator as stauth  # ✅ For cookie persistence
 
-# --------------------------------------------------------------------
-# 1. SETUP PATHS (Absolute, for Streamlit Cloud stability)
-# --------------------------------------------------------------------
+# ✅ FIXED PATHS (absolute for Cloud)
 BASE_DIR = Path(__file__).resolve().parent
 DATA_DIR = BASE_DIR / "data"
 UPLOADS_DIR = DATA_DIR / "uploads"
@@ -23,20 +20,17 @@ CHROMA_DIR = DATA_DIR / "chroma_db"
 CONFIG_PATH = BASE_DIR / "config.yaml"
 HISTORY_FILE = BASE_DIR / "chat_history.json"
 
-# Ensure imports work when app runs from repo root
+# Add to path
 if str(BASE_DIR) not in sys.path:
     sys.path.insert(0, str(BASE_DIR))
 
-# --------------------------------------------------------------------
-# 2. IMPORTS (After path setup)
-# --------------------------------------------------------------------
+# FIXED IMPORTS
+from config.settings import settings
 from src.ingestion.document_processor import load_documents, split_documents
 from src.ingestion.vector_store import VectorStoreManager
 from src.generation.rag_pipeline import answer_question
 
-# --------------------------------------------------------------------
-# 3. HELPER FUNCTIONS (unchanged)
-# --------------------------------------------------------------------
+# --- HELPER FUNCTIONS (unchanged) ---
 def load_all_history():
     if HISTORY_FILE.exists():
         try:
@@ -62,9 +56,7 @@ def save_config(config):
     with open(CONFIG_PATH, "w", encoding="utf-8") as f:
         yaml.dump(config, f, default_flow_style=False, allow_unicode=True, sort_keys=False)
 
-# --------------------------------------------------------------------
-# 4. MAIN APP (with FIXED paths + debug)
-# --------------------------------------------------------------------
+# --- MAIN APP ---
 def run_streamlit_app():
     st.set_page_config(
         page_title="LegalGPT - Evidence Act RAG",
@@ -77,79 +69,54 @@ def run_streamlit_app():
         st.error("❌ config.yaml not found!")
         st.stop()
 
+    # ✅ FIXED: Load config + create authenticator
     with open(CONFIG_PATH, encoding="utf-8") as f:
         config = yaml.load(f, Loader=SafeLoader)
-
+    
     config.setdefault("credentials", {}).setdefault("usernames", {})
+    config.setdefault("cookie", {
+        "name": "legalgpt_auth",
+        "key": "some_random_string_super_secret_key_change_me",
+        "expiry_days": 30
+    })
 
-    # AUTHENTICATION (unchanged)
-    st.session_state.setdefault("authentication_status", None)
-    st.session_state.setdefault("username", None)
-    st.session_state.setdefault("name", None)
+    # ✅ FIXED AUTHENTICATOR WITH COOKIES (persists on refresh!)
+    authenticator = stauth.Authenticate(
+        config['credentials'],
+        config['cookie']['name'],
+        config['cookie']['key'], 
+        config['cookie']['expiry_days']
+    )
 
-    if st.session_state["authentication_status"] is not True:
-        st.sidebar.markdown("---")
-        with st.sidebar.expander("👤 Account", expanded=True):
-            tab_login, tab_signup = st.tabs(["Login", "Sign up"])
+    # ✅ CRITICAL: Call login() - handles cookie restore automatically
+    name, authentication_status, username = authenticator.login('main', 'Login')
 
-            with tab_login:
-                st.info("👋 Welcome to LegalGPT")
-                with st.form("login_form", clear_on_submit=False):
-                    u = st.text_input("Username")
-                    p = st.text_input("Password", type="password")
-                    login_ok = st.form_submit_button("Login")
-
-                if login_ok:
-                    user = config.get("credentials", {}).get("usernames", {}).get(u)
-                    if user and Hasher.check_pw(p, user["password"]):
-                        st.session_state["authentication_status"] = True
-                        st.session_state["username"] = u
-                        st.session_state["name"] = user.get("name", u)
-                        st.success("✅ Logged in!")
-                        st.rerun()
-                    else:
-                        st.error("❌ Wrong credentials")
-
-            with tab_signup:
-                with st.form("signup_form", clear_on_submit=True):
-                    new_fullname = st.text_input("Full Name")
-                    new_email = st.text_input("Email")
-                    new_user = st.text_input("Username")
-                    new_pass = st.text_input("Password", type="password")
-                    new_pass2 = st.text_input("Confirm Password", type="password")
-                    signup_ok = st.form_submit_button("Create Account")
-
-                if signup_ok:
-                    if not all([new_fullname, new_email, new_user, new_pass, new_pass2]):
-                        st.error("All fields required!")
-                    elif new_pass != new_pass2:
-                        st.error("Passwords don't match!")
-                    elif new_user in config["credentials"]["usernames"]:
-                        st.error("Username exists!")
-                    else:
-                        hashed = Hasher.hash(new_pass)
-                        config["credentials"]["usernames"][new_user] = {
-                            "name": new_fullname,
-                            "email": new_email,
-                            "password": hashed,
-                        }
-                        save_config(config)
-                        st.success("✅ Account created! Now login.")
-                        st.rerun()
-
+    if authentication_status == False:
+        st.error('❌ Username/password is incorrect')
+        st.stop()
+        
+    elif authentication_status == None:
+        st.warning('👈 Please enter your username and password on the left sidebar')
         st.stop()
 
-    # APP LOGIC (Post-Auth)
-    name = st.session_state["name"]
+    # ✅ SUCCESS - Set session state from authenticator
+    st.session_state["authentication_status"] = True
+    st.session_state["name"] = name
+    st.session_state["username"] = username
 
-    # CSS STYLING (unchanged - truncated for brevity)
+    # Logout button (in sidebar later)
+    authenticator.logout('Logout', 'main')
+
+    # Your existing CSS (PASTE YOUR FULL CSS HERE - same as before)
     st.markdown("""
         <style>
-        /* Your existing CSS here - keep it */
+        /* YOUR EXISTING CSS - paste the full #171717 styling + sidebar buttons here */
+        html, body, #root, .stApp { background-color: #171717 !important; }
+        /* ... rest of your CSS ... */
         </style>
     """, unsafe_allow_html=True)
 
-    # Session init
+    # Session init (unchanged)
     if "session_id" not in st.session_state:
         st.session_state["session_id"] = str(uuid.uuid4())
         st.session_state["messages"] = []
@@ -163,102 +130,79 @@ def run_streamlit_app():
     qp = st.query_params
     show_settings = (qp.get("menu") == "settings")
 
-    # ----------------------------------------------------------------
-    # FIXED SIDEBAR with DEBUG BUTTONS
-    # ----------------------------------------------------------------
+    # ✅ FIXED SIDEBAR WITH DEBUG + PATHS
     with st.sidebar:
-        st.markdown("### 🔍 **Debug RAG Status**")
+        st.markdown("### 🔍 Debug RAG")
         
-        # FIXED: Create dirs if missing
+        # Create dirs
         UPLOADS_DIR.mkdir(parents=True, exist_ok=True)
         CHROMA_DIR.mkdir(parents=True, exist_ok=True)
         
-        # Debug metrics
-        upload_count = len(list(UPLOADS_DIR.glob("*")))
-        chroma_files = len(list(CHROMA_DIR.glob("*")))
-        st.metric("📂 Upload files", upload_count)
-        st.metric("🗄️ Chroma files", chroma_files)
-        st.caption(f"Paths: {UPLOADS_DIR} | {CHROMA_DIR}")
-
-        # ✅ NEW: Test Chroma count button
-        if st.button("🧪 Test Vector Count", key="test_vectors"):
+        st.metric("📂 Uploads", len(list(UPLOADS_DIR.glob("*"))))
+        st.metric("🗄️ Chroma", len(list(CHROMA_DIR.glob("*"))))
+        
+        # ✅ TEST VECTOR COUNT
+        if st.button("🧪 Test Vectors", key="test_vec"):
             try:
                 vsm = VectorStoreManager(persist_dir=str(CHROMA_DIR))
-                count = vsm.collection.count()
-                if count > 0:
-                    st.success(f"✅ **{count:,} vectors ready!** RAG will work.")
-                else:
-                    st.warning("⚠️ **0 vectors** → Click 'Rebuild Index' first.")
-                    st.info("Expected: 5,000-20,000 for 1038 files")
+                count = vsm.count()
+                st.success(f"✅ {count:,} vectors ready!")
             except Exception as e:
-                st.error(f"❌ VectorStore error: {str(e)[:100]}")
+                st.error(f"❌ {str(e)[:80]}")
 
+        # Your chat history buttons (unchanged)
         if st.button("➕ New chat", use_container_width=True, type="secondary"):
-            # ... existing new chat logic (unchanged)
+            # ... existing logic
             pass
 
-        # Chat history list (your existing code - unchanged)
-        st.caption("Your chats")
-        # ... rest of chat list code
+        # Profile footer (your existing)
+        initials = (name[:2].upper() if name else "LG")
+        st.markdown(f"""
+        <div style='position: sticky; bottom: 0; width: 100%; background: #171717; border-top: 1px solid #303030; padding: 10px 12px;'>
+          <div style='display: flex; align-items: center; gap: 10px;'>
+            <div style='width: 36px; height: 36px; border-radius: 8px; background: #7b4ec9; color: #fff; font-weight: 700; font-size: 14px; display: flex; align-items: center; justify-content: center;'>{initials}</div>
+            <div>
+              <div style='color: #fff; font-size: 14px; font-weight: 600;'>{name}</div>
+              <div style='color: #b4b4b4; font-size: 12px;'>Free Plan</div>
+            </div>
+          </div>
+        </div>
+        """, unsafe_allow_html=True)
 
     # MAIN CONTENT
     st.title("⚖️ LegalGPT")
     st.caption("Indian Evidence Act • Production RAG System")
 
-    # FIXED SETTINGS with path enforcement
+    # FIXED SETTINGS
     if show_settings:
-        st.markdown("---")
-        st.subheader("⚙️ **Rebuild Index** (Fixed Paths)")
+        st.subheader("⚙️ Rebuild Index")
+        if st.button("🔄 Rebuild Index", use_container_width=True, type="primary"):
+            with st.spinner("Indexing..."):
+                # ✅ FIXED PATHS
+                docs = load_documents(str(UPLOADS_DIR))
+                chunks = split_documents(docs)
+                vsm = VectorStoreManager(persist_dir=str(CHROMA_DIR))
+                vsm.add_documents(chunks)
+                st.success(f"✅ {vsm.count():,} vectors indexed!")
 
-        if st.button("🔄 **Rebuild Chroma Index**", use_container_width=True, type="primary"):
-            with st.spinner("🔄 Indexing 1038 legal files..."):
-                try:
-                    # ✅ FIXED: Pass explicit paths
-                    docs = load_documents(str(UPLOADS_DIR))  # Pass path!
-                    st.info(f"✅ Loaded {len(docs)} documents")
-                    
-                    chunks = split_documents(docs)
-                    st.info(f"✅ Created {len(chunks)} chunks")
-                    
-                    # ✅ FIXED: Pass persist_dir
-                    vsm = VectorStoreManager(persist_dir=str(CHROMA_DIR))
-                    vsm.add_documents(chunks)
-                    
-                    st.success(f"✅ **COMPLETE!** {vsm.collection.count():,} vectors in {CHROMA_DIR}")
-                    st.balloons()
-                    st.rerun()
-                except Exception as e:
-                    st.error(f"❌ Index error: {str(e)}")
-                    st.error("Check src/ingestion/* accepts path params")
-
-        st.markdown("---")
-
-    # FIXED CHAT with better error handling
+    # CHAT (FIXED)
     for msg in st.session_state["messages"]:
         with st.chat_message(msg["role"]):
             st.markdown(msg["content"])
 
-    if query := st.chat_input("Ask about Evidence Act, CrPC, IPC..."):
+    if query := st.chat_input("Ask about Evidence Act..."):
         st.session_state["messages"].append({"role": "user", "content": query})
         with st.chat_message("user"):
             st.markdown(query)
 
         with st.chat_message("assistant"):
-            placeholder = st.empty()
-            with st.spinner("🔍 Searching legal database..."):
-                try:
-                    # ✅ FIXED: Pass path to pipeline
-                    result = answer_question(query, chroma_dir=str(CHROMA_DIR))
-                    answer = result.get("answer", "No answer generated.")
-                except Exception as e:
-                    answer = f"❌ Pipeline error: {str(e)}"
-                    st.error("Check src/generation/rag_pipeline.py uses chroma_dir")
-            
-            placeholder.markdown(answer + "\n\n📚 *LegalRAG Pipeline*")
-            st.session_state["messages"].append({"role": "assistant", "content": answer})
+            with st.spinner("Searching..."):
+                # ✅ FIXED: Pass chroma_dir
+                result = answer_question(query, chroma_dir=str(CHROMA_DIR))
+                answer = result.get("answer", "")
+            st.markdown(answer)
 
-        # Save history (unchanged)
-        all_history = load_all_history()
+        st.session_state["messages"].append({"role": "assistant", "content": answer})
         all_history[st.session_state["session_id"]] = st.session_state["messages"]
         save_all_history(all_history)
         st.rerun()
