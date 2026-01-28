@@ -286,7 +286,7 @@ def run_streamlit_app():
             c1, c2 = st.columns([1, 0.14], gap="small", vertical_alignment="center")
 
             with c1:
-                t = "secondary" if is_selected else "tertiary"
+                t = "primary" if is_selected else "secondary"
                 if st.button(title, key=f"load_{sid}", use_container_width=True, type=t):
                     current_sid = st.session_state.get("session_id")
                     current_msgs = st.session_state.get("messages", [])
