@@ -7,7 +7,6 @@ loguru
 # ---------------- Core ----------------
 pydantic==2.5.0
 pydantic-settings==2.0.0
-
 # ---------------- LangChain (OLD STABLE STACK) ----------------
 langchain==0.1.16
 langchain-core==0.1.53
