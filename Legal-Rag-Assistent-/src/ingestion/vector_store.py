@@ -5,9 +5,7 @@ import uuid
 
 import chromadb
 from chromadb.config import Settings as ChromaSettings
-
 from config.settings import settings
-from src.providers.factory import ProviderFactory
 import os
 os.environ["OTEL_PYTHON_DISABLED"] = "true"  # Kills telemetry noise
 
