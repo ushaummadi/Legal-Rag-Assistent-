@@ -10,6 +10,7 @@ from langchain_core.documents import Document
 
 from config.settings import settings
 
+
 def extract_text_from_pdf(path: str) -> str:
     doc = fitz.open(path)
     parts = []
@@ -56,11 +57,25 @@ def process_file(path: str) -> Dict[str, Any]:
 
     logger.info(f"Processed {path} (chars={len(text)})")
     return {"text": text, "metadata": meta}
-def load_documents() -> list[Document]:
+
+
+def load_documents(docs_dir: str | Path | None = None) -> list[Document]:
     """
-    Loads all PDFs/DOCX/TXT from settings.DOCS_DIR and returns LangChain Documents.
+    Loads all PDFs/DOCX/TXT from the given folder.
+    If docs_dir is not provided, uses settings.DOCS_DIR as fallback.
+    
+    Args:
+        docs_dir: Path to folder containing documents (data/uploads). If None, uses settings.DOCS_DIR.
+    
+    Returns:
+        List of LangChain Document objects.
     """
-    docs_dir = Path(settings.DOCS_DIR)
+    # ✅ FIX: Accept folder parameter (for Streamlit Cloud)
+    if docs_dir is None:
+        docs_dir = Path(settings.DOCS_DIR)
+    else:
+        docs_dir = Path(docs_dir)
+
     if not docs_dir.exists():
         logger.warning(f"DOCS_DIR not found: {docs_dir}")
         return []
