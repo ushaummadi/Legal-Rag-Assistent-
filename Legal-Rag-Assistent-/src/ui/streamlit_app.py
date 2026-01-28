@@ -17,13 +17,13 @@ import yaml
 from yaml.loader import SafeLoader
 from streamlit_authenticator.utilities.hasher import Hasher
 
-# ✅ FIXED IMPORTS
+# ✅ FIXED IMPORTS (LangChain v1+ 2026)
 from config.settings import settings
 from src.ingestion.document_processor import load_documents, split_documents
 from src.ingestion.vector_store import VectorStoreManager
 from src.generation.rag_pipeline import answer_question
 
-# ✅ MUST BE FIRST STREAMLIT COMMAND (and only once) [web:554]
+# ✅ MUST be called once, and before any other st.* command [web:554]
 st.set_page_config(
     page_title="LegalGPT - Evidence Act RAG",
     page_icon="⚖️",
@@ -68,8 +68,6 @@ def save_config(config):
 
 # --- MAIN APP ---
 def run_streamlit_app():
-    # ❌ DO NOT CALL st.set_page_config() here (already called at top) [web:554]
-
     if not CONFIG_PATH.exists():
         st.error("❌ config.yaml not found!")
         st.stop()
@@ -199,7 +197,10 @@ def run_streamlit_app():
         [data-testid="stSidebar"] div.stButton{ margin-bottom: 0.12rem !important; }
 
         /* Reduce column padding inside sidebar rows */
-        [data-testid="stSidebar"] [data-testid="column"]{ padding-left: 0.05rem !important; padding-right: 0.05rem !important; }
+        [data-testid="stSidebar"] [data-testid="column"]{
+            padding-left: 0.05rem !important;
+            padding-right: 0.05rem !important;
+        }
 
         /* Title buttons base (unselected = transparent via type="tertiary") */
         [data-testid="stSidebar"] button[kind="tertiary"]{
@@ -386,7 +387,7 @@ def run_streamlit_app():
             with st.spinner("🔍 Analyzing legal documents..."):
                 result = answer_question(query)
                 answer = result.get("answer", "")
-            placeholder.markdown(answer + "\\n\\n📚 *Powered by LegalRAG Pipeline*")
+            placeholder.markdown(answer + "\n\n📚 *Powered by LegalRAG Pipeline*")
 
         st.session_state["messages"].append({"role": "assistant", "content": answer})
 
