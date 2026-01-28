@@ -13,18 +13,16 @@ import yaml
 from yaml.loader import SafeLoader
 from streamlit_authenticator.utilities.hasher import Hasher
 
-# -------------------------
-# PATH FIX (IMPORTANT)
-# -------------------------
-BASE_DIR = Path(__file__).resolve().parent  # directory containing this file
+# ✅ Ensure relative files load correctly on Streamlit Cloud
+BASE_DIR = Path(__file__).resolve().parent
 CONFIG_PATH = BASE_DIR / "config.yaml"
 HISTORY_FILE = BASE_DIR / "chat_history.json"
 
-# Ensure imports work when app is in a subfolder
+# ✅ Ensure imports work when app runs from repo root
 if str(BASE_DIR) not in sys.path:
     sys.path.insert(0, str(BASE_DIR))
 
-# ✅ Your project imports
+# ✅ Project imports
 from src.ingestion.document_processor import load_documents, split_documents
 from src.ingestion.vector_store import VectorStoreManager
 from src.generation.rag_pipeline import answer_question
@@ -68,13 +66,6 @@ def run_streamlit_app():
         layout="wide",
         initial_sidebar_state="expanded",
     )
-
-    # Optional debug (uncomment if needed)
-    # st.write("CWD:", os.getcwd())
-    # st.write("BASE_DIR:", str(BASE_DIR))
-    # st.write("Files in BASE_DIR:", os.listdir(BASE_DIR))
-    # st.write("CONFIG_PATH:", str(CONFIG_PATH))
-    # st.write("config exists:", CONFIG_PATH.exists())
 
     if not CONFIG_PATH.exists():
         st.error("❌ config.yaml not found!")
@@ -143,12 +134,12 @@ def run_streamlit_app():
         st.stop()
 
     name = st.session_state["name"]
+    username = st.session_state["username"]
+    authentication_status = st.session_state["authentication_status"]
 
-    # THEME/CSS
     st.markdown(
         """
         <style>
-        /* TOTAL UNIFORM #171717 */
         html, body, #root, .stApp,
         header[data-testid="stHeader"], 
         footer[data-testid="stFooter"],
@@ -160,7 +151,6 @@ def run_streamlit_app():
             background-color: #171717 !important;
         }
         
-        /* Auth tabs styling */
         [data-testid="stSidebar"] .stTabs [data-baseweb="tab-list"] {
             background-color: #212121 !important;
         }
@@ -169,23 +159,20 @@ def run_streamlit_app():
             color: #ececf1 !important;
         }
         
-        /* Chat input */
         .stChatInput > div > div {
             background-color: transparent !important;
         }
         
-        /* Chat areas */
         .stChatMessage, [data-testid="stChatMessage"] {
             background-color: transparent !important;
         }
         
-        /* All elements match */
         [data-testid="metric-container"], 
         [data-testid="stHorizontalBlock"],
         section[data-testid="stSidebar"] div.element-container {
             background-color: #171717 !important;
         }
-        /* Inputs, buttons, expanders */
+
         .stTextInput > div > div > div {
             background-color: #212121 !important;
         }
@@ -193,21 +180,14 @@ def run_streamlit_app():
             background-color: #212121 !important;
             color: #ececf1 !important;
         }
-        /* Remove all borders */
         * {
             border-color: #303030 !important;
         }
 
-        /* Compact sidebar padding */
         section[data-testid="stSidebar"] .block-container{ padding-top: 0.6rem; }
-
-        /* Reduce vertical gap between history rows */
         [data-testid="stSidebar"] div.stButton{ margin-bottom: 0.12rem !important; }
-
-        /* Reduce column padding inside sidebar rows */
         [data-testid="stSidebar"] [data-testid="column"]{ padding-left: 0.05rem !important; padding-right: 0.05rem !important; }
 
-        /* Title buttons base (unselected = transparent via type="tertiary") */
         [data-testid="stSidebar"] button[kind="tertiary"]{
           background: transparent !important;
           border: none !important;
@@ -220,7 +200,6 @@ def run_streamlit_app():
           color: #fff !important;
         }
 
-        /* Selected (type="secondary") -> light box */
         [data-testid="stSidebar"] button[kind="secondary"]{
           background: #353545 !important;
           border: none !important;
@@ -229,7 +208,6 @@ def run_streamlit_app():
           border-radius: 10px !important;
         }
 
-        /* Make (title + X) look like one combined box when selected */
         [data-testid="stSidebar"] div[data-testid="stHorizontalBlock"] > div:first-child button[kind="secondary"]{
           border-top-right-radius: 0px !important;
           border-bottom-right-radius: 0px !important;
@@ -287,7 +265,8 @@ def run_streamlit_app():
             title = get_chat_title(msgs)
             is_selected = (sid == st.session_state["session_id"])
 
-            c1, c2 = st.columns([1, 0.14], gap="xxsmall", vertical_alignment="center")
+            # ✅ FIX HERE: gap="xxsmall" -> gap="small"
+            c1, c2 = st.columns([1, 0.14], gap="small", vertical_alignment="center")
 
             with c1:
                 t = "secondary" if is_selected else "tertiary"
@@ -321,7 +300,6 @@ def run_streamlit_app():
 
         st.markdown("<div style='flex-grow: 1; height: 48vh;'></div>", unsafe_allow_html=True)
 
-        # Profile footer
         initials = (name[:2].upper() if name else "LG")
         st.markdown(
             f"""
@@ -338,7 +316,6 @@ def run_streamlit_app():
             unsafe_allow_html=True,
         )
 
-        # Simple logout
         if st.button("🚪 Log out", use_container_width=True):
             st.session_state["authentication_status"] = None
             st.session_state["username"] = None
@@ -392,7 +369,7 @@ def run_streamlit_app():
             with st.spinner("🔍 Analyzing legal documents..."):
                 result = answer_question(query)
                 answer = result.get("answer", "")
-            placeholder.markdown(answer + "\\n\\n📚 *Powered by LegalRAG Pipeline*")
+            placeholder.markdown(answer + "\n\n📚 *Powered by LegalRAG Pipeline*")
 
         st.session_state["messages"].append({"role": "assistant", "content": answer})
 
