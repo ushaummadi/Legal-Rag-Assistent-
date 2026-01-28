@@ -20,7 +20,6 @@ UPLOADS_DIR = DATA_DIR / "uploads"
 CHROMA_DIR = DATA_DIR / "chroma_db"
 CONFIG_PATH = BASE_DIR / "config.yaml"
 HISTORY_FILE = BASE_DIR / "chat_history.json"
-
 # ✅ Ensure imports work when app runs from repo root
 if str(BASE_DIR) not in sys.path:
     sys.path.insert(0, str(BASE_DIR))
@@ -245,6 +244,9 @@ def run_streamlit_app():
 
     # SIDEBAR (post-auth)
     with st.sidebar:
+        st.caption("Debug")
+        st.write("Uploads exists:", UPLOADS_DIR.exists())
+        st.write([p.name for p in UPLOADS_DIR.glob("*")][:10])
         if st.button("➕ New chat", use_container_width=True, type="secondary"):
             current_sid = st.session_state.get("session_id")
             current_msgs = st.session_state.get("messages", [])
