@@ -4,6 +4,7 @@ from pathlib import Path
 # FIX: Python path FIRST (before other imports)
 ROOT_DIR = Path(__file__).resolve().parents[2]  # Legal-Rag-Assistent-/
 sys.path.insert(0, str(ROOT_DIR))
+
 """
 LegalRAG: Indian Evidence Act RAG Assistant
 Full-Stack Streamlit + Chroma + HuggingFace (2026)
@@ -12,16 +13,23 @@ Full-Stack Streamlit + Chroma + HuggingFace (2026)
 import streamlit as st
 import json
 import uuid
-from pathlib import Path
 import yaml
 from yaml.loader import SafeLoader
 from streamlit_authenticator.utilities.hasher import Hasher
 
-# ✅ FIXED IMPORTS (LangChain v1+ 2026)
+# ✅ FIXED IMPORTS
 from config.settings import settings
 from src.ingestion.document_processor import load_documents, split_documents
 from src.ingestion.vector_store import VectorStoreManager
 from src.generation.rag_pipeline import answer_question
+
+# ✅ MUST BE FIRST STREAMLIT COMMAND (and only once) [web:554]
+st.set_page_config(
+    page_title="LegalGPT - Evidence Act RAG",
+    page_icon="⚖️",
+    layout="wide",
+    initial_sidebar_state="expanded",
+)
 
 # --- PATHS ---
 CONFIG_PATH = Path("config.yaml")
@@ -60,12 +68,7 @@ def save_config(config):
 
 # --- MAIN APP ---
 def run_streamlit_app():
-    st.set_page_config(
-        page_title="LegalGPT - Evidence Act RAG",
-        page_icon="⚖️",
-        layout="wide",
-        initial_sidebar_state="expanded",
-    )
+    # ❌ DO NOT CALL st.set_page_config() here (already called at top) [web:554]
 
     if not CONFIG_PATH.exists():
         st.error("❌ config.yaml not found!")
@@ -134,8 +137,6 @@ def run_streamlit_app():
         st.stop()
 
     name = st.session_state["name"]
-    username = st.session_state["username"]
-    authentication_status = st.session_state["authentication_status"]
 
     # ✅ TOTAL #171717 EVERYWHERE
     st.markdown(
@@ -143,7 +144,7 @@ def run_streamlit_app():
         <style>
         /* TOTAL UNIFORM #171717 */
         html, body, #root, .stApp,
-        header[data-testid="stHeader"], 
+        header[data-testid="stHeader"],
         footer[data-testid="stFooter"],
         section[data-testid="stAppViewContainer"],
         section[data-testid="stChatInputContainer"],
@@ -152,7 +153,7 @@ def run_streamlit_app():
         [data-testid="stSidebar"] {
             background-color: #171717 !important;
         }
-        
+
         /* Auth tabs styling */
         [data-testid="stSidebar"] .stTabs [data-baseweb="tab-list"] {
             background-color: #212121 !important;
@@ -161,19 +162,19 @@ def run_streamlit_app():
             background-color: transparent !important;
             color: #ececf1 !important;
         }
-        
+
         /* Chat input */
         .stChatInput > div > div {
             background-color: transparent !important;
         }
-        
+
         /* Chat areas */
         .stChatMessage, [data-testid="stChatMessage"] {
             background-color: transparent !important;
         }
-        
+
         /* All elements match */
-        [data-testid="metric-container"], 
+        [data-testid="metric-container"],
         [data-testid="stHorizontalBlock"],
         section[data-testid="stSidebar"] div.element-container {
             background-color: #171717 !important;
@@ -345,7 +346,7 @@ def run_streamlit_app():
     if show_settings:
         st.markdown("---")
         st.subheader("⚙️ Settings")
-        
+
         col_close, _ = st.columns([0.1, 1])
         with col_close:
             if st.button("✖"):
