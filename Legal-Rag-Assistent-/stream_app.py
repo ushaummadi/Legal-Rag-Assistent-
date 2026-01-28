@@ -318,7 +318,12 @@ def run_streamlit_app():
             title = get_chat_title(msgs)
             is_selected = (sid == st.session_state["session_id"])
 
-            c1, c2 = st.columns([1, 0.14], gap="xxsmall", vertical_alignment="center")
+            # ✅ Version-safe columns (works across many Streamlit versions)
+            try:
+                c1, c2 = st.columns([1, 0.14], gap="small", vertical_alignment="center")
+            except Exception:
+                c1, c2 = st.columns([1, 0.14])
+
 
             with c1:
                 t = "secondary" if is_selected else "tertiary"
