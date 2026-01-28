@@ -283,7 +283,7 @@ def run_streamlit_app():
             title = get_chat_title(msgs)
             is_selected = (sid == st.session_state["session_id"])
 
-            c1, c2 = st.columns([1, 0.14], gap="xxsmall", vertical_alignment="center")
+            c1, c2 = st.columns([1, 0.14], gap="small", vertical_alignment="center")
 
             with c1:
                 t = "secondary" if is_selected else "tertiary"
