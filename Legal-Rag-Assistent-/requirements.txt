@@ -14,7 +14,7 @@ chromadb==0.4.24
 huggingface-hub==0.23.5
 sentence-transformers==3.0.1
 pypdf==5.1.0
-pandas==2.2.2
+pandas==2.1.4
 numpy==1.26.4
 tiktoken==0.6.0
 PyMuPDF==1.24.10
