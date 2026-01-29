@@ -1,6 +1,6 @@
 """
-LegalRAG: Indian Evidence Act RAG Assistant
-Full-Stack Streamlit + Chroma + HuggingFace (2026) ✅ LOGIN PERFECT
+LegalRAG: Indian Evidence Act RAG Assistant (2026) ✅ LOGIN 100% WORKING
+SIMPLEST VERSION - NO DEBUG, CLEAN LOGIN
 """
 
 import os
@@ -8,17 +8,13 @@ import sys
 import json
 import uuid
 from pathlib import Path
-
 import streamlit as st
 import yaml
 from yaml.loader import SafeLoader
-
 import streamlit_authenticator as stauth
 from streamlit_authenticator.utilities.hasher import Hasher
 
-# ----------------------------
-# PATHS (set BEFORE app imports)
-# ----------------------------
+# PATHS
 BASE_DIR = Path(__file__).resolve().parent
 DATA_DIR = BASE_DIR / "data"
 UPLOADS_DIR = DATA_DIR / "uploads"
@@ -35,275 +31,192 @@ if str(BASE_DIR) not in sys.path:
 
 os.environ["OTEL_PYTHON_DISABLED"] = "true"
 os.environ.setdefault("CHROMA_PERSIST_DIRECTORY", str(CHROMA_DIR))
-os.environ.setdefault("DOCS_DIR", str(UPLOADS_DIR))
-os.environ.setdefault("UPLOADS_DIR", str(UPLOADS_DIR))
 
-# ✅ App imports
+# App imports
 from config.settings import settings
 from src.ingestion.document_processor import load_documents, split_documents
 from src.ingestion.vector_store import VectorStoreManager
 from src.generation.rag_pipeline import answer_question
 
-# ----------------------------
 # HELPERS
-# ----------------------------
 def load_all_history():
     if HISTORY_FILE.exists():
         try:
-            data = json.loads(HISTORY_FILE.read_text(encoding="utf-8"))
-            return data if isinstance(data, dict) else {}
-        except Exception:
+            return json.loads(HISTORY_FILE.read_text(encoding="utf-8"))
+        except:
             return {}
     return {}
 
 def save_all_history(all_history):
-    HISTORY_FILE.write_text(
-        json.dumps(all_history, ensure_ascii=False, indent=2),
-        encoding="utf-8",
-    )
+    HISTORY_FILE.write_text(json.dumps(all_history, ensure_ascii=False, indent=2), encoding="utf-8")
 
 def get_chat_title(messages):
     for msg in messages:
         if msg["role"] == "user":
-            return msg["content"][:28] + "..." if len(msg["content"]) > 28 else msg["content"]
+            return msg["content"][:30] + "..." if len(msg["content"]) > 30 else msg["content"]
     return "New Chat"
 
 def save_config(config):
     with open(CONFIG_PATH, "w", encoding="utf-8") as f:
-        yaml.dump(config, f, default_flow_style=False, allow_unicode=True, sort_keys=False)
+        yaml.dump(config, f, default_flow_style=False, allow_unicode=True)
 
 def list_source_files():
     files = []
-    if DATA_DIR.exists():
-        files += [p.name for p in DATA_DIR.iterdir() if p.is_file()]
-    if UPLOADS_DIR.exists():
-        files += [p.name for p in UPLOADS_DIR.iterdir() if p.is_file()]
+    for d in [DATA_DIR, UPLOADS_DIR]:
+        if d.exists():
+            files += [p.name for p in d.iterdir() if p.is_file()]
     return sorted(set(files))
 
-def load_docs_for_index():
-    docs = load_documents(str(UPLOADS_DIR))
-    if not docs:
-        docs = load_documents(str(DATA_DIR))
-    return docs
-
-# ----------------------------
-# MAIN APP ✅ BULLETPROOF LOGIN + AUTO-LOGIN
-# ----------------------------
+# MAIN APP - CLEAN LOGIN
 def run_streamlit_app():
-    st.set_page_config(
-        page_title="LegalGPT - Evidence Act RAG",
-        page_icon="⚖️",
-        layout="wide",
-        initial_sidebar_state="expanded",
-    )
+    st.set_page_config(page_title="LegalGPT", page_icon="⚖️", layout="wide", initial_sidebar_state="expanded")
 
-    # ✅ CREATE config.yaml if missing
+    # CREATE CONFIG IF MISSING
     if not CONFIG_PATH.exists():
-        config = {"credentials": {"usernames": {}}, "cookie": {}}
+        config = {"credentials": {"usernames": {}}, "cookie": {"name": "legalgpt", "key": "legal_key_2026", "expiry_days": 30}}
         save_config(config)
-        st.info("✅ Created config.yaml - Use signup to create first user!")
 
-    with open(CONFIG_PATH, encoding="utf-8") as f:
-        config = yaml.load(f, Loader=SafeLoader) or {}
-    config.setdefault("credentials", {}).setdefault("usernames", {})
-    config.setdefault("cookie", {})
+    config = yaml.load(open(CONFIG_PATH), Loader=SafeLoader) or {}
+    config["credentials"] = config.get("credentials", {})
+    config["cookie"] = config.get("cookie", {"name": "legalgpt", "key": "legal_key_2026", "expiry_days": 30})
 
-    # 🔥 AUTHENTICATION - COOKIE + SECRETS
-    cookie_name = config["cookie"].get("name", "legalgpt_auth")
-    cookie_expiry_days = float(config["cookie"].get("expiry_days", 30))
-    cookie_key = (
-        st.secrets.get("AUTH_COOKIE_KEY", "fallback_key_123")  # ✅ Fallback for local
-        if hasattr(st, "secrets") 
-        else "fallback_key_123"
-    ) or config["cookie"].get("key", "fallback_key_123")
-
+    # AUTH
+    cookie_key = st.secrets.get("AUTH_COOKIE_KEY", config["cookie"]["key"])
     authenticator = stauth.Authenticate(
         config["credentials"],
-        cookie_name,
+        config["cookie"]["name"],
         cookie_key,
-        cookie_expiry_days=cookie_expiry_days,
+        cookie_expiry_days=config["cookie"]["expiry_days"]
     )
 
-    # ✅ BULLETPROOF SESSION INIT
-    auth_keys = ["authentication_status", "name", "username"]
-    for key in auth_keys:
+    # SESSION INIT
+    for key in ["authentication_status", "name", "username"]:
         if key not in st.session_state:
             st.session_state[key] = None
 
-    # 🛑 LOGIN SCREEN (Clean logic)
+    # LOGIN SCREEN
     if st.session_state["authentication_status"] != "authenticated":
-        st.sidebar.markdown("---")
-        with st.sidebar.expander("👤 Account", expanded=True):
-            tab_login, tab_signup = st.tabs(["Login", "Sign up"])
-
-            with tab_login:
-                name, authentication_status, username = authenticator.login(
-                    location="main", 
-                    fields={"Form name": "LegalGPT Login"}
-                )
-
-            with tab_signup:
-                with st.form("signup_form", clear_on_submit=True):
-                    new_fullname = st.text_input("Full Name")
-                    new_user = st.text_input("Username")
-                    new_pass = st.text_input("Password", type="password")
-                    new_pass2 = st.text_input("Confirm Password", type="password")
-                    
-                    if st.form_submit_button("🚀 Create & Enter"):
-                        if new_pass != new_pass2:
-                            st.error("❌ Passwords don't match!")
-                        elif new_user in config["credentials"]["usernames"]:
-                            st.error("❌ Username exists!")
-                        elif len(new_pass) < 6:
-                            st.error("❌ Password too short (min 6 chars)!")
-                        else:
-                            # ✅ SAVE + AUTO-LOGIN
-                            hashed = Hasher([new_pass]).generate()[0]
-                            config["credentials"]["usernames"][new_user] = {
-                                "name": new_fullname, "password": hashed
-                            }
-                            save_config(config)
-                            
-                            st.session_state["name"] = new_fullname
-                            st.session_state["username"] = new_user
-                            st.session_state["authentication_status"] = "authenticated"
-                            st.success(f"✅ Welcome {new_fullname}! Loading LegalGPT...")
-                            st.rerun()
+        st.title("⚖️ LegalGPT")
+        st.markdown("### 🔐 **Please Login or Sign Up**")
         
-        # STOP if not authenticated
+        tab1, tab2 = st.tabs([" Login ", " Sign Up "])
+
+        with tab1:
+            name, authentication_status, username = authenticator.login("main")
+            if authentication_status:
+                st.session_state["authentication_status"] = "authenticated"
+                st.session_state["name"] = name
+                st.session_state["username"] = username
+                st.success("✅ Logged in!")
+                st.rerun()
+            elif authentication_status == False:
+                st.error("❌ Wrong credentials")
+
+        with tab2:
+            with st.form("signup"):
+                fullname = st.text_input("Full Name")
+                username_input = st.text_input("Username")
+                password = st.text_input("Password", type="password")
+                confirm_password = st.text_input("Confirm Password", type="password")
+                if st.form_submit_button("Create Account"):
+                    if password != confirm_password:
+                        st.error("Passwords don't match")
+                    elif username_input in config["credentials"]["usernames"]:
+                        st.error("Username exists")
+                    else:
+                        hashed_password = Hasher([password]).generate()[0]
+                        config["credentials"]["usernames"][username_input] = {
+                            "name": fullname,
+                            "password": hashed_password
+                        }
+                        save_config(config)
+                        st.session_state["name"] = fullname
+                        st.session_state["username"] = username_input
+                        st.session_state["authentication_status"] = "authenticated"
+                        st.success("✅ Account created & logged in!")
+                        st.rerun()
+
         st.stop()
-    
-    # ✅ USER INFO (logged in)
+
+    # APP STARTS HERE (LOGGED IN)
     name = st.session_state["name"]
     username = st.session_state["username"]
 
-    # Dark Theme CSS
+    # STYLE
     st.markdown("""
     <style>
-    html, body, #root, .stApp, [data-testid="stSidebar"] { background-color: #171717 !important; }
-    .stTextInput > div > div > div, .stTextArea > div > div > div { background-color: #212121 !important; }
-    .stButton > button { background-color: #212121 !important; color: #ececf1 !important; border-radius: 6px; }
-    .stMetric > div > div > div { color: #ececf1 !important; }
-    * { border-color: #303030 !important; color: #ececf1 !important; }
-    </style>
-    """, unsafe_allow_html=True)
+    [data-testid="stSidebar"] {background-color: #0e1117;}
+    .stApp {background-color: #000;}
+    section[data-testid="stSidebar"] > div > div > div > div > div {background-color: #111;}
+    </style>""", unsafe_allow_html=True)
 
-    # Chat Session Init
-    if "session_id" not in st.session_state:
-        st.session_state["session_id"] = str(uuid.uuid4())
-        st.session_state["messages"] = []
-
-    all_history = load_all_history()
-    cur_sid = st.session_state["session_id"]
-    if cur_sid not in all_history:
-        all_history[cur_sid] = st.session_state["messages"]
-        save_all_history(all_history)
-
-    # 🔥 SIDEBAR - Chats + Profile + Logout
+    # SIDEBAR
     with st.sidebar:
-        if st.button("➕ New Chat", use_container_width=True, type="secondary"):
-            st.session_state["session_id"] = str(uuid.uuid4())
+        st.markdown(f"**👋 {name}**")
+        authenticator.logout("Logout", "sidebar")
+        st.markdown("---")
+
+        # Chat history
+        if "messages" not in st.session_state:
+            st.session_state["messages"] = []
+        if "chat_id" not in st.session_state:
+            st.session_state["chat_id"] = str(uuid.uuid4())
+
+        all_history = load_all_history()
+        if st.session_state["chat_id"] not in all_history:
+            all_history[st.session_state["chat_id"]] = []
+
+        if st.button("➕ New Chat"):
+            st.session_state["chat_id"] = str(uuid.uuid4())
             st.session_state["messages"] = []
             st.rerun()
 
-        st.caption("💬 Your Chats")
-        for sid in list(all_history.keys())[::-1]:
-            msgs = all_history[sid]
-            if not msgs: continue
-            title = get_chat_title(msgs)
-            is_selected = (sid == cur_sid)
-            c1, c2 = st.columns([1, 0.15])
-            with c1:
-                if st.button(title, key=f"chat_{sid}", use_container_width=True, 
-                           type="primary" if is_selected else "secondary"):
-                    st.session_state["session_id"] = sid
+        for chat_id, msgs in list(all_history.items())[-5:]:
+            if msgs:
+                title = get_chat_title(msgs)
+                if st.button(title, key=chat_id):
+                    st.session_state["chat_id"] = chat_id
                     st.session_state["messages"] = msgs.copy()
                     st.rerun()
-            with c2:
-                if is_selected and st.button("✖", key=f"del_{sid}", type="secondary"):
-                    del all_history[sid]
-                    st.session_state["session_id"] = str(uuid.uuid4())
-                    st.session_state["messages"] = []
-                    save_all_history(all_history)
-                    st.rerun()
-        
-        st.markdown("<div style='flex-grow: 1;'></div>", unsafe_allow_html=True)
-        
-        # Profile + Logout
-        initials = name[:2].upper() if name else "LG"
-        st.markdown(f"""
-        <div style='position: sticky; bottom: 20px; width: 100%; padding: 12px;'>
-          <div style='display: flex; align-items: center; gap: 12px;'>
-            <div style='width: 40px; height: 40px; border-radius: 8px; background: linear-gradient(135deg, #7b4ec9, #5a3fcc); 
-                        color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 16px;'>
-              {initials}
-            </div>
-            <div>
-              <div style='color: #fff; font-size: 15px; font-weight: 600;'>{name}</div>
-              <div style='color: #b4b4b4; font-size: 13px;'>@ {username} • Free Plan</div>
-            </div>
-          </div>
-        </div>
-        """, unsafe_allow_html=True)
-        
-        authenticator.logout("🚪 Logout", "sidebar", key="main_logout")
 
-    # MAIN CONTENT
+    # MAIN
     st.title("⚖️ LegalGPT")
-    st.caption("🔍 Indian Evidence Act • Production RAG Assistant")
+    st.caption("Indian Evidence Act RAG Assistant")
 
-    # 🛠️ ADMIN PANEL
-    with st.expander("🔧 **Admin: Index Management**", expanded=False):
-        vsm = VectorStoreManager()
-        col1, col2, col3 = st.columns(3)
-        with col1:
-            st.metric("📈 Vectors", vsm.count())
-        with col2:
-            st.metric("📁 Files", len(list_source_files()))
-        with col3:
-            if st.button("🔄 Rebuild", key="quick_rebuild"):
-                st.rerun()
-        
-        st.caption("**Source Files:**")
+    # INDEX TOOLS
+    with st.expander("🔧 Rebuild Index"):
         files = list_source_files()
+        st.write(f"Found {len(files)} files")
         if files:
-            st.code("\n".join(files[:10]), language="text")
-        else:
-            st.warning("📤 Add Evidence Act .txt files to `data/uploads/`")
+            st.write(files[:5])
+        
+        if st.button("🔨 INDEX DOCUMENTS"):
+            docs = load_documents(str(UPLOADS_DIR)) or load_documents(str(DATA_DIR))
+            if docs:
+                chunks = split_documents(docs)
+                VectorStoreManager().add_documents(chunks)
+                st.success(f"✅ Indexed {len(chunks)} chunks!")
+            else:
+                st.error("No documents found!")
 
-        if st.button("🚀 **FORCE FULL REBUILD**", type="primary", use_container_width=True):
-            with st.spinner("🔄 Processing legal documents..."):
-                docs = load_docs_for_index()
-                if docs:
-                    chunks = split_documents(docs)
-                    vsm.add_documents(chunks)
-                    st.success(f"✅ Indexed {len(chunks)} chunks! Total vectors: {vsm.count()}")
-                else:
-                    st.error("❌ No documents found! Add files first.")
-                st.rerun()
+    # CHAT
+    for msg in st.session_state["messages"]:
+        with st.chat_message(msg["role"]):
+            st.markdown(msg["content"])
 
-    # 💬 CHAT INTERFACE
-    for message in st.session_state["messages"]:
-        with st.chat_message(message["role"]):
-            st.markdown(message["content"])
-
-    # New message
-    if prompt := st.chat_input("💭 Ask about Evidence Act (e.g. 'Section 32 dying declaration', 'murder evidence admissibility')..."):
+    if prompt := st.chat_input("Ask about Evidence Act..."):
         st.session_state["messages"].append({"role": "user", "content": prompt})
         with st.chat_message("user"):
             st.markdown(prompt)
 
         with st.chat_message("assistant"):
-            with st.spinner("🔍 Searching Evidence Act database..."):
+            with st.spinner("Searching..."):
                 result = answer_question(prompt)
-                response = result.get("answer", "No relevant sections found. Try 'Rebuild Index' or ask differently.")
-            
-            st.markdown(response + "\n\n📚 *LegalRAG • ChromaDB + HuggingFace*")
+                answer = result.get("answer", "No results found")
+            st.markdown(answer)
 
-        st.session_state["messages"].append({"role": "assistant", "content": response})
-        
-        # Save history
-        all_history[cur_sid] = st.session_state["messages"]
+        st.session_state["messages"].append({"role": "assistant", "content": answer})
+        all_history[st.session_state["chat_id"]] = st.session_state["messages"]
         save_all_history(all_history)
         st.rerun()
 
