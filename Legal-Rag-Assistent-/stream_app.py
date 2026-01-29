@@ -136,28 +136,28 @@ def run_streamlit_app():
     )
 
     # Sidebar login + signup
-    with st.sidebar:
-        st.markdown("---")
-        with st.expander("👤 Account", expanded=True):
+    if st.session_state["authentication_status"] is not True:
+        st.sidebar.markdown("---")
+        with st.sidebar.expander("👤 Account", expanded=True):
             tab_login, tab_signup = st.tabs(["Login", "Sign up"])
 
             with tab_login:
-                name, authentication_status, username = authenticator.login("main")
+                st.info("👋 Welcome to LegalGPT")
+                with st.form("login_form", clear_on_submit=False):
+                    u = st.text_input("Username")
+                    p = st.text_input("Password", type="password")
+                    login_ok = st.form_submit_button("Login")
 
-                if authentication_status is False:
-                    st.error("❌ Wrong credentials")
-                    st.stop()
-
-                if authentication_status is None:
-                    st.info("Please login to continue.")
-                    st.stop()
-
-                # Logged in
-                st.session_state["authentication_status"] = True
-                st.session_state["username"] = username
-                st.session_state["name"] = name
-
-                authenticator.logout("🚪 Log out", "main")
+                if login_ok:
+                    user = config.get("credentials", {}).get("usernames", {}).get(u)
+                    if user and Hasher.check_pw(p, user["password"]):
+                        st.session_state["authentication_status"] = True
+                        st.session_state["username"] = u
+                        st.session_state["name"] = user.get("name", u)
+                        st.success("✅ Logged in!")
+                        st.rerun()
+                    else:
+                        st.error("❌ Wrong credentials")
 
             with tab_signup:
                 with st.form("signup_form", clear_on_submit=True):
@@ -186,7 +186,11 @@ def run_streamlit_app():
                         st.success("✅ Account created! Now login.")
                         st.rerun()
 
-    name = st.session_state.get("name", "User")
+        st.stop()
+
+    name = st.session_state["name"]
+    username = st.session_state["username"]
+    authentication_status = st.session_state["authentication_status"]
 
     # Theme CSS (your original)
     st.markdown(
