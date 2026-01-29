@@ -14,29 +14,34 @@ SYSTEM_RULES = """You are LegalGPT - Indian Evidence Act expert.
 2. If the context provided below is empty or irrelevant, you MUST say exactly:
    "**No relevant sections found in indexed documents.**"
 3. Do NOT make up answers. Do NOT use outside knowledge.
-4. Do NOT say "Based on the provided context" - just give the answer directly.
+4. Do NOT mention source filenames or say "Based on the provided context" - just give the answer directly.
 
 Format:
-**Section X**: [Exact Quote]
-[Source: File]
+**Section X**: [Direct Answer/Quote]
 """
 
 def format_context(docs: List[Document]) -> str:
-    """Format with score filtering"""
+    """Format with score filtering and clean labels"""
     parts = []
-    relevant_count = 0
+    relevant_count = 0  # ✅ Fixed NameError by initializing here
     
     for d in docs:
         meta = d.metadata
         score = meta.get("score", 0)
         
-        # 🛑 SCORE FILTER: Ignore weak matches (Adjust 4.0 as needed)
+        # 🛑 SCORE FILTER: Ignore weak matches
         if score < 4.0:
             continue
             
         relevant_count += 1
-        src = meta.get("source", "unknown")
-        chunk = meta.get("chunk", "?")
+        
+        # Extract metadata safely
+        section_info = meta.get("section", "N/A")
+        
+        # ✅ Fixed NameError by defining display_label inside the loop
+        display_label = f"Section {section_info}" if section_info != "N/A" else "Legal Document"
+        
+        # Append without filename to keep context clean
         parts.append(f"[{display_label} | score:{score}] {d.page_content}")
     
     if relevant_count == 0:
@@ -67,6 +72,7 @@ def answer_question(question: str) -> dict:
     provider = ProviderFactory.get_provider()
     llm = provider.llm()
 
+    # Retrieve relevant documents
     docs = retriever.get_relevant_documents(question)
     
     # Apply filtering inside format_context
@@ -74,7 +80,7 @@ def answer_question(question: str) -> dict:
     
     # 🛑 If context is empty after filtering, stop here.
     if not context.strip():
-        fake_answer = "**No relevant sections found in indexed documents.** (Low similarity score)"
+        fake_answer = "**No relevant sections found in indexed documents.**"
         chat_history_store.append({"role": "user", "content": question})
         chat_history_store.append({"role": "assistant", "content": fake_answer})
         return {
@@ -100,12 +106,15 @@ ANSWER:"""
         logger.error(f"LLM error: {e}")
         answer_text = "Error generating response. Check embeddings/LLM."
     
+    # Clean up any residual LLM filler like "Based on the context..."
+    answer_text = re.sub(r"^(Based on the provided context|According to the documents),?\s*", "", answer_text, flags=re.IGNORECASE)
+    
     chat_history_store.append({"role": "user", "content": question})
     chat_history_store.append({"role": "assistant", "content": answer_text})
     
     return {
         "answer": answer_text,
-        "sources": [{"source": d.metadata.get("source"), "score": d.metadata.get("score", 0)} for d in docs],
+        "sources": [{"source": d.metadata.get("source"), "score": d.metadata.get("score", 0)} for d in docs if d.metadata.get("score", 0) >= 4.0],
         "doc_count": len(docs),
         "chat_history_len": len(chat_history_store) 
     }
