@@ -57,8 +57,6 @@ Answer + Sources
 
 🏗️ Project Structure (Production-Grade)
 
-⚠️ Important: This tree renders correctly because it’s inside a code block.
-
 legalrag/
 │
 ├── config/
