@@ -295,8 +295,6 @@ def run_streamlit_app():
 
     # SIDEBAR: chats list (your original)
     with st.sidebar:
-        # Logout button (cookie clear)
-        authenticator.logout("🚪 Log out", "sidebar")
 
         if st.button("➕ New chat", use_container_width=True, type="secondary"):
             current_sid = st.session_state.get("session_id")
@@ -369,7 +367,7 @@ def run_streamlit_app():
             """,
             unsafe_allow_html=True,
         )
-
+        authenticator.logout(" Log out", "sidebar")
     # MAIN
     st.title("⚖️ LegalGPT")
     st.caption("Indian Evidence Act • Production RAG System")
