@@ -12,6 +12,7 @@ from pathlib import Path
 import streamlit as st
 import yaml
 from yaml.loader import SafeLoader
+import streamlit_authenticator as stauth
 from streamlit_authenticator.utilities.hasher import Hasher
 
 # ----------------------------
@@ -115,8 +116,52 @@ def run_streamlit_app():
 
     with open(CONFIG_PATH, encoding="utf-8") as f:
         config = yaml.load(f, Loader=SafeLoader)
-
     config.setdefault("credentials", {}).setdefault("usernames", {})
+    config.setdefault("cookie", {})
+
+    # Cookie config (keep stable across redeploys)
+    cookie_name = config["cookie"].get("name", "legalgpt_auth")
+    cookie_expiry_days = float(config["cookie"].get("expiry_days", 30))
+    cookie_key = (
+        st.secrets.get("AUTH_COOKIE_KEY", "")
+        if hasattr(st, "secrets")
+        else ""
+    ) or config["cookie"].get("key", "")
+
+    if not cookie_key:
+        st.error("❌ Missing cookie key. Add AUTH_COOKIE_KEY in Streamlit Cloud → Secrets.")
+        st.stop()
+
+    authenticator = stauth.Authenticate(
+        config["credentials"],
+        cookie_name,
+        cookie_key,
+        cookie_expiry_days=cookie_expiry_days,
+    )
+
+    # Sidebar login + signup
+    with st.sidebar:
+        st.markdown("---")
+        with st.expander("👤 Account", expanded=True):
+            tab_login, tab_signup = st.tabs(["Login", "Sign up"])
+
+            with tab_login:
+                name, authentication_status, username = authenticator.login("Login", "main")
+
+                if authentication_status is False:
+                    st.error("❌ Wrong credentials")
+                    st.stop()
+
+                if authentication_status is None:
+                    st.info("Please login to continue.")
+                    st.stop()
+
+                # Logged in
+                st.session_state["authentication_status"] = True
+                st.session_state["username"] = username
+                st.session_state["name"] = name
+
+                authenticator.logout("🚪 Log out", "main")    
 
     # Auth session init
     st.session_state.setdefault("authentication_status", None)
