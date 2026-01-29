@@ -137,7 +137,7 @@ def run_streamlit_app():
     # 1. Check cookie first (silent)
     try:
         # 'unrendered' checks cookie without showing UI
-        name, authentication_status, username = authenticator.login(location="unrendered")
+        name, authentication_status, username = authenticator.login(location="sidebar")
     except Exception:
         authentication_status = None
 
