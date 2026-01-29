@@ -1,6 +1,6 @@
 """
 LegalRAG: Indian Evidence Act RAG Assistant
-Full-Stack Streamlit + Chroma + HuggingFace (2026) ✅ FIXED
+Full-Stack Streamlit + Chroma + HuggingFace (2026) ✅ LOGIN FIXED
 """
 
 import os
@@ -87,7 +87,7 @@ def load_docs_for_index():
     return docs
 
 # ----------------------------
-# MAIN APP ✅ BULLETPROOF AUTH + LOGOUT
+# MAIN APP ✅ BULLETPROOF AUTH + FORCE LOGIN FIX
 # ----------------------------
 def run_streamlit_app():
     st.set_page_config(
@@ -98,7 +98,7 @@ def run_streamlit_app():
     )
 
     if not CONFIG_PATH.exists():
-        st.error("❌ config.yaml not found!")
+        st.error("❌ config.yaml not found! Create it or use signup.")
         st.stop()
 
     with open(CONFIG_PATH, encoding="utf-8") as f:
@@ -107,8 +107,8 @@ def run_streamlit_app():
     config.setdefault("credentials", {}).setdefault("usernames", {})
     config.setdefault("cookie", {})
 
-    # ----------------------------
-    # 🔥 BULLETPROOF AUTHENTICATION
+    # ----------------------------  
+    # 🔥 BULLETPROOF AUTHENTICATION + FORCE LOGIN DEBUG
     # ----------------------------
     cookie_name = config["cookie"].get("name", "legalgpt_auth")
     cookie_expiry_days = float(config["cookie"].get("expiry_days", 30))
@@ -119,7 +119,7 @@ def run_streamlit_app():
     ) or config["cookie"].get("key", "")
 
     if not cookie_key:
-        st.error("❌ Missing cookie key. Add AUTH_COOKIE_KEY in Streamlit Cloud → Secrets.")
+        st.error("❌ Missing AUTH_COOKIE_KEY in Streamlit Cloud Secrets!")
         st.stop()
 
     authenticator = stauth.Authenticate(
@@ -129,13 +129,25 @@ def run_streamlit_app():
         cookie_expiry_days=cookie_expiry_days,
     )
 
-    # ✅ INITIALIZE ALL SESSION KEYS
-    for key in ["authentication_status", "name", "username"]:
+    # ✅ FORCE DEBUG MODE - REMOVE AFTER TESTING
+    SHOW_FORCE_LOGIN = st.sidebar.checkbox("💥 DEBUG: Force Login Screen", key="debug_force")
+
+    # ✅ INITIALIZE ALL SESSION KEYS PROPERLY
+    auth_keys = ["authentication_status", "name", "username"]
+    for key in auth_keys:
         if key not in st.session_state:
             st.session_state[key] = None
 
-    # 🛑 LOGIN SCREEN (if not authenticated)
-    if st.session_state["authentication_status"] != "authenticated":
+    # 🔥 FORCE RESET BUTTON (Always available in sidebar)
+    with st.sidebar:
+        if st.button("🔄 RESET SESSION", key="reset_session", help="Force login screen"):
+            for key in list(st.session_state.keys()):
+                del st.session_state[key]
+            st.session_state["authentication_status"] = None
+            st.rerun()
+
+    # 🛑 LOGIN SCREEN (FORCE IF DEBUG OR NOT AUTH)
+    if st.session_state["authentication_status"] != "authenticated" or SHOW_FORCE_LOGIN:
         st.sidebar.markdown("---")
         with st.sidebar.expander("👤 Account", expanded=True):
             tab_login, tab_signup = st.tabs(["Login", "Sign up"])
@@ -145,6 +157,11 @@ def run_streamlit_app():
                     location="main", 
                     fields={"Form name": "Login"}
                 )
+                if authentication_status:
+                    st.session_state["authentication_status"] = authentication_status
+                    st.session_state["name"] = name
+                    st.session_state["username"] = username
+                    st.rerun()
 
             with tab_signup:
                 with st.form("signup_form", clear_on_submit=True):
@@ -159,29 +176,36 @@ def run_streamlit_app():
                         elif new_user in config["credentials"]["usernames"]:
                             st.error("❌ Username exists!")
                         else:
-                            # ✅ SAVE USER + AUTO-LOGIN
+                            # ✅ CORRECT HASHER SYNTAX
                             hashed = Hasher([new_pass]).generate()[0]
                             config["credentials"]["usernames"][new_user] = {
                                 "name": new_fullname, "password": hashed
                             }
                             save_config(config)
                             
+                            # ✅ AUTO-LOGIN IMMEDIATELY
                             st.session_state["name"] = new_fullname
                             st.session_state["username"] = new_user
                             st.session_state["authentication_status"] = "authenticated"
                             
                             st.success(f"✅ Welcome {new_fullname}! 👋")
                             st.rerun()
-            
-            # STOP if not authenticated
-            if st.session_state["authentication_status"] != "authenticated":
-                st.stop()
+        
+        # DEBUG INFO
+        with st.sidebar.expander("🐛 Debug Info"):
+            st.write(f"Status: {st.session_state.get('authentication_status')}")
+            st.write(f"Name: {st.session_state.get('name')}")
+            st.write(f"Cookie Key: {'✅' if cookie_key else '❌'}")
+        
+        # STOP if still not authenticated
+        if st.session_state["authentication_status"] != "authenticated":
+            st.stop()
     
     # ✅ EXTRACT USER INFO (logged in)
     name = st.session_state["name"]
     username = st.session_state["username"]
 
-    # CSS Styles
+    # CSS Styles - Dark Theme
     st.markdown("""
     <style>
     html, body, #root, .stApp, [data-testid="stSidebar"] { background-color: #171717 !important; }
@@ -196,14 +220,14 @@ def run_streamlit_app():
         st.session_state["session_id"] = str(uuid.uuid4())
         st.session_state["messages"] = []
 
-    # History Load
+    # History Load/Save
     all_history = load_all_history()
     cur_sid = st.session_state["session_id"]
     if cur_sid not in all_history:
         all_history[cur_sid] = st.session_state["messages"]
         save_all_history(all_history)
 
-    # 🔥 SIDEBAR WITH BULLETPROOF LOGOUT
+    # 🔥 SIDEBAR - Chats + Profile + Logout
     with st.sidebar:
         if st.button("➕ New chat", use_container_width=True, type="secondary"):
             st.session_state["session_id"] = str(uuid.uuid4())
@@ -233,11 +257,11 @@ def run_streamlit_app():
         
         st.markdown("<div style='flex-grow: 1; height: 50vh;'></div>", unsafe_allow_html=True)
         
-        # 🔥 CUSTOM LOGOUT BUTTON (No Crash!)
+        # 🔥 SAFE LOGOUT BUTTON
         if st.button("🚪 Logout", use_container_width=True, type="secondary"):
-            # Clear EVERYTHING safely
-            for key in list(st.session_state.keys()):
-                del st.session_state[key]
+            for key in auth_keys:
+                if key in st.session_state:
+                    del st.session_state[key]
             st.session_state["authentication_status"] = None
             st.rerun()
         
@@ -274,7 +298,7 @@ def run_streamlit_app():
             if files:
                 st.code("\n".join(files[:5]) + ("..." if len(files)>5 else ""), language="text")
             else:
-                st.error("❌ No files in data/uploads/")
+                st.warning("⚠️ Add .txt files to data/uploads/")
 
         if st.button("🔄 **FORCE REBUILD INDEX NOW**", type="primary", use_container_width=True):
             with st.spinner("⏳ Indexing legal files..."):
@@ -301,7 +325,7 @@ def run_streamlit_app():
             placeholder = st.empty()
             with st.spinner("🔍 Searching legal database..."):
                 result = answer_question(query)
-                answer = result.get("answer", "")
+                answer = result.get("answer", "No relevant sections found. Try rebuilding index.")
             placeholder.markdown(answer + "\n\n📚 *Powered by LegalRAG Pipeline*")
 
         st.session_state["messages"].append({"role": "assistant", "content": answer})
