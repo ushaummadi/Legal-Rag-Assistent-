@@ -154,23 +154,30 @@ def run_streamlit_app():
                     new_user = st.text_input("Username")
                     new_pass = st.text_input("Password", type="password")
                     new_pass2 = st.text_input("Confirm Password", type="password")
+                    
                     if st.form_submit_button("Create Account"):
                         if new_pass != new_pass2:
                             st.error("Passwords don't match!")
                         elif new_user in config["credentials"]["usernames"]:
                             st.error("Username exists!")
                         else:
-                            # ✅ FIXED HASHER LOGIC HERE
+                            # 1. Save New User
                             hashed = Hasher([new_pass]).generate()[0]
                             config["credentials"]["usernames"][new_user] = {
                                 "name": new_fullname, "password": hashed
                             }
                             save_config(config)
-                            st.success("✅ Account created! Please login.")
+
+                            # 2. 🔥 AUTO-LOGIN LOGIC (Immediate Entry)
+                            st.session_state["name"] = new_fullname
+                            st.session_state["username"] = new_user
+                            st.session_state["authentication_status"] = True
+
+                            st.success(f"✅ Welcome, {new_fullname}! Entering LegalGPT...")
                             st.rerun()
         
         # Stop here if login failed or pending
-        if not authentication_status:
+        if not st.session_state.get("authentication_status"):
             st.stop()
     else:
         # Restore session data if already logged in
