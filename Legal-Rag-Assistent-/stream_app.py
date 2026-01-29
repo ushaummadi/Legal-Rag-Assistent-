@@ -12,6 +12,7 @@ from pathlib import Path
 import streamlit as st
 import yaml
 from yaml.loader import SafeLoader
+
 import streamlit_authenticator as stauth
 from streamlit_authenticator.utilities.hasher import Hasher
 
@@ -25,22 +26,16 @@ CHROMA_DIR = DATA_DIR / "chroma_db"
 CONFIG_PATH = BASE_DIR / "config.yaml"
 HISTORY_FILE = BASE_DIR / "chat_history.json"
 
-# Ensure dirs exist (cloud-safe)
 DATA_DIR.mkdir(parents=True, exist_ok=True)
 UPLOADS_DIR.mkdir(parents=True, exist_ok=True)
 CHROMA_DIR.mkdir(parents=True, exist_ok=True)
 
-# Make imports work on Streamlit Cloud
 if str(BASE_DIR) not in sys.path:
     sys.path.insert(0, str(BASE_DIR))
 
-# Optional: reduce telemetry noise
 os.environ["OTEL_PYTHON_DISABLED"] = "true"
-
-# If your settings read from env vars, this helps keep persist dir consistent
-# (If settings doesn't use env vars, update config/settings.py accordingly.)
 os.environ.setdefault("CHROMA_PERSIST_DIRECTORY", str(CHROMA_DIR))
-os.environ.setdefault("DOCS_DIR", str(DATA_DIR))
+os.environ.setdefault("DOCS_DIR", str(UPLOADS_DIR))  # IMPORTANT: point to uploads
 os.environ.setdefault("UPLOADS_DIR", str(UPLOADS_DIR))
 
 # ✅ App imports (after paths)
@@ -92,10 +87,10 @@ def list_source_files():
 
 
 def load_docs_for_index():
-    # Prefer uploads folder (user-added), fallback to data/
-    docs = load_documents(UPLOADS_DIR)
+    # Prefer uploads folder, fallback to data/
+    docs = load_documents(str(UPLOADS_DIR))
     if not docs:
-        docs = load_documents(DATA_DIR)
+        docs = load_documents(str(DATA_DIR))
     return docs
 
 
@@ -115,7 +110,8 @@ def run_streamlit_app():
         st.stop()
 
     with open(CONFIG_PATH, encoding="utf-8") as f:
-        config = yaml.load(f, Loader=SafeLoader)
+        config = yaml.load(f, Loader=SafeLoader) or {}
+
     config.setdefault("credentials", {}).setdefault("usernames", {})
     config.setdefault("cookie", {})
 
@@ -161,35 +157,7 @@ def run_streamlit_app():
                 st.session_state["username"] = username
                 st.session_state["name"] = name
 
-                authenticator.logout("🚪 Log out", "main")    
-
-    # Auth session init
-    st.session_state.setdefault("authentication_status", None)
-    st.session_state.setdefault("username", None)
-    st.session_state.setdefault("name", None)
-
-    if st.session_state["authentication_status"] is not True:
-        st.sidebar.markdown("---")
-        with st.sidebar.expander("👤 Account", expanded=True):
-            tab_login, tab_signup = st.tabs(["Login", "Sign up"])
-
-            with tab_login:
-                st.info("👋 Welcome to LegalGPT")
-                with st.form("login_form", clear_on_submit=False):
-                    u = st.text_input("Username")
-                    p = st.text_input("Password", type="password")
-                    login_ok = st.form_submit_button("Login")
-
-                if login_ok:
-                    user = config.get("credentials", {}).get("usernames", {}).get(u)
-                    if user and Hasher.check_pw(p, user["password"]):
-                        st.session_state["authentication_status"] = True
-                        st.session_state["username"] = u
-                        st.session_state["name"] = user.get("name", u)
-                        st.success("✅ Logged in!")
-                        st.rerun()
-                    else:
-                        st.error("❌ Wrong credentials")
+                authenticator.logout("🚪 Log out", "main")
 
             with tab_signup:
                 with st.form("signup_form", clear_on_submit=True):
@@ -215,16 +183,17 @@ def run_streamlit_app():
                             "password": hashed,
                         }
                         save_config(config)
-                        st.success("✅ Account created! Now login.")     
+                        st.success("✅ Account created! Now login.")
+                        st.rerun()
 
-    name = st.session_state["name","User]
+    name = st.session_state.get("name", "User")
 
-    # Theme CSS
+    # Theme CSS (your original)
     st.markdown(
         """
         <style>
         html, body, #root, .stApp,
-        header[data-testid="stHeader"], 
+        header[data-testid="stHeader"],
         footer[data-testid="stFooter"],
         section[data-testid="stAppViewContainer"],
         section[data-testid="stChatInputContainer"],
@@ -245,7 +214,7 @@ def run_streamlit_app():
         .stChatInput > div > div { background-color: transparent !important; }
         .stChatMessage, [data-testid="stChatMessage"] { background-color: transparent !important; }
 
-        [data-testid="metric-container"], 
+        [data-testid="metric-container"],
         [data-testid="stHorizontalBlock"],
         section[data-testid="stSidebar"] div.element-container {
             background-color: #171717 !important;
@@ -261,7 +230,6 @@ def run_streamlit_app():
             padding-left: 0.05rem !important; padding-right: 0.05rem !important;
         }
 
-        /* Unselected = secondary */
         [data-testid="stSidebar"] button[kind="secondary"]{
           background: transparent !important;
           border: none !important;
@@ -274,7 +242,6 @@ def run_streamlit_app():
           color: #fff !important;
         }
 
-        /* Selected = primary */
         [data-testid="stSidebar"] button[kind="primary"]{
           background: #353545 !important;
           border: none !important;
@@ -283,7 +250,6 @@ def run_streamlit_app():
           border-radius: 10px !important;
         }
 
-        /* Combine selected (title + X) */
         [data-testid="stSidebar"] div[data-testid="stHorizontalBlock"] > div:first-child button[kind="primary"]{
           border-top-right-radius: 0px !important;
           border-bottom-right-radius: 0px !important;
@@ -305,15 +271,19 @@ def run_streamlit_app():
     if "session_id" not in st.session_state:
         st.session_state["session_id"] = str(uuid.uuid4())
         st.session_state["messages"] = []
+
     # Load history
     all_history = load_all_history()
     cur_sid = st.session_state["session_id"]
     if cur_sid not in all_history:
         all_history[cur_sid] = st.session_state["messages"]
         save_all_history(all_history)
+
+    # Settings flag via query param
     qp = st.query_params
     show_settings = (qp.get("menu") == "settings")
-    # SIDEBAR
+
+    # SIDEBAR: chats list (your original)
     with st.sidebar:
         if st.button("➕ New chat", use_container_width=True, type="secondary"):
             current_sid = st.session_state.get("session_id")
@@ -330,7 +300,6 @@ def run_streamlit_app():
             st.rerun()
 
         st.caption("Your chats")
-
         for sid in list(all_history.keys())[::-1]:
             msgs = all_history[sid]
             if not msgs:
@@ -388,17 +357,11 @@ def run_streamlit_app():
             unsafe_allow_html=True,
         )
 
-        if st.button("🚪 Log out", use_container_width=True, type="secondary"):
-            st.session_state["authentication_status"] = None
-            st.session_state["username"] = None
-            st.session_state["name"] = None
-            st.rerun()
-
     # MAIN
     st.title("⚖️ LegalGPT")
     st.caption("Indian Evidence Act • Production RAG System")
 
-    # SETTINGS PAGE (debug + rebuild)
+    # SETTINGS PAGE
     if show_settings:
         st.markdown("---")
         st.subheader("⚙️ Settings")
@@ -452,6 +415,7 @@ def run_streamlit_app():
                 st.write(f"Chunks: {len(chunks)}")
 
                 vsm = VectorStoreManager()
+                # NOTE: if you want NO duplicates on rebuild, implement vsm.clear() and call it here.
                 vsm.add_documents(chunks)
                 st.success(f"✅ Indexed {len(chunks)} chunks. Chroma now has {vsm.count()} vectors.")
 
@@ -489,5 +453,7 @@ def run_streamlit_app():
         all_history[st.session_state["session_id"]] = st.session_state["messages"]
         save_all_history(all_history)
         st.rerun()
+
+
 if __name__ == "__main__":
     run_streamlit_app()
