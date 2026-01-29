@@ -1,6 +1,6 @@
 """
 LegalRAG: Indian Evidence Act RAG Assistant
-Full-Stack Streamlit + Chroma + HuggingFace (2026)
+Full-Stack Streamlit + Chroma + HuggingFace (2026) ✅ FIXED
 """
 
 import os
@@ -44,7 +44,6 @@ from src.ingestion.document_processor import load_documents, split_documents
 from src.ingestion.vector_store import VectorStoreManager
 from src.generation.rag_pipeline import answer_question
 
-
 # ----------------------------
 # HELPERS
 # ----------------------------
@@ -87,9 +86,8 @@ def load_docs_for_index():
         docs = load_documents(str(DATA_DIR))
     return docs
 
-
 # ----------------------------
-# MAIN APP
+# MAIN APP ✅ BULLETPROOF AUTH + LOGOUT
 # ----------------------------
 def run_streamlit_app():
     st.set_page_config(
@@ -110,7 +108,7 @@ def run_streamlit_app():
     config.setdefault("cookie", {})
 
     # ----------------------------
-    # ✅ AUTHENTICATION
+    # 🔥 BULLETPROOF AUTHENTICATION
     # ----------------------------
     cookie_name = config["cookie"].get("name", "legalgpt_auth")
     cookie_expiry_days = float(config["cookie"].get("expiry_days", 30))
@@ -131,18 +129,18 @@ def run_streamlit_app():
         cookie_expiry_days=cookie_expiry_days,
     )
 
-    # Initialize Session State for Auth
-    if "authentication_status" not in st.session_state:
-        st.session_state["authentication_status"] = None
+    # ✅ INITIALIZE ALL SESSION KEYS
+    for key in ["authentication_status", "name", "username"]:
+        if key not in st.session_state:
+            st.session_state[key] = None
 
-    # 🛑 LOGIN LOGIC: Render form ONLY if not authenticated
-    if not st.session_state["authentication_status"]:
+    # 🛑 LOGIN SCREEN (if not authenticated)
+    if st.session_state["authentication_status"] != "authenticated":
         st.sidebar.markdown("---")
         with st.sidebar.expander("👤 Account", expanded=True):
             tab_login, tab_signup = st.tabs(["Login", "Sign up"])
 
             with tab_login:
-                # SINGLE CALL to login widget
                 name, authentication_status, username = authenticator.login(
                     location="main", 
                     fields={"Form name": "Login"}
@@ -157,53 +155,41 @@ def run_streamlit_app():
                     
                     if st.form_submit_button("Create Account"):
                         if new_pass != new_pass2:
-                            st.error("Passwords don't match!")
+                            st.error("❌ Passwords don't match!")
                         elif new_user in config["credentials"]["usernames"]:
-                            st.error("Username exists!")
+                            st.error("❌ Username exists!")
                         else:
-                            # 1. Save New User
+                            # ✅ SAVE USER + AUTO-LOGIN
                             hashed = Hasher([new_pass]).generate()[0]
                             config["credentials"]["usernames"][new_user] = {
                                 "name": new_fullname, "password": hashed
                             }
                             save_config(config)
-
-                            # 2. 🔥 AUTO-LOGIN LOGIC (Immediate Entry)
+                            
                             st.session_state["name"] = new_fullname
                             st.session_state["username"] = new_user
-                            st.session_state["authentication_status"] = True
-
-                            st.success(f"✅ Welcome, {new_fullname}! Entering LegalGPT...")
+                            st.session_state["authentication_status"] = "authenticated"
+                            
+                            st.success(f"✅ Welcome {new_fullname}! 👋")
                             st.rerun()
-        
-        # Stop here if login failed or pending
-        if not st.session_state.get("authentication_status"):
-            st.stop()
-    else:
-        # Restore session data if already logged in
-        name = st.session_state.get("name")
-        username = st.session_state.get("username")
-        authentication_status = True
-
-    # ----------------------------
-    # APP LOGIC (Only runs after login)
-    # ----------------------------
-    st.session_state["authentication_status"] = True
-    st.session_state["username"] = username
-    st.session_state["name"] = name
+            
+            # STOP if not authenticated
+            if st.session_state["authentication_status"] != "authenticated":
+                st.stop()
+    
+    # ✅ EXTRACT USER INFO (logged in)
+    name = st.session_state["name"]
+    username = st.session_state["username"]
 
     # CSS Styles
-    st.markdown(
-        """
-        <style>
-        html, body, #root, .stApp, [data-testid="stSidebar"] { background-color: #171717 !important; }
-        .stTextInput > div > div > div { background-color: #212121 !important; }
-        .stButton > button { background-color: #212121 !important; color: #ececf1 !important; }
-        * { border-color: #303030 !important; }
-        </style>
-        """,
-        unsafe_allow_html=True,
-    )
+    st.markdown("""
+    <style>
+    html, body, #root, .stApp, [data-testid="stSidebar"] { background-color: #171717 !important; }
+    .stTextInput > div > div > div { background-color: #212121 !important; }
+    .stButton > button { background-color: #212121 !important; color: #ececf1 !important; }
+    * { border-color: #303030 !important; }
+    </style>
+    """, unsafe_allow_html=True)
 
     # Session ID Init
     if "session_id" not in st.session_state:
@@ -217,7 +203,7 @@ def run_streamlit_app():
         all_history[cur_sid] = st.session_state["messages"]
         save_all_history(all_history)
 
-    # SIDEBAR
+    # 🔥 SIDEBAR WITH BULLETPROOF LOGOUT
     with st.sidebar:
         if st.button("➕ New chat", use_container_width=True, type="secondary"):
             st.session_state["session_id"] = str(uuid.uuid4())
@@ -232,7 +218,8 @@ def run_streamlit_app():
             is_selected = (sid == st.session_state["session_id"])
             c1, c2 = st.columns([1, 0.2])
             with c1:
-                if st.button(title, key=f"load_{sid}", use_container_width=True, type=("primary" if is_selected else "secondary")):
+                if st.button(title, key=f"load_{sid}", use_container_width=True, 
+                           type=("primary" if is_selected else "secondary")):
                     st.session_state["session_id"] = sid
                     st.session_state["messages"] = msgs.copy()
                     st.rerun()
@@ -245,28 +232,37 @@ def run_streamlit_app():
                     st.rerun()
         
         st.markdown("<div style='flex-grow: 1; height: 50vh;'></div>", unsafe_allow_html=True)
-        # User Profile Footer
+        
+        # 🔥 CUSTOM LOGOUT BUTTON (No Crash!)
+        if st.button("🚪 Logout", use_container_width=True, type="secondary"):
+            # Clear EVERYTHING safely
+            for key in list(st.session_state.keys()):
+                del st.session_state[key]
+            st.session_state["authentication_status"] = None
+            st.rerun()
+        
+        # User Profile
         initials = (name[:2].upper() if name else "LG")
-        st.markdown(
-            f"""
-            <div style='position: sticky; bottom: 0; width: 100%; background: #171717; border-top: 1px solid #303030; padding: 10px 12px;'>
-              <div style='display: flex; align-items: center; gap: 10px;'>
-                <div style='width: 36px; height: 36px; border-radius: 8px; background: #7b4ec9; color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px;'>{initials}</div>
-                <div><div style='color: #fff; font-size: 14px; font-weight: 600;'>{name}</div><div style='color: #b4b4b4; font-size: 12px;'>Free Plan</div></div>
-              </div>
+        st.markdown(f"""
+        <div style='position: sticky; bottom: 20px; width: 100%; padding: 10px 12px;'>
+          <div style='display: flex; align-items: center; gap: 10px;'>
+            <div style='width: 36px; height: 36px; border-radius: 8px; background: #7b4ec9; color: #fff; 
+                        display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px;'>
+              {initials}
             </div>
-            """,
-            unsafe_allow_html=True,
-        )
-        authenticator.logout(" Log out", "sidebar")
+            <div>
+              <div style='color: #fff; font-size: 14px; font-weight: 600;'>{name}</div>
+              <div style='color: #b4b4b4; font-size: 12px;'>Free Plan</div>
+            </div>
+          </div>
+        </div>
+        """, unsafe_allow_html=True)
 
     # MAIN CONTENT
     st.title("⚖️ LegalGPT")
     st.caption("Indian Evidence Act • Production RAG System")
 
-    # ---------------------------------------------------------
     # 🛠️ ADMIN TOOLS / REBUILD INDEX
-    # ---------------------------------------------------------
     with st.expander("🛠️ **Admin Tools / Rebuild Index**", expanded=False):
         vsm = VectorStoreManager()
         col1, col2 = st.columns(2)
@@ -281,14 +277,14 @@ def run_streamlit_app():
                 st.error("❌ No files in data/uploads/")
 
         if st.button("🔄 **FORCE REBUILD INDEX NOW**", type="primary", use_container_width=True):
-            with st.spinner("⏳ Indexing Evidence Act files..."):
+            with st.spinner("⏳ Indexing legal files..."):
                 docs = load_docs_for_index()
                 if not docs:
-                    st.error("❌ No files found! Push Evidence txt files to GitHub data/uploads/ first.")
+                    st.error("❌ No files found! Add txt files to data/uploads/")
                 else:
                     chunks = split_documents(docs)
                     vsm.add_documents(chunks)
-                    st.success(f"✅ Success! {len(chunks)} chunks indexed. New vector count: {vsm.count()}")
+                    st.success(f"✅ Indexed {len(chunks)} chunks! Total: {vsm.count()}")
                     st.rerun()
 
     # CHAT INTERFACE
@@ -296,14 +292,14 @@ def run_streamlit_app():
         with st.chat_message(msg["role"]):
             st.markdown(msg["content"])
 
-    if query := st.chat_input("Ask about Evidence Act (e.g., 'What is Section 32?')..."):
+    if query := st.chat_input("Ask about Evidence Act (e.g., 'What is Section 32?', 'murder evidence')..."):
         st.session_state["messages"].append({"role": "user", "content": query})
         with st.chat_message("user"):
             st.markdown(query)
 
         with st.chat_message("assistant"):
             placeholder = st.empty()
-            with st.spinner("🔍 Analyzing legal documents..."):
+            with st.spinner("🔍 Searching legal database..."):
                 result = answer_question(query)
                 answer = result.get("answer", "")
             placeholder.markdown(answer + "\n\n📚 *Powered by LegalRAG Pipeline*")
