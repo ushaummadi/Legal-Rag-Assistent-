@@ -30,7 +30,7 @@ def format_context(docs: List[Document]) -> str:
         score = meta.get("score", 0)
         
         # 🛑 SCORE FILTER: Ignore weak matches
-        if score < 4.0:
+        if score < 7.0:
             continue
             
         relevant_count += 1
