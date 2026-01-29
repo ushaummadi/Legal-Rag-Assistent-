@@ -98,7 +98,7 @@ CONTEXT:
 {context}
 
 ANSWER:"""
-    
+   
     try:
         resp = llm.invoke(prompt)
         answer_text = getattr(resp, "content", str(resp))
