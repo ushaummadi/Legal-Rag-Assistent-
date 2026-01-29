@@ -160,7 +160,8 @@ def run_streamlit_app():
                         elif new_user in config["credentials"]["usernames"]:
                             st.error("Username exists!")
                         else:
-                            hashed = Hasher.hash(new_pass)
+                            # ✅ FIXED HASHER LOGIC HERE
+                            hashed = Hasher([new_pass]).generate()[0]
                             config["credentials"]["usernames"][new_user] = {
                                 "name": new_fullname, "password": hashed
                             }
