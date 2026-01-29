@@ -170,9 +170,7 @@ def run_streamlit_app():
                             "password": hashed,
                         }
                         save_config(config)
-                        st.success("✅ Account created! Now login.")
-                        st.rerun()
-
+                        st.success("✅ Account created! Now login.")     
         st.stop()
 
     name = st.session_state["name"]
@@ -263,17 +261,14 @@ def run_streamlit_app():
     if "session_id" not in st.session_state:
         st.session_state["session_id"] = str(uuid.uuid4())
         st.session_state["messages"] = []
-
     # Load history
     all_history = load_all_history()
     cur_sid = st.session_state["session_id"]
     if cur_sid not in all_history:
         all_history[cur_sid] = st.session_state["messages"]
         save_all_history(all_history)
-
     qp = st.query_params
     show_settings = (qp.get("menu") == "settings")
-
     # SIDEBAR
     with st.sidebar:
         if st.button("➕ New chat", use_container_width=True, type="secondary"):
@@ -450,7 +445,5 @@ def run_streamlit_app():
         all_history[st.session_state["session_id"]] = st.session_state["messages"]
         save_all_history(all_history)
         st.rerun()
-
-
 if __name__ == "__main__":
     run_streamlit_app()
