@@ -125,27 +125,21 @@ def run_streamlit_app():
         if key not in st.session_state:
             st.session_state[key] = None
 
-    # Try restoring auth from cookie (silent)
-    if st.session_state["authentication_status"] is None:
-        try:
-            authenticator.login(location="unrendered")
-        except Exception:
-            pass  # ignore if no valid cookie
+    # Always call login() to restore from cookie on every refresh
+    name, auth_status, username = authenticator.login(location="main")
 
-    # If still not authenticated, show login UI
+    st.session_state["authentication_status"] = auth_status
+    st.session_state["name"] = name
+    st.session_state["username"] = username
+
+    # If not authenticated, show login UI
     if st.session_state["authentication_status"] != "authenticated":
         st.sidebar.markdown("---")
         with st.sidebar.expander("👤 Account", expanded=True):
             tab_login, tab_signup = st.tabs(["Login", "Sign up"])
 
             with tab_login:
-                name, auth_status, username = authenticator.login(location="main")
-                if auth_status:
-                    st.session_state["authentication_status"] = "authenticated"
-                    st.session_state["name"] = name
-                    st.session_state["username"] = username
-                    st.rerun()
-                elif auth_status is False:
+                if auth_status is False:
                     st.error("❌ Wrong credentials")
 
             with tab_signup:
@@ -248,7 +242,7 @@ def run_streamlit_app():
         with col2:
             st.caption("Available Files:")
             files = list_source_files()
-            st.code("\\n".join(files[:5]) if files else "No files found", language="text")
+            st.code("\n".join(files[:5]) if files else "No files found", language="text")
 
         if st.button("🔄 **FORCE REBUILD INDEX NOW**", type="primary", use_container_width=True):
             with st.spinner("⏳ Indexing..."):
