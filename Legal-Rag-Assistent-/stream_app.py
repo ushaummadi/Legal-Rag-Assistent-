@@ -110,7 +110,6 @@ def run_streamlit_app():
     # 🔥 AUTHENTICATION (PERSISTS AFTER REFRESH)
     # ----------------------------
     cookie_key = st.secrets["AUTH_COOKIE_KEY"]
-    )
     authenticator = stauth.Authenticate(
         config["credentials"],
         config["cookie"]["name"],
