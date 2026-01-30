@@ -132,37 +132,39 @@ def run_streamlit_app():
         cookie_expiry_days=cookie_expiry_days,
     )
 
-    # Initialize auth keys
-    for key in ["authentication_status", "name", "username"]:
-        if key not in st.session_state:
-            st.session_state[key] = None
+    # IMPORTANT: silent cookie check (does NOT render form)
+    # streamlit-authenticator supports location 'unrendered'. [web:234]
+    # 1. Check cookie first (silent)
+    try:
+        # 'unrendered' checks cookie without showing UI
+        name, authentication_status, username = authenticator.login(location="sidebar")
+    except Exception:
+        authentication_status = None
 
-    # Call login ONCE per run (restores from cookie AND renders form)
-    name, auth_status, username = authenticator.login(location="sidebar")
-
-    # Sync to session state
-    st.session_state["authentication_status"] = auth_status
-    if auth_status:
-        st.session_state["name"] = name
-        st.session_state["username"] = username
-
-    auth_status = st.session_state["authentication_status"]
-    name       = st.session_state["name"]
-    username   = st.session_state["username"]
-
-    # If not authenticated, show login UI
-    if auth_status != "authenticated":
+    # 2. If not logged in, show UI
+    if authentication_status is not True:
         st.sidebar.markdown("---")
         with st.sidebar.expander("👤 Account", expanded=True):
             tab_login, tab_signup = st.tabs(["Login", "Sign up"])
 
             with tab_login:
-                if auth_status is False:
+                # NEW SYNTAX: location="sidebar" (no "Login" string first!)
+                name, authentication_status, username = authenticator.login(
+                    location="sidebar",
+                    fields={"Form name": "Login"} # Optional label
+                )
+
+                if authentication_status is False:
                     st.error("❌ Wrong credentials")
-                if auth_status is None:
+                    st.stop()
+                if authentication_status is None:
                     st.info("Please login to continue.")
+                    st.stop()
+
+            # ... tab_signup remains same ...
 
             with tab_signup:
+                # Keep your SAME signup logic (writes into config.yaml)
                 with st.form("signup_form", clear_on_submit=True):
                     new_fullname = st.text_input("Full Name")
                     new_email = st.text_input("Email")
@@ -179,7 +181,7 @@ def run_streamlit_app():
                     elif new_user in config["credentials"]["usernames"]:
                         st.error("Username exists!")
                     else:
-                        hashed = Hasher([new_pass]).generate()[0]  # correct usage
+                        hashed = Hasher.hash(new_pass)
                         config["credentials"]["usernames"][new_user] = {
                             "name": new_fullname,
                             "email": new_email,
@@ -188,10 +190,11 @@ def run_streamlit_app():
                         save_config(config)
                         st.success("✅ Account created! Now login.")
                         st.rerun()
+
         st.stop()
 
     # From here: user is authenticated (refresh will stay logged in via cookie)
-    st.session_state["authentication_status"] = "authenticated"  # string, not True
+    st.session_state["authentication_status"] = True
     st.session_state["username"] = username
     st.session_state["name"] = name
 
