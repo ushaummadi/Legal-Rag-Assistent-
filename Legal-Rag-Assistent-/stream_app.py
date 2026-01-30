@@ -118,35 +118,18 @@ def run_streamlit_app():
     )
 
     # Initialize auth state keys
-    for key in ["authentication_status", "name", "username"]:
-        if key not in st.session_state:
-            st.session_state[key] = None
+    name, authentication_status, username = authenticator.login(location="unrendered")
 
-    # Try restoring auth from cookie (silent)
-    if st.session_state["authentication_status"] is None:
-        try:
-            name, auth_status, username = authenticator.login(location="unrendered")
-            if auth_status:
-                st.session_state["authentication_status"] = "authenticated"
-                st.session_state["name"] = name
-                st.session_state["username"] = username
-        except Exception:
-            pass  # ignore if no valid cookie
-
-    # If still not authenticated, show login UI
-    if st.session_state["authentication_status"] != "authenticated":
-        st.sidebar.markdown("---")
+    # 🔐 LOGIN / SIGNUP UI
+    if not authentication_status:
         with st.sidebar.expander("👤 Account", expanded=True):
             tab_login, tab_signup = st.tabs(["Login", "Sign up"])
 
             with tab_login:
-                name, auth_status, username = authenticator.login(location="main")
-                if auth_status:
-                    st.session_state["authentication_status"] = "authenticated"
-                    st.session_state["name"] = name
-                    st.session_state["username"] = username
+                name, authentication_status, username = authenticator.login(location="main")
+                if authentication_status:
                     st.rerun()
-                elif auth_status is False:
+                elif authentication_status is False:
                     st.error("❌ Wrong credentials")
 
             with tab_signup:
@@ -164,16 +147,8 @@ def run_streamlit_app():
                                 "password": hashed
                             }
                             save_config(config)
-                            st.session_state["authentication_status"] = "authenticated"
-                            st.session_state["name"] = new_fullname
-                            st.session_state["username"] = new_user
-                            st.rerun()
+                            st.success("Account created! Please login.")
         st.stop()
-
-    # ----------------------------
-    # APP UI (LOGGED IN)
-    # ----------------------------
-    name, username = st.session_state["name"], st.session_state["username"]
 
     # Session ID Init
     if "session_id" not in st.session_state:
