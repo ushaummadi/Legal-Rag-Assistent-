@@ -126,12 +126,13 @@ def run_streamlit_app():
             st.session_state[key] = None
 
     # Try restoring auth from cookie (silent)
-    if st.session_state["authentication_status"] is None:
-        try:
-            authenticator.login(location="unrendered")
-        except Exception:
-            pass  # ignore if no valid cookie
+    name, auth_status, username = authenticator.login(location="unrendered")
 
+# Sync to session state
+    st.session_state["authentication_status"] = auth_status
+    if auth_status:
+        st.session_state["name"] = name
+        st.session_state["username"] = username
     # If still not authenticated, show login UI
     if st.session_state["authentication_status"] != "authenticated":
         st.sidebar.markdown("---")
