@@ -60,7 +60,7 @@ class NativeRetriever:
         ranked_docs = sorted(docs, key=lambda d: d.metadata.get("score", 0), reverse=True)
         
         logger.info(f"✅ Retrieved {len(ranked_docs)} docs for '{query}'")
-        return ranked_docs[:10] # Return top 10 most relevant
+        return ranked_docs[:15] # Return top 10 most relevant
 
 def get_retriever():
     return NativeRetriever()
