@@ -1,7 +1,7 @@
 """
 LegalRAG: FINAL PRODUCTION CODE
-✅ Fixed Login (Persistent + Version Safe)
-✅ New Cookie Name (Fixes KeyError)
+✅ Fixed KeyError (Auto-repairs config + New Cookie)
+✅ Persistent Login on Refresh
 ✅ Full RAG Integration
 """
 
@@ -96,19 +96,33 @@ def run_streamlit_app():
     if not CONFIG_PATH.exists():
         save_config({
             "credentials": {"usernames": {}},
-            "cookie": {"name": "legalgpt_v2", "key": "new_secure_key", "expiry_days": 30},
+            "cookie": {"name": "legalgpt_v3_fix", "key": "secure_key_123", "expiry_days": 30},
             "preauthorized": {"emails": []}
         })
 
     with open(CONFIG_PATH, encoding="utf-8") as f:
         config = yaml.load(f, Loader=SafeLoader) or {}
 
-    # 🔥 SAFE AUTH INIT (Uses "legalgpt_v2" cookie to fix KeyError)
+    # 🛠️ AUTO-FIX: Ensure 'name' exists for all users (Prevents KeyError)
+    credentials = config.get("credentials", {}).get("usernames", {})
+    config_changed = False
+    for user, data in credentials.items():
+        if "name" not in data:
+            data["name"] = user  # Fallback
+            config_changed = True
+        if "logged_in" not in data:
+            data["logged_in"] = False
+            config_changed = True
+            
+    if config_changed:
+        save_config(config)
+
+    # 🔥 SAFE AUTH INIT (New cookie name = Resets broken sessions)
     cookie = config.get("cookie", {})
     authenticator = stauth.Authenticate(
         config["credentials"],
-        cookie.get("name", "legalgpt_v2"),  # Changed name = Resets bad cookies
-        cookie.get("key", "new_secure_key"),
+        "legalgpt_v3_fix",  # Changed name to force cookie reset
+        cookie.get("key", "secure_key_123"),
         float(cookie.get("expiry_days", 30))
     )
 
