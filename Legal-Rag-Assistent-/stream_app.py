@@ -139,7 +139,7 @@ def run_streamlit_app():
             tab_login, tab_signup = st.tabs(["Login", "Sign up"])
 
             with tab_login:
-                name, auth_status, username = authenticator.login(location="unrendered")
+                name, auth_status, username = authenticator.login(location="main")
                 if auth_status:
                     st.session_state["authentication_status"] = "authenticated"
                     st.session_state["name"] = name
