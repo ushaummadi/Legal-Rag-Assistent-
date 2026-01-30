@@ -1,7 +1,7 @@
 """
 LegalRAG: Indian Evidence Act RAG Assistant
 Full-Stack Streamlit + Chroma + HuggingFace (2026)
-✅ ORIGINAL UI + FIXED LOGIN (persists after refresh)
+✅ ORIGINAL UI + FIXED LOGIN (persists after refresh - NO FORM ON REFRESH)
 """
 
 import os
@@ -100,19 +100,20 @@ def run_streamlit_app():
     if not CONFIG_PATH.exists():
         save_config({
             "credentials": {"usernames": {}},
-            "cookie": {"name": "legalgpt", "key": "legal_key", "expiry_days": 30}
+            "cookie": {"name": "legalgpt_auth", "key": "legal_key_2026", "expiry_days": 30}
         })
 
     with open(CONFIG_PATH, encoding="utf-8") as f:
         config = yaml.load(f, Loader=SafeLoader) or {}
 
     # ----------------------------
-    # 🔥 AUTHENTICATION (PERSISTS AFTER REFRESH)
+    # 🔥 AUTHENTICATION (PERSISTS AFTER REFRESH - NO FORM ON REFRESH)
     # ----------------------------
     cookie_key = st.secrets.get(
-        "AUTH_COOKIE_KEY",
-        config.get("cookie", {}).get("key", "fallback_key")
+        "AUTH_COOKIE_KEY", 
+        config.get("cookie", {}).get("key", "legal_key_2026")
     )
+
     authenticator = stauth.Authenticate(
         config["credentials"],
         config.get("cookie", {}).get("name", "legalgpt_auth"),
@@ -120,26 +121,35 @@ def run_streamlit_app():
         cookie_expiry_days=float(config.get("cookie", {}).get("expiry_days", 30))
     )
 
-    # Initialize auth state keys
+    # Initialize auth state
     for key in ["authentication_status", "name", "username"]:
         if key not in st.session_state:
             st.session_state[key] = None
 
-    # Always call login() to restore from cookie on every refresh
-    name, auth_status, username = authenticator.login(location="main")
+    # STEP 1: SILENT COOKIE CHECK (no UI rendered)
+    if st.session_state["authentication_status"] is None:
+        try:
+            name, auth_status, username = authenticator.login(location="unrendered")
+            st.session_state["authentication_status"] = auth_status
+            st.session_state["name"] = name
+            st.session_state["username"] = username
+        except:
+            pass  # No valid cookie
 
-    st.session_state["authentication_status"] = auth_status
-    st.session_state["name"] = name
-    st.session_state["username"] = username
-
-    # If not authenticated, show login UI
+    # STEP 2: If still not auth'd → show login in sidebar
     if st.session_state["authentication_status"] != "authenticated":
         st.sidebar.markdown("---")
         with st.sidebar.expander("👤 Account", expanded=True):
             tab_login, tab_signup = st.tabs(["Login", "Sign up"])
 
             with tab_login:
-                if auth_status is False:
+                name, auth_status, username = authenticator.login(location="sidebar")
+                if auth_status:
+                    st.session_state["authentication_status"] = "authenticated"
+                    st.session_state["name"] = name
+                    st.session_state["username"] = username
+                    st.rerun()
+                elif auth_status is False:
                     st.error("❌ Wrong credentials")
 
             with tab_signup:
