@@ -4,7 +4,6 @@ from typing import List, Dict, Any
 from langchain_core.documents import Document
 from src.retrieval.retriever import get_retriever
 from src.providers.factory import ProviderFactory
-
 # 🔥 Global chat history (persists across queries)
 chat_history_store: List[Dict[str, str]] = []
 
