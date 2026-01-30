@@ -224,9 +224,9 @@ def run_streamlit_app():
             except Exception:
                 pass
             st.rerun()
-    st.session_state["authentication_status"] = True
-    st.session_state["username"] = username
-    st.session_state["name"] = name
+        st.session_state["authentication_status"] = True
+        st.session_state["username"] = username
+        st.session_state["name"] = name
         initials = (name[:2].upper() if name else "LG")
         st.markdown(f"""
         <div style='position: sticky; bottom: 0; width: 100%; padding: 10px 12px; border-top: 1px solid #303030;'>
