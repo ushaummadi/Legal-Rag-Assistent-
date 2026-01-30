@@ -126,7 +126,7 @@ def run_streamlit_app():
             st.session_state[key] = None
 
     # Try restoring auth from cookie (silent)
-    name, auth_status, username = authenticator.login(location="unrendered")
+    name, auth_status, username = authenticator.login(location="main")
 
 # Sync to session state
     st.session_state["authentication_status"] = auth_status
