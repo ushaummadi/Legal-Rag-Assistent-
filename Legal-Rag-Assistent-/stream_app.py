@@ -125,7 +125,11 @@ def run_streamlit_app():
     # Try restoring auth from cookie (silent)
     if st.session_state["authentication_status"] is None:
         try:
-            authenticator.login(location="unrendered")
+            name, auth_status, username = authenticator.login(location="unrendered")
+            if auth_status:
+                st.session_state["authentication_status"] = "authenticated"
+                st.session_state["name"] = name
+                st.session_state["username"] = username
         except Exception:
             pass  # ignore if no valid cookie
 
