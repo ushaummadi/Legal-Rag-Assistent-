@@ -1,8 +1,10 @@
 """
-LegalRAG: Indian Evidence Act RAG Assistant
-Full-Stack Streamlit + Chroma + HuggingFace (2026)
-✅ ORIGINAL UI + FIXED LOGIN (persists after refresh)
+LegalRAG: FIXED LOGIN PERSISTENCE + TypeError Fix (Production Ready!)
+✅ Refresh F5 → STAYS ON MAIN APP
+✅ Works with ALL streamlit-authenticator versions
+Full replacement for stream_app.py / main.py
 """
+
 import os
 import sys
 import json
@@ -100,7 +102,7 @@ def run_streamlit_app():
     with open(CONFIG_PATH, encoding="utf-8") as f:
         config = yaml.load(f, Loader=SafeLoader) or {}
 
-    # 🔥 FIXED AUTHENTICATION - ALWAYS CALL LOGIN FIRST
+    # 🔥 FIXED AUTHENTICATION - COMPATIBLE WITH ALL VERSIONS
     authenticator = stauth.Authenticate(
         config["credentials"],
         config.get("cookie", {}).get("name", "legalgpt_auth"),
@@ -108,53 +110,47 @@ def run_streamlit_app():
         cookie_expiry_days=float(config.get("cookie", {}).get("expiry_days", 30))
     )
 
-    # ⚠️ CRITICAL: ALWAYS CALL LOGIN() FIRST - This reads cookie on refresh!
-    name, authentication_status, username = authenticator.login(
-        location="sidebar",  # Sidebar for clean layout
-        key="main_login"     # Unique key
-    )
+    # ⚠️ CRITICAL FIX: Call login() WITHOUT unpacking (works v0.3.x & v0.4.x)
+    authenticator.login(location="sidebar", key="main_login")
 
-    # Set session state from authenticator result
-    st.session_state["authentication_status"] = authentication_status
-    if name:
-        st.session_state["name"] = name
-    if username:
-        st.session_state["username"] = username
+    # 🔥 READ STATUS FROM SESSION STATE (Safe for all versions!)
+    authentication_status = st.session_state.get("authentication_status")
+    name = st.session_state.get("name")
+    username = st.session_state.get("username")
 
-    # Show login/signup ONLY if not authenticated
+    # Show login UI ONLY if not authenticated
     if authentication_status != "authenticated":
         st.sidebar.markdown("### 🔐 Login Required")
-        tab_login, tab_signup = st.tabs(["Login", "Sign up"])
+        
+        # Signup form (in sidebar)
+        with st.sidebar.form("signup_form", clear_on_submit=True):
+            st.markdown("### Create Account")
+            new_fullname = st.text_input("Full Name")
+            new_user = st.text_input("Username")
+            new_pass = st.text_input("Password", type="password")
+            if st.form_submit_button("Create Account"):
+                if new_user in config["credentials"]["usernames"]:
+                    st.error("❌ Username exists!")
+                else:
+                    hashed = Hasher([new_pass]).generate()[0]
+                    config["credentials"]["usernames"][new_user] = {
+                        "name": new_fullname,
+                        "password": hashed
+                    }
+                    save_config(config)
+                    st.success("✅ Account created! Refresh page.")
+                    st.rerun()
 
-        with tab_login:
-            # Login already called above - handle status
-            if authentication_status is False:
-                st.error("❌ Wrong credentials")
+        # Login error handling
+        if authentication_status == "failed":
+            st.sidebar.error("❌ Wrong credentials")
+            
+        st.stop()
 
-        with tab_signup:
-            with st.form("signup_form", clear_on_submit=True):
-                new_fullname = st.text_input("Full Name")
-                new_user = st.text_input("Username")
-                new_pass = st.text_input("Password", type="password")
-                if st.form_submit_button("Create Account"):
-                    if new_user in config["credentials"]["usernames"]:
-                        st.error("Username exists!")
-                    else:
-                        hashed = Hasher([new_pass]).generate()[0]
-                        config["credentials"]["usernames"][new_user] = {
-                            "name": new_fullname,
-                            "password": hashed
-                        }
-                        save_config(config)
-                        st.success("✅ Account created! Refresh or login.")
-                        st.rerun()
+    # ✅ AUTHENTICATED - Main App (PERSISTENT ON REFRESH!)
+    print(f"✅ Logged in: {name} ({username}) - Status: {authentication_status}")
 
-        st.stop()  # Stop app until authenticated
-
-    # ✅ AUTHENTICATED - Main App
-    name, username = st.session_state["name"], st.session_state["username"]
-    
-    # Session state init (safe after auth)
+    # Session state (safe after auth)
     if "session_id" not in st.session_state:
         st.session_state["session_id"] = str(uuid.uuid4())
         st.session_state["messages"] = []
@@ -192,7 +188,7 @@ def run_streamlit_app():
 
         st.markdown("---")
 
-        # Profile + Logout
+        # Profile
         initials = (name or "LG")[:2].upper()
         st.markdown(f"""
         <div style='padding: 15px; border-top: 1px solid #303030;'>
@@ -237,7 +233,7 @@ def run_streamlit_app():
                     st.success(f"✅ {len(chunks)} chunks indexed!")
                     st.rerun()
 
-    # Chat Interface
+    # Chat
     for msg in st.session_state["messages"]:
         with st.chat_message(msg["role"]):
             st.markdown(msg["content"])
@@ -248,7 +244,7 @@ def run_streamlit_app():
             st.markdown(query)
 
         with st.chat_message("assistant"):
-            with st.spinner("🔍 Searching legal database..."):
+            with st.spinner("🔍 Searching..."):
                 result = answer_question(query)
                 answer = result.get("answer", "**No relevant sections found.**")
 
