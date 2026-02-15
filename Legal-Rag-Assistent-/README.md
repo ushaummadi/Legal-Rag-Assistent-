@@ -41,59 +41,47 @@ Provide verifiable sources for every response
 🏗️ Project Structure (Production-Grade)
 legalrag/
 │
-├── config/
-│   ├── __init__.py
+├── config/                # Configuration management
 │   └── settings.py
 │
-├── data/
-│   ├── uploads/
-│   └── chroma_db/
+├── data/                  # Raw legal documents
+├── uploads/               # User uploaded docs
+├── chroma_db/             # Persistent vector DB
 │
-├── src/
-│   ├── __init__.py
+├── src/                   # Core Application
 │   │
-│   ├── ingestion/
-│   │   ├── __init__.py
+│   ├── ingestion/         # Document → Embeddings
 │   │   ├── document_processor.py
-│   │   ├── run_ingestion.py
-│   │   └── vector_store.py
+│   │   └── run_ingestion.py
 │   │
-│   ├── retrieval/
-│   │   ├── __init__.py
+│   ├── retrieval/         # Semantic search
 │   │   └── retriever.py
 │   │
-│   ├── generation/
-│   │   ├── __init__.py
+│   ├── generation/        # RAG pipeline
 │   │   └── rag_pipeline.py
 │   │
-│   ├── providers/
-│   │   ├── __init__.py
-│   │   ├── factory.py
+│   ├── providers/         # LLM abstraction layer
 │   │   ├── groq_provider.py
 │   │   ├── huggingface_provider.py
-│   │   └── hybrid_provider.py
+│   │   ├── hybrid_provider.py
+│   │   └── factory.py
 │   │
-│   ├── evaluation/
-│   │   ├── __init__.py
+│   ├── evaluation/        # Metrics
 │   │   └── metrics.py
 │   │
-│   ├── ui/
-│   │   ├── __init__.py
+│   ├── ui/                # Streamlit frontend
 │   │   └── streamlit_app.py
 │   │
-│   └── utils/
-│       └── __init__.py
+│   └── utils/             # Helper functions
 │
-├── app.py
-├── check_chroma.py
-├── data_cleaning.py
 ├── requirements.txt
 ├── .env
 └── README.md
 
 ✅ Every folder contains init.py for stable imports & production readiness
 
-🛠️ Technology Stack Component Technology Language Python 3.10 RAG Framework LangChain Vector DB ChromaDB (Persistent) Embeddings HuggingFace Sentence Transformers LLMs Groq / HuggingFace / Hybrid UI Streamlit Config Pydantic Settings Logging Loguru ⚙️ Installation 1️⃣ Create Environment conda create -n legalrag310 python=3.10 conda activate legalrag310
+🛠️ Technology Stack Component Technology Language Python 3.10 RAG Framework LangChain Vector DB ChromaDB (Persistent) Embeddings HuggingFace Sentence Transformers LLMs Groq / HuggingFace / Hybrid UI Streamlit Config Pydantic Settings Logging Loguru ⚙️ Installation 
+1️⃣ Create Environment conda create -n legalrag310 python=3.10 conda activate legalrag310
 
 2️⃣ Install Dependencies pip install -r requirements.txt
 
