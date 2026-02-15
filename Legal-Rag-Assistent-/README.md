@@ -86,14 +86,25 @@ Safe prompt engineering
 Production reliability
 
 🏗️ Production-Grade Architecture
+Design Goals
+
+Accuracy over creativity
+
+Context enforcement
+
+Safe prompt engineering
+
+Production reliability
+
+📁 Project Structure
 legalrag/
 │
 ├── config/                # Configuration management
 │   └── settings.py
 │
 ├── data/                  # Raw legal documents
-├── uploads/               # User uploaded docs
-├── chroma_db/             # Persistent vector DB
+├── uploads/               # User uploaded documents
+├── chroma_db/             # Persistent vector database
 │
 ├── src/
 │   ├── ingestion/         # Document → Embeddings
@@ -118,11 +129,11 @@ legalrag/
 Component	Technology
 Language	Python 3.10
 RAG Framework	LangChain
-Vector Database	ChromaDB (Persistent)
+Vector DB	ChromaDB (Persistent)
 Embeddings	HuggingFace Sentence Transformers
 LLM Providers	Groq / HuggingFace / Hybrid
 UI	Streamlit
-Configuration	Pydantic Settings
+Config	Pydantic Settings
 Logging	Loguru
 ⚙️ Installation Guide
 1️⃣ Create Environment
